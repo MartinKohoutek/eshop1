@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 use function Ramsey\Uuid\v1;
+use function Symfony\Component\String\b;
 
 class AdminController extends Controller
 {
@@ -60,5 +62,22 @@ class AdminController extends Controller
     public function AdminChangePassword() {
         $admin = User::find(Auth::user()->id);
         return view('admin.admin_change_password', compact('admin'));
+    }
+
+    public function AdminUpdatePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        if (!Hash::check($request->old_password, Auth::user()->password)) {
+            return back()->with('error', 'Old Password Does not Matched');
+        }
+
+        User::whereId(Auth::user()->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return back()->with('status', 'Password Changed Successfully!');
     }
 }

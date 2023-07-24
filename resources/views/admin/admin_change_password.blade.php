@@ -53,7 +53,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.profile.store') }}" method="post">
+                            <form action="{{ route('admin.update.password') }}" method="post">
                                 @csrf
 
                                 @if (session('status'))

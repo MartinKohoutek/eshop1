@@ -53,7 +53,7 @@
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.profile.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('vendor.profile.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
@@ -102,11 +102,11 @@
                                     <div class="col-sm-9 text-secondary">
                                         <select name="vendor_join" class="form-select mb-3" aria-label="Default select example">
                                             <option selected="">Open this select menu</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                            <option value="2026">2026</option>
+                                            <option value="2022" {{ $vendor->vendor_join == 2022 ? 'selected' : '' }}>2022</option>
+                                            <option value="2023" {{ $vendor->vendor_join == 2023 ? 'selected' : '' }}>2023</option>
+                                            <option value="2024" {{ $vendor->vendor_join == 2024 ? 'selected' : '' }}>2024</option>
+                                            <option value="2025" {{ $vendor->vendor_join == 2025 ? 'selected' : '' }}>2025</option>
+                                            <option value="2026" {{ $vendor->vendor_join == 2026 ? 'selected' : '' }}>2026</option>
                                         </select>
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                         <h6 class="mb-0">Vendor Info</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <textarea name="vendor_short_info" class="form-control" id="vendor_short_info" placeholder="Vendor Info ..." rows="3"></textarea>
+                                        <textarea name="vendor_short_info" class="form-control" id="vendor_short_info" placeholder="Vendor Info ..." rows="3">{{ $vendor->vendor_short_info }}</textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -131,7 +131,7 @@
                                         <h6 class="mb-0"></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <img src="{{ (!empty($vendor->photo)) ? url('upload/vendor/'.$vendor->photo) : url('upload/no_image.jpg') }}" alt="Admin" class="p-1 bg-primary" style="width: 150px; height: 150px" id="showImage">
+                                        <img src="{{ (!empty($vendor->photo)) ? url('upload/vendor_images/'.$vendor->photo) : url('upload/no_image.jpg') }}" alt="Admin" class="p-1 bg-primary" style="width: 150px; height: 150px" id="showImage">
                                     </div>
                                 </div>
                                 <div class="row">

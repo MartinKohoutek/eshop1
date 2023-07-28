@@ -20,6 +20,7 @@
 	<!-- Bootstrap CSS -->
 	<link href="{{ asset('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="{{ asset('frontend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('frontend/assets/css/icons.css') }}" rel="stylesheet">
 	<title>MKShop - User Dashboard</title>
@@ -50,6 +51,18 @@
 	<script src="{{ asset('frontend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ asset('frontend/assets/js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	@if (Session::has('message'))
+	<script>
+		var type = "{{ Session::get('alert-type', 'info') }}";
+		switch (type) {
+			case 'success': toastr.success("{{ Session::get('message') }}"); break;
+			case 'info': toastr.info("{{ Session::get('message') }}"); break;
+			case 'warning': toastr.warning("{{ Session::get('message') }}");
+			case 'error': toastr.error("{{ Session::get('message') }}"); break;
+		}
+	</script>
+	@endif
 </body>
 
 </html>

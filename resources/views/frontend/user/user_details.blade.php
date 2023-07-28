@@ -37,7 +37,8 @@
                         <div class="col-lg-8">
                             <div class="card shadow-none mb-0">
                                 <div class="card-body">
-                                    <form class="row g-3">
+                                    <form class="row g-3" method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="col-12">
                                             <label class="form-label">User Name</label>
                                             <input type="text" name="username" class="form-control" value="{{ $userData->username }}">
@@ -64,7 +65,7 @@
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label"></label>
-                                            <img id="showImage" src="{{ (!empty($userData->photo)) ? asset('upload/user_images/.$userData->photo') : asset('upload/no_image.jpg') }}" alt="" style="width: 100px; height: 100px">
+                                            <img id="showImage" src="{{ (!empty($userData->photo)) ? asset('upload/user_images/'.$userData->photo) : asset('upload/no_image.jpg') }}" alt="" style="width: 100px; height: 100px">
                                         </div>
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-light btn-ecomm">Save Changes</button>

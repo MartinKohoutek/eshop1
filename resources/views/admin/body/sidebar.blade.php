@@ -28,7 +28,7 @@
             <ul>
                 <li> <a href="{{ route('all.brands') }}"><i class='bx bx-radio-circle'></i>All Brands</a>
                 </li>
-                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>New Brand</a>
+                <li> <a href="{{ route('add.brand') }}"><i class='bx bx-radio-circle'></i>Add Brand</a>
                 </li>
             </ul>
         </li>

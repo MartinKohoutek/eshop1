@@ -94,8 +94,16 @@
                     <div class="top-cart-icons">
                         <nav class="navbar navbar-expand">
                             <ul class="navbar-nav ms-auto">
-                                <li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-user'></i></a>
+                                @auth
+                                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Account</a>
                                 </li>
+                                @else
+                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Login</a>
+                                </li>
+                                <span style="margin: 2px, 0; font-size: 35px"> | </span>
+                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Register</a>
+                                </li>
+                                @endauth
                                 <li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">

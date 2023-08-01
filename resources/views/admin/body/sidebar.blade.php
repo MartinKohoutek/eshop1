@@ -26,9 +26,9 @@
                 <div class="menu-title">Brand</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class='bx bx-radio-circle'></i>Default</a>
+                <li> <a href="{{ route('all.brands') }}"><i class='bx bx-radio-circle'></i>All Brands</a>
                 </li>
-                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Alternate</a>
+                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>New Brand</a>
                 </li>
             </ul>
         </li>

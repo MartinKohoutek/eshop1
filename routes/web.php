@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -59,6 +60,12 @@ Route::middleware(['auth', 'role:vendor'])->group(function(){
     Route::post('/vendor/profile/store', [VendorController::class, 'VendorProfileStore'])->name('vendor.profile.store');
     Route::get('/vendor/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
     Route::post('/vendor/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function(){
+    Route::controller(BrandController::class)->group(function(){
+        Route::get('/all/brands', 'AllBrands')->name('all.brands');
+    });
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin']);

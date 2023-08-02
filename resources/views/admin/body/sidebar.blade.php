@@ -73,6 +73,19 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Product Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>All Products</a>
+                </li>
+                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Application</div>

@@ -22,8 +22,9 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('vendor.profile.store') }}" method="post" enctype="multipart/form-data">
+                            <form action="{{ route('active.vendor.approve') }}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="id" value="{{ $vendor->id }}">
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">User Name</h6>

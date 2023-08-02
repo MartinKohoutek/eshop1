@@ -95,4 +95,17 @@ class AdminController extends Controller
         $vendor = User::findOrFail($id);
         return view('backend.vendor.inactive_vendor_details', compact('vendor'));
     }
+
+    public function ActiveVendorApprove(Request $request) {
+        $vendor = User::findOrFail($request->id)->update([
+            'status' => 'active',
+        ]);
+
+        $notification = [
+            'message' => 'Vendor Activation Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('active.vendor')->with($notification);
+    }
 }

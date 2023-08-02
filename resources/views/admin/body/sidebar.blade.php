@@ -67,7 +67,7 @@
             <ul>
                 <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>Inactive Vendors</a>
                 </li>
-                <li> <a href="{{ route('add.subcategory') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
+                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
                 </li>
             </ul>
         </li>

@@ -80,7 +80,7 @@
             <ul>
                 <li> <a href="{{ route('all.products') }}"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
-                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
+                <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
                 </li>
             </ul>
         </li>

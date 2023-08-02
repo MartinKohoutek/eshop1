@@ -1,4 +1,9 @@
 <!--sidebar wrapper -->
+@php
+    $id = Auth::user()->id;
+    $vendor = App\Models\User::find($id);
+    $status = $vendor->status;
+@endphp
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
@@ -19,16 +24,17 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        @if ($status === 'active')
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Brand</div>
+                <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class='bx bx-radio-circle'></i>Default</a>
+                <li> <a href="index.html"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
-                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Alternate</a>
+                <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Add Products</a>
                 </li>
             </ul>
         </li>
@@ -36,10 +42,10 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
-                <div class="menu-title">Application</div>
+                <div class="menu-title">Orders</div>
             </a>
             <ul>
-                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
+                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>All Orders</a>
                 </li>
                 <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
                 </li>
@@ -60,6 +66,10 @@
                 </li>
             </ul>
         </li>
+        @else
+        
+        @endif
+        
         <li>
             <a href="https://themeforest.net/user/codervent" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>

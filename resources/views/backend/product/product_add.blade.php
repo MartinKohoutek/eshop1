@@ -1,5 +1,6 @@
 @extends('admin.admin_dashboard')
 @section('admin')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
@@ -50,11 +51,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Product Thumbnail</label>
-                                <input name="profuct_thumbnail" class="form-control" type="file" id="formFile">
+                                <input name="profuct_thumbnail" class="form-control" type="file" id="formFile" onchange="mainThumbUrl(this)">
+                                <img src="" alt="" id="mainThumb">
                             </div>
                             <div class="mb-3">
                                 <label for="inputProductDescription" class="form-label">Multiple Images</label>
-                                <input name="multi_img[]" class="form-control" id="formFileMultiple" type="file" accept="image/*" multiple>
+                                <input name="multi_img[]" class="form-control" id="multiImg" type="file" accept="image/*" multiple>
+                                <div class="row" id="preview_img"></div>
                             </div>
                         </div>
                     </div>
@@ -157,4 +160,44 @@
 
 
 </div>
+<script>
+    function mainThumbUrl(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#mainThumb').attr('src', e.target.result).width(80).height(80);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script> 
+ 
+  $(document).ready(function(){
+   $('#multiImg').on('change', function(){ //on file input change
+      if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
+      {
+          var data = $(this)[0].files; //this file data
+           
+          $.each(data, function(index, file){ //loop though each file
+              if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                  var fRead = new FileReader(); //new filereader
+                  fRead.onload = (function(file){ //trigger function on successful read
+                  return function(e) {
+                      var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(100)
+                  .height(80); //create image element 
+                      $('#preview_img').append(img); //append image to output element
+                  };
+                  })(file);
+                  fRead.readAsDataURL(file); //URL representing the file's data.
+              }
+          });
+           
+      }else{
+          alert("Your browser doesn't support File API!"); //if File API is absent
+      }
+   });
+  });
+   
+  </script>
 @endsection

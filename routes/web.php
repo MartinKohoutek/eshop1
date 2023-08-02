@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -101,6 +102,11 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/active/vendor/details/{id}', 'ActiveVendorDetails')->name('active.vendor.details');
         Route::post('/inactive/vendor/approve', 'InactiveVendorApprove')->name('inactive.vendor.approve');
     });
+
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/all/products', 'AllProducts')->name('all.products');
+    });
+
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin']);

@@ -78,7 +78,7 @@
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>All Products</a>
+                <li> <a href="{{ route('all.products') }}"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
                 <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
                 </li>

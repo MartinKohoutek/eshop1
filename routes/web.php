@@ -92,6 +92,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/update/subcategory', 'UpdateSubCategory')->name('update.subcategory');
         Route::get('/delete/subcategory/{id}', 'DeleteSubCategory')->name('delete.subcategory');
     });
+
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/inactive/vendor', 'InactiveVendor')->name('inactive.vendor');
+    });
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin']);

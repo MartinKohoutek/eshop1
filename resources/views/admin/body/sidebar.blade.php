@@ -60,6 +60,19 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Vendor Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>Inactive Vendors</a>
+                </li>
+                <li> <a href="{{ route('add.subcategory') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Application</div>

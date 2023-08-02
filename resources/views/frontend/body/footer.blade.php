@@ -23,6 +23,10 @@
                             <p class="mb-0 text-uppercase text-white">WORKING DAYS</p>
                             <p class="mb-0 font-13">Mon - FRI / 9:30 AM - 6:30 PM</p>
                         </div>
+                        <div class="working-days mb-3">
+                            <p class="mb-0 text-uppercase text-white"><a href="">Vendor</a></p>
+                            <p class="mb-0 font-13"><a href="{{ route('become.vendor') }}">Become a Vendor</a></p>
+                        </div>
                     </div>
                 </div>
                 <div class="col">

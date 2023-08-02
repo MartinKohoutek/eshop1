@@ -64,7 +64,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="form-body">
-                                                    <form class="row g-3" method="post" action="{{ route('register') }}">
+                                                    <form class="row g-3" method="post" action="{{ route('vendor.register') }}">
                                                         @csrf
                                                         <div class="col-12">
                                                             <label for="name" class="form-label">Shop Name</label>
@@ -113,7 +113,7 @@
                                                         </div>
                                                         <div class="col-12">
                                                             <div class="d-grid">
-                                                                <button type="submit" class="btn btn-light"><i class='bx bx-user'></i>Sign up</button>
+                                                                <button type="submit" class="btn btn-light"><i class='bx bx-user'></i>Submit & Register</button>
                                                             </div>
                                                         </div>
                                                     </form>

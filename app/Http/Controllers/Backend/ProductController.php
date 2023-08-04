@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\MultiImg;
 use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
@@ -28,7 +29,7 @@ class ProductController extends Controller
     public function StoreProduct(Request $request) {
         $image = $request->file('product_thumbnail');
         $img_name = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-        Image::make($image)->resize('400', '300')->save('upload/products/thumbnail' . $img_name);
+        Image::make($image)->resize('400', '300')->save('upload/products/thumbnail/' . $img_name);
         $save_url = 'upload/products/thumbnail/' . $img_name;
 
         $product_id = Product::insertGetId([
@@ -60,17 +61,23 @@ class ProductController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        Category::insert([
-            'category_name' => $request->category_name,
-            'category_slug' => strtolower(str_replace(' ', '-', $request->category_name)),
-            'category_image' => $save_url,
-        ]);
+        $images = $request->file('multi_img');
+        foreach ($images as $img) {
+            $make_name = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)->resize('400', '300')->save('upload/products/multi-image/' . $make_name);
+            $uploadPath = 'upload/products/multi-image/' . $make_name;
+            MultiImg::insert([
+                'product_id' => $product_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         $notification = [
-            'message' => 'Category Inserted Successfully!',
+            'message' => 'Product Inserted Successfully!',
             'alert-type' => 'success'
         ];
 
-        return redirect()->route('all.categories')->with($notification);
+        return redirect()->route('all.products')->with($notification);
     }
 }

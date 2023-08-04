@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="mb-3 form-group">
                                     <label for="formFile" class="form-label">Product Thumbnail</label>
-                                    <input name="profuct_thumbnail" class="form-control" type="file" id="formFile" onchange="mainThumbUrl(this)">
+                                    <input name="product_thumbnail" class="form-control" type="file" id="formFile" onchange="mainThumbUrl(this)">
                                     <img src="" alt="" id="mainThumb">
                                 </div>
                                 <div class="mb-3 form-group">
@@ -180,7 +180,7 @@
                 var data = $(this)[0].files; //this file data
 
                 $.each(data, function(index, file) { //loop though each file
-                    if (/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)) { //check supported file type
+                    if (/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)) { //check supported file type
                         var fRead = new FileReader(); //new filereader
                         fRead.onload = (function(file) { //trigger function on successful read
                             return function(e) {

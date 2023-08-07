@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
+use App\Models\SubCategory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -79,5 +80,15 @@ class ProductController extends Controller
         ];
 
         return redirect()->route('all.products')->with($notification);
+    }
+
+    public function EditProduct($id) {
+        $product = Product::findOrFail($id);
+        $brands = Brand::latest()->get();
+        $categories = Category::latest()->get();
+        $vendors = User::where('role', 'vendor')->where('status', 'active')->get();
+        $subcategories = SubCategory::latest()->get();
+
+        return view('backend.product.product_edit', compact('brands', 'categories', 'vendors', 'product', 'subcategories'));
     }
 }

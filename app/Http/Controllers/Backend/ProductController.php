@@ -88,8 +88,9 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
         $vendors = User::where('role', 'vendor')->where('status', 'active')->get();
         $subcategories = SubCategory::latest()->get();
+        $multiImages = MultiImg::where('product_id', $id)->get();
 
-        return view('backend.product.product_edit', compact('brands', 'categories', 'vendors', 'product', 'subcategories'));
+        return view('backend.product.product_edit', compact('brands', 'categories', 'vendors', 'product', 'subcategories', 'multiImages'));
     }
 
     public function UpdateProduct(Request $request) {

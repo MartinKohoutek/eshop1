@@ -175,6 +175,47 @@
             </div>
         </form>
     </div>
+
+
+    <h6 class="mb-0 text-uppercase">Update Multi Image</h6>
+    <hr>
+    <div class="card">
+        <div class="card-body">
+            <table class="table mb-0 table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Serial Numbar</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Change Image</th>
+                        <th scope="col">Delete Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <form action="{{ route('update.product.thumbnail') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @foreach ($multiImages as $key => $image)
+                        <tr>
+                            <th scope="row">{{ $key+1 }}</th>
+                            <td>
+                                <img src="{{ asset($image->photo_name) }}" alt="" style="width: 70px; height: 40px">
+                            </td>
+                            <td>
+                                {{$image->photo_name}}
+                            </td>
+                            <td>
+                                <input type="file" class="form-group" name="multi_img[{{ $image->id }}]" id="">
+                            </td>
+                            <td>
+                                <input type="submit" value="Update Image" class="btn btn-primary px-4">
+                                <a href="" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <script>
     function mainThumbUrl(input) {

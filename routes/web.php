@@ -111,6 +111,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/edit/product/{id}', 'EditProduct')->name('edit.product');
         Route::post('/update/product', 'UpdateProduct')->name('update.product');
         Route::post('/update/product/thumbnail', 'UpdateProductThumbnail')->name('update.product.thumbnail');
+        Route::post('/update/product/multiimage', 'UpdateProductMultiImage')->name('update.product.multiimage');
     });
 
 });

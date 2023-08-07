@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -120,7 +121,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 
 });
 
-Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
-Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+Route::middleware(RedirectIfAuthenticated::class)->group(function(){
+    Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
+    Route::get('/vendor/login', [VendorController::class, 'VendorLogin'])->name('vendor.login');
+});
+
 Route::get('/become/vendor', [VendorController::class, 'BecomeVendor'])->name('become.vendor');
 Route::post('/vendor/register', [VendorController::class, 'VendorRegister'])->name('vendor.register');

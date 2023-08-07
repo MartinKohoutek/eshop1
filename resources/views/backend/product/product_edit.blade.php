@@ -158,17 +158,18 @@
     <hr>
     <div class="card">
         <form action="{{ route('update.product.thumbnail') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <input type="hidden" name="id" value="{{ $product->id }}">
             <input type="hidden" name="old_image" value="{{ $product->product_thumbnail }}">
 
             <div class="card-body">
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Choose Thumbnail Image</label>
-                    <input name="product_thumbnail" class="form-control" type="file" id="formFile">
+                    <input name="product_thumbnail" class="form-control" type="file" id="formFile" onchange="mainThumbUrl(this)">
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label"></label>
-                    <img src="{{ asset($product->product_thumbnail) }}" alt="" style="width: 100px; height: 100px">
+                    <img src="{{ asset($product->product_thumbnail) }}" alt="" style="width: 100px; height: 100px" id="mainThumb">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Update Product" />
             </div>

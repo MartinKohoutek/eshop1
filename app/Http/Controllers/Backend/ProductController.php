@@ -131,4 +131,8 @@ class ProductController extends Controller
 
         return redirect()->route('all.products')->with($notification);
     }
+
+    public function UpdateProductThumbnail(Request $request) {
+        
+    }
 }

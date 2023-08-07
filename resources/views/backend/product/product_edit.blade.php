@@ -80,7 +80,7 @@
                                         <select name="brand_id" class="form-select" id="inputProductType">
                                             <option></option>
                                             @foreach ($brands as $brand)
-                                            <option value="{{ $brand->id }}" {{ $brand->id == $product->brand_id ? "selected" : "" }} >{{ $brand->brand_name }}</option>
+                                            <option value="{{ $brand->id }}" {{ $brand->id == $product->brand_id ? "selected" : "" }}>{{ $brand->brand_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -154,7 +154,26 @@
         </div>
     </div>
 
+    <h6 class="mb-0 text-uppercase">Update Main Image Thumbnail</h6>
+    <hr>
+    <div class="card">
+        <form action="{{ route('update.product.thumbnail') }}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="{{ $product->id }}">
+            <input type="hidden" name="old_image" value="{{ $product->product_thumbnail }}">
 
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Choose Thumbnail Image</label>
+                    <input name="product_thumbnail" class="form-control" type="file" id="formFile">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label"></label>
+                    <img src="{{ asset($product->product_thumbnail) }}" alt="" style="width: 100px; height: 100px">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Update Product" />
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     function mainThumbUrl(input) {
@@ -221,25 +240,59 @@
     $(document).ready(function() {
         $('#myForm').validate({
             rules: {
-                product_name: { required: true, },
-                short_description: { required: true, },
-                product_thumbnail: { required: true, },
-                multi_img: { required: true, },
-                selling_price: { required: true, },
-                product_code: { required: true, },
-                product_qty: { required: true, },
-                brand_id: { required: true, },
-                category_id: { required: true, },
-                subcategory_id: { required: true, },
+                product_name: {
+                    required: true,
+                },
+                short_description: {
+                    required: true,
+                },
+                product_thumbnail: {
+                    required: true,
+                },
+                multi_img: {
+                    required: true,
+                },
+                selling_price: {
+                    required: true,
+                },
+                product_code: {
+                    required: true,
+                },
+                product_qty: {
+                    required: true,
+                },
+                brand_id: {
+                    required: true,
+                },
+                category_id: {
+                    required: true,
+                },
+                subcategory_id: {
+                    required: true,
+                },
             },
             messages: {
-                product_name: { required: 'Please Enter Category Name', },
-                short_description: { required: 'Please Enter Short Description', },
-                product_thumbnail: { required: 'Please Select Product Thumbnail', },
-                multi_img: { required: 'Please Select Multi Image', },
-                selling_price: { required: 'Please Enter Selling Price', },
-                product_code: { required: 'Please Enter Product Code', },
-                product_qty: { required: 'Please Enter Product Quantity', },
+                product_name: {
+                    required: 'Please Enter Category Name',
+                },
+                short_description: {
+                    required: 'Please Enter Short Description',
+                },
+                product_thumbnail: {
+                    required: 'Please Select Product Thumbnail',
+                },
+                multi_img: {
+                    required: 'Please Select Multi Image',
+                },
+                selling_price: {
+                    required: 'Please Enter Selling Price',
+                },
+                product_code: {
+                    required: 'Please Enter Product Code',
+                },
+                product_qty: {
+                    required: 'Please Enter Product Quantity',
+                },
             },
             errorElement: 'span',
             errorPlacement: function(error, element) {

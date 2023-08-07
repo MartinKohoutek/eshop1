@@ -112,6 +112,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::post('/update/product', 'UpdateProduct')->name('update.product');
         Route::post('/update/product/thumbnail', 'UpdateProductThumbnail')->name('update.product.thumbnail');
         Route::post('/update/product/multiimage', 'UpdateProductMultiImage')->name('update.product.multiimage');
+        Route::get('/product/multiimage/delete/{id}', 'ProductMultiImageDelete')->name('product.multiimage.delete');
     });
 
 });

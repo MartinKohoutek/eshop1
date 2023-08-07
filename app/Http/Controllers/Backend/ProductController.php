@@ -222,4 +222,23 @@ class ProductController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function DeleteProduct($id) {
+        $product = Product::findOrFail($id);
+        unlink($product->product_thumbnail);
+        Product::findOrFail($id)->delete();
+
+        $images = MultiImg::where('product_id', $id)->get();
+        foreach ($images as $image) {
+            unlink($image->photo_name);
+            MultiImg::where('product_id', $id)->delete();
+        }
+
+        $notification = [
+            'message' => 'Product Deleted Successfully!',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

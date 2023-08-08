@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -65,6 +66,10 @@ Route::middleware(['auth', 'role:vendor'])->group(function(){
     Route::post('/vendor/profile/store', [VendorController::class, 'VendorProfileStore'])->name('vendor.profile.store');
     Route::get('/vendor/change/password', [VendorController::class, 'VendorChangePassword'])->name('vendor.change.password');
     Route::post('/vendor/update/password', [VendorController::class, 'VendorUpdatePassword'])->name('vendor.update.password');
+
+    Route::controller(VendorProductController::class)->group(function(){
+        Route::get('/vendor/all/product', 'VendorAllProduct')->name('vendor.all.product');
+    });
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
@@ -118,6 +123,7 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/product/active/{id}', 'ProductActive')->name('product.active');
         Route::get('/delete/product/{id}', 'DeleteProduct')->name('delete.product');
     });
+
 
 });
 

@@ -32,7 +32,7 @@
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class='bx bx-radio-circle'></i>All Products</a>
+                <li> <a href="{{ route('vendor.all.product') }}"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
                 <li> <a href="index2.html"><i class='bx bx-radio-circle'></i>Add Products</a>
                 </li>

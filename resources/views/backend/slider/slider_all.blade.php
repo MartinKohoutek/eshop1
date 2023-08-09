@@ -15,7 +15,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.category') }}" class="btn btn-primary">Add Slider</a>
+                <a href="{{ route('add.slider') }}" class="btn btn-primary">Add Slider</a>
             </div>
         </div>
     </div>
@@ -30,6 +30,7 @@
                         <tr>
                             <th>Serial Number</th>
                             <th>Slider Title</th>
+                            <th>Slider Subtitle</th>
                             <th>Slider Description</th>
                             <th>Slider Image</th>
                             <th>Action</th>
@@ -40,10 +41,11 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>{{ $item->slider_title }}</td>
-                            <td>{{ $item->slider_description }}</td>
+                            <td>{{ $item->slider_subtitle }}</td>
+                            <td>{{ Str::limit($item->slider_description, 20) }}</td>
                             <td><img src="{{ asset($item->slider_image) }}" alt="" style="width: 70px; height: 40px;"></td>
                             <td>
-                                <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('edit.slider', $item->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
@@ -53,6 +55,7 @@
                         <tr>
                             <th>Serial Number</th>
                             <th>Slider Title</th>
+                            <th>Slider Subtitle</th>
                             <th>Slider Description</th>
                             <th>Slider Image</th>
                             <th>Action</th>

@@ -93,7 +93,7 @@
             <ul>
                 <li> <a href="{{ route('all.slider') }}"><i class='bx bx-radio-circle'></i>All Slider</a>
                 </li>
-                <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Slider</a>
+                <li> <a href="{{ route('add.slider') }}"><i class='bx bx-radio-circle'></i>Add Slider</a>
                 </li>
             </ul>
         </li>

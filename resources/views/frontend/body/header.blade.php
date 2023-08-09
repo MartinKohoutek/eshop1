@@ -65,7 +65,7 @@
                         <div class="mobile-toggle-menu d-lg-none px-lg-2" data-trigger="#navbar_main"><i class='bx bx-menu'></i>
                         </div>
                         <div class="logo d-none d-lg-flex">
-                            <a href="index.html">
+                            <a href="{{ url('/') }}">
                                 <img src="{{ asset('frontend/assets/images/logo-icon.png') }}" class="logo-icon" alt="" />
                             </a>
                         </div>
@@ -268,7 +268,7 @@
                     <h5 class="py-2 text-white">Navigation</h5>
                 </div>
                 <ul class="navbar-nav">
-                    <li class="nav-item active"> <a class="nav-link" href="index.html">Home </a>
+                    <li class="nav-item active"> <a class="nav-link" href="{{ url('/') }}">Home </a>
                     </li>
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Categories <i class='bx bx-chevron-down'></i></a>
                         <div class="dropdown-menu dropdown-large-menu">
@@ -279,14 +279,14 @@
                                     <h6 class="large-menu-title">{{ $cat->category_name }} <img src="{{ asset($cat->category_image) }}" alt="" style="width: 30px; height: 30px"></h6>
 
                                     <ul class="">
-                                        <li><a href="#">Casual T-Shirts</a>
+                                        <!-- <li><a href="#">Casual T-Shirts</a>
                                         </li>
-                                        <li><a href="#">Formal Shirts</a>
+                                        <li><a href="#">Formal Shirts</a> -->
                                     </ul>
                                 </div>
                                 @endforeach
                                 <!-- end col-3 -->
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <h6 class="large-menu-title">Electronics</h6>
                                     <ul class="">
                                         <li><a href="#">Mobiles</a>
@@ -306,13 +306,13 @@
                                         <li><a href="#">PC Monitors</a>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!-- end col-3 -->
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="pramotion-banner1">
                                         <img src="{{ asset('frontend/assets/images/gallery/menu-img.jpg') }}" class="img-fluid" alt="" />
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- end col-3 -->
                             </div>
                             <!-- end row -->

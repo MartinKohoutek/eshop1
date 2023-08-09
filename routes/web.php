@@ -141,6 +141,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/add/slider', 'AddSlider')->name('add.slider');
         Route::post('/store/slider', 'StoreSlider')->name('store.slider');
         Route::get('/edit/slider/{id}', 'EditSlider')->name('edit.slider');
+        Route::post('/update/slider/{id}', 'UpdateSlider')->name('update.slider');
+        Route::get('/delete/slider/{id}', 'DeleteSlider')->name('delete.slider');
     });
 });
 

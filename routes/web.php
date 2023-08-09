@@ -77,6 +77,9 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::post('/vendor/update/product/thumbnail', 'VendorUpdateProductThumbnail')->name('vendor.update.product.thumbnail');
         Route::post('/vendor/update/product/multiimage', 'VendorUpdateProductMultiimage')->name('vendor.update.product.multiimage');
         Route::get('/vendor/product/multiimage/delete/{id}', 'VendorProductMultiimageDelete')->name('vendor.product.multiimage.delete');
+        Route::get('/vendor/product/inactive/{id}', 'VendorProductInactive')->name('vendor.product.inactive');
+        Route::get('/vendor/product/active/{id}', 'VendorProductActive')->name('vendor.product.active');
+        Route::get('/vendor/delete/product/{id}', 'VendorDeleteProduct')->name('vendor.delete.product');
     });
 });
 

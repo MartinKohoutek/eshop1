@@ -201,4 +201,49 @@ class VendorProductController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function VendorProductInactive($id) {
+        $product = Product::findOrFail($id)->update([
+            'status' => 0,
+        ]);
+
+        $notification = [
+            'message' => 'Vendor Product Inactive!',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function VendorProductActive($id) {
+        $product = Product::findOrFail($id)->update([
+            'status' => 1,
+        ]);
+
+        $notification = [
+            'message' => 'Vendor Product Active!',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function VendorDeleteProduct($id) {
+        $product = Product::findOrFail($id);
+        unlink($product->product_thumbnail);
+        Product::findOrFail($id)->delete();
+
+        $images = MultiImg::where('product_id', $id)->get();
+        foreach ($images as $image) {
+            unlink($image->photo_name);
+            MultiImg::where('product_id', $id)->delete();
+        }
+
+        $notification = [
+            'message' => 'Vendor Product Deleted Successfully!',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

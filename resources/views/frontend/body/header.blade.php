@@ -282,19 +282,6 @@
                                         <li><a href="#">Casual T-Shirts</a>
                                         </li>
                                         <li><a href="#">Formal Shirts</a>
-                                        </li>
-                                        <li><a href="#">Jackets</a>
-                                        </li>
-                                        <li><a href="#">Jeans</a>
-                                        </li>
-                                        <li><a href="#">Dresses</a>
-                                        </li>
-                                        <li><a href="#">Sneakers</a>
-                                        </li>
-                                        <li><a href="#">Belts</a>
-                                        </li>
-                                        <li><a href="#">Sports Shoes</a>
-                                        </li>
                                     </ul>
                                 </div>
                                 @endforeach

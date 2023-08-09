@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
@@ -143,6 +144,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/slider/{id}', 'EditSlider')->name('edit.slider');
         Route::post('/update/slider/{id}', 'UpdateSlider')->name('update.slider');
         Route::get('/delete/slider/{id}', 'DeleteSlider')->name('delete.slider');
+    });
+
+    Route::controller(BannerController::class)->group(function(){
+        Route::get('/all/banner', 'AllBanner')->name('all.banner');
     });
 });
 

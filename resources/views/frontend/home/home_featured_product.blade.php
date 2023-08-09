@@ -34,17 +34,25 @@
                         <a href="product-details.html" style="position: relative;">
                             <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="..." >
                             @if ($product->discount_price)
-                            <span class="badge bg-success" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">Discount {{ $discount }}%</span>
+                            <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
+                            @else
+                            <span class="badge bg-success" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">New</span>
                             @endif
                         </a>
                         <div class="card-body">
                             <div class="product-info">
                                 <a href="javascript:;">
-                                    <p class="product-catergory font-13 mb-1">{{ $product->category_id }}</p>
+                                    <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                 </a>
                                 <a href="javascript:;">
                                     <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
                                 </a>
+                                <div>
+                                    @if ($product->vendor_id == NULL)
+                                    <span class="font-small text-muted">By <a href="">Owner</a></span>  
+                                    @endif
+                                    <span class="font-small text-muted">By <a href="">{{ $product['vendor']['name'] }}</a></span>
+                                </div>
                                 <div class="d-flex align-items-center">
                                     <div class="mb-1 product-price">
                                         @if ($product->discount_price)

@@ -106,7 +106,7 @@
             <ul>
                 <li> <a href="{{ route('all.banner') }}"><i class='bx bx-radio-circle'></i>All Banners</a>
                 </li>
-                <li> <a href="{{ route('add.slider') }}"><i class='bx bx-radio-circle'></i>Add Banner</a>
+                <li> <a href="{{ route('add.banner') }}"><i class='bx bx-radio-circle'></i>Add Banner</a>
                 </li>
             </ul>
         </li>

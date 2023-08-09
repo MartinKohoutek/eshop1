@@ -257,6 +257,9 @@
             <!--end row-->
         </div>
     </div>
+    @php
+    $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
+    @endphp
     <div class="primary-menu border-top">
         <div class="container">
             <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
@@ -270,8 +273,11 @@
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Categories <i class='bx bx-chevron-down'></i></a>
                         <div class="dropdown-menu dropdown-large-menu">
                             <div class="row">
+                                @foreach ($categories as $cat)
                                 <div class="col-md-4">
-                                    <h6 class="large-menu-title">Fashion</h6>
+
+                                    <h6 class="large-menu-title">{{ $cat->category_name }} <img src="{{ asset($cat->category_image) }}" alt="" style="width: 30px; height: 30px"></h6>
+                                    
                                     <ul class="">
                                         <li><a href="#">Casual T-Shirts</a>
                                         </li>
@@ -291,6 +297,7 @@
                                         </li>
                                     </ul>
                                 </div>
+                                @endforeach
                                 <!-- end col-3 -->
                                 <div class="col-md-4">
                                     <h6 class="large-menu-title">Electronics</h6>

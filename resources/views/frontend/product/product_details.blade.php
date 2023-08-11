@@ -5,7 +5,7 @@
     <section class="py-3 border-bottom d-none d-md-flex">
         <div class="container">
             <div class="page-breadcrumb d-flex align-items-center">
-                <h3 class="breadcrumb-title pe-3">Allen Solly Men's Polo T-Shirt</h3>
+                <h3 class="breadcrumb-title pe-3">{{ $product->product_name }}</h3>
                 <div class="ms-auto">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
@@ -61,7 +61,12 @@
                         </div>
                         <div class="col-12 col-lg-7">
                             <div class="product-info-section p-3">
-                                <h3 class="mt-3 mt-lg-0 mb-0">Allen Solly Men's Polo T-Shirt</h3>
+                                @if ($product->product_qty > 0)
+                                <span class="btn btn-primary">In Stock (skladem)</span>
+                                @else
+                                <span class="btn btn-danger">Stock Out (neni skladem)</span>
+                                @endif
+                                <h3 class="mt-3 mt-lg-0 mb-0">{{ $product->product_name }}</h3>
                                 <div class="product-rating d-flex align-items-center mt-2">
                                     <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-warning"></i>
@@ -73,13 +78,26 @@
                                         <p class="mb-0">(24 Ratings)</p>
                                     </div>
                                 </div>
+                                @php
+                                $amount = $product->selling_price - $product->discount_price;
+                                $discount = round(($amount/$product->selling_price) * 100);
+                                @endphp
+
+                                @if ($product->discount_price == NULL)
                                 <div class="d-flex align-items-center mt-3 gap-2">
-                                    <h5 class="mb-0 text-decoration-line-through text-light-3">$98.00</h5>
-                                    <h4 class="mb-0">$49.00</h4>
+                                    <h5 class="mb-0">${{ $product->selling_price }}</h5>
                                 </div>
+                                @else
+                                <div class="d-flex align-items-center mt-3 gap-2">
+                                    <h5 class="mb-0 text-decoration-line-through text-light-3">${{ $product->selling_price}} </h5>
+                                    <h4 class="mb-0">${{ $product->discount_price }}</h4>
+                                    <span class="badge bg-success">- {{ round($discount) }} %</span>
+                                </div>    
+                                @endif
+                                
                                 <div class="mt-3">
-                                    <h6>Discription :</h6>
-                                    <p class="mb-0">Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
+                                    <h6>Description :</h6>
+                                    <p class="mb-0">{{ $product->short_description }}</p>
                                 </div>
                                 <dl class="row mt-3">
                                     <dt class="col-sm-3">Product id</dt>

@@ -10,6 +10,8 @@ class IndexController extends Controller
 {
     public function ProductDetails($id, $slug) {
         $product = Product::findOrFail($id);
-        return view('frontend.product.product_details', compact('product'));
+        $colors = explode(',', $product->product_color);
+        $sizes = explode(',', $product->product_size);
+        return view('frontend.product.product_details', compact('product', 'colors', 'sizes'));
     }
 }

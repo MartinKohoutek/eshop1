@@ -116,16 +116,35 @@
                                             <option>5</option>
                                         </select>
                                     </div>
+
+                                    @if ($product->product_size == NULL)
+                                    @else    
                                     <div class="col">
                                         <label class="form-label">Size</label>
-                                        <select class="form-select form-select-sm">
-                                            <option>S</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XS</option>
-                                            <option>XL</option>
+                                        <select class="form-select form-select-sm" id="size">
+                                            <!-- <select class="form-contol unicase-form-control" id="size"> -->
+                                            <option selected="" disabled="">--Choose Size--</option>
+                                            @foreach ($sizes as $size)
+                                            <option value="$size">{{ ucwords($size) }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
+                                    @endif
+
+                                    @if ($product->product_color == NULL)
+                                    @else    
+                                    <div class="col">
+                                        <label class="form-label">Color</label>
+                                        <select class="form-select form-select-sm" id="color">
+                                            <!-- <select class="form-contol unicase-form-control" id="size"> -->
+                                            <option selected="" disabled="">--Choose Color--</option>
+                                            @foreach ($colors as $color)
+                                            <option value="$color">{{ ucwords($color) }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    @endif
+
                                     <div class="col">
                                         <label class="form-label">Colors</label>
                                         <div class="color-indigators d-flex align-items-center gap-2">

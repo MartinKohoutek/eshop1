@@ -181,7 +181,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -252,11 +252,19 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($product->vendor_id == NULL)
+                        <ul class="contact-infor mb-50">
+                            <li><img src="#" alt=""><strong>Address: </strong><span>Owner</span></li>
+                            <li><img src="" alt=""><strong>Contact Seller: </strong><span>Owner</span></li>
+                        </ul>
+                        <p>Owner Information</p>
+                        @else 
                         <ul class="contact-infor mb-50">
                             <li><img src="#" alt=""><strong>Address: </strong><span>{{ $product['vendor']['address'] }}</span></li>
                             <li><img src="" alt=""><strong>Contact Seller: </strong><span>{{ $product['vendor']['phone'] }}</span></li>
                         </ul>
                         <p>{{ $product['vendor']['vendor_short_info'] }}</p>
+                        @endif
                     </div>
                     <div class="tab-pane fade" id="tags" role="tabpanel">
                         <div class="tags-box w-50">
@@ -365,7 +373,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -384,6 +392,7 @@
             <hr />
             <div class="product-grid">
                 <div class="similar-products owl-carousel owl-theme">
+                    @foreach ($similarProducts as $item)
                     <div class="item">
                         <div class="card rounded-0 product-card">
                             <div class="card-header bg-transparent border-bottom-0">
@@ -394,18 +403,34 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/01.png') }}" class="card-img-top" alt="...">
+                            @php
+                            $amount = $item->selling_price - $item->discount_price;
+                            $discount = round(($amount/$item->selling_price) * 100);
+                            @endphp
+                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}" style="position: relative;">
+                                <img src="{{ asset($item->product_thumbnail) }}" class="card-img-top" alt="...">
+                                @if ($product->discount_price)
+                                <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
+                                @else
+                                <span class="badge bg-success" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">New</span>
+                                @endif
+                            </a>
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                        <p class="product-catergory font-13 mb-1">{{ $item['category']['category_name'] }}</p>
                                     </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
+                                    <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
+                                        <h6 class="product-name mb-2">{{ $item->product_name}}</h6>
                                     </a>
                                     <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
+                                        <div class="mb-1 product-price">
+                                            @if ($item->discount_price)
+                                            <span class="me-1 text-decoration-line-through">${{ $item->selling_price }}</span>
+                                            <span class="text-white fs-5">${{ $item->discount_price }}</span>
+                                            @else
+                                            <span class="text-white fs-5">${{ $item->selling_price }}</span>
+                                            @endif
                                         </div>
                                         <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
                                         </div>
@@ -419,216 +444,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/02.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/03.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>4.9</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/04.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/05.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>3.9</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/06.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="card rounded-0 product-card">
-                            <div class="card-header bg-transparent border-bottom-0">
-                                <div class="d-flex align-items-center justify-content-end">
-                                    <a href="javascript:;">
-                                        <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <img src="{{ asset('frontend/assets/images/similar-products/07.png') }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <div class="product-info">
-                                    <a href="javascript:;">
-                                        <p class="product-catergory font-13 mb-1">Catergory Name</p>
-                                    </a>
-                                    <a href="javascript:;">
-                                        <h6 class="product-name mb-2">Product Short Name</h6>
-                                    </a>
-                                    <div class="d-flex align-items-center">
-                                        <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                            <span class="text-white fs-5">$49.00</span>
-                                        </div>
-                                        <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div class="product-action mt-2">
-                                        <div class="d-grid gap-2">
-                                            <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> <a href="javascript:;" class="btn btn-link btn-ecomm"><i class='bx bx-zoom-in'></i>Quick View</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

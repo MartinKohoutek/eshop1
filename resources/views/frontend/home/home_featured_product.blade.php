@@ -57,7 +57,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"" style="position: relative;">
+                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" style="position: relative;">
                                     <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="...">
                                     @if ($product->discount_price)
                                     <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
@@ -71,13 +71,14 @@
                                             <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                         </a>
                                         <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"">
-                                            <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
+                                            <h6 class=" product-name mb-2">{{ $product->product_name }}</h6>
                                         </a>
                                         <div>
                                             @if ($product->vendor_id == NULL)
                                             <span class="font-small text-muted">By <a href="">Owner</a></span>
-                                            @endif
+                                            @else
                                             <span class="font-small text-muted">By <a href="">{{ $product['vendor']['name'] }}</a></span>
+                                            @endif
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="mb-1 product-price">
@@ -113,7 +114,7 @@
 
 
             @foreach ($categories as $category)
-            <div class="tab-pane fade" id="category{{ $category->id }}" role="tabpanel" aria-labelledby="tab-two"> 
+            <div class="tab-pane fade" id="category{{ $category->id }}" role="tabpanel" aria-labelledby="tab-two">
                 <div class="product-grid">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
                         @php
@@ -159,8 +160,9 @@
                                         <div>
                                             @if ($product->vendor_id == NULL)
                                             <span class="font-small text-muted">By <a href="">Owner</a></span>
-                                            @endif
+                                            @else
                                             <span class="font-small text-muted">By <a href="">{{ $product['vendor']['name'] }}</a></span>
+                                            @endif
                                         </div>
                                         <div class="d-flex align-items-center">
                                             <div class="mb-1 product-price">

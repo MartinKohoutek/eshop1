@@ -15,6 +15,8 @@ class IndexController extends Controller
         $sizes = explode(',', $product->product_size);
         $tags = explode(',', $product->product_tags);
         $images = MultiImg::where('product_id', $id)->get();
-        return view('frontend.product.product_details', compact('product', 'colors', 'sizes', 'tags', 'images'));
+
+        $similarProducts = Product::where('category_id', $product->category_id)->where('id', '!=', $id)->orderBy('id', 'DESC')->limit(5)->get();
+        return view('frontend.product.product_details', compact('product', 'colors', 'sizes', 'tags', 'images', 'similarProducts'));
     }
 }

@@ -6,7 +6,7 @@ $(function() {
 
         viewedSlider.owlCarousel(
             {
-                loop: true,
+                loop: false,
                 margin: 30,
                 autoplay: true,
                 autoplayTimeout: 6000,

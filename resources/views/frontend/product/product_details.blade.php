@@ -99,11 +99,27 @@
                                     <h6>Description :</h6>
                                     <p class="mb-0">{{ $product->short_description }}</p>
                                 </div>
+
+                                
                                 <dl class="row mt-3">
                                     <dt class="col-sm-3">Product id</dt>
-                                    <dd class="col-sm-9">#BHU5879</dd>
+                                    <dd class="col-sm-9">{{ $product->product_code }}</dd>
                                     <dt class="col-sm-3">Delivery</dt>
                                     <dd class="col-sm-9">Russia, USA, and Europe</dd>
+                                    <dt class="col-sm-3">Vendor</dt>
+                                    @if ($product->vendor_id == NULL)
+                                    <dd class="col-sm-9"><a href="#">Owner</a></dd>
+                                    @else
+                                    <dd class="col-sm-9"><a href="#">{{ $product['vendor']['name']}}</a></dd>
+                                    @endif
+                                    <dt class="col-sm-3">Brand</dt>
+                                    <dd class="col-sm-9">{{ $product['brand']['brand_name']}}</dd>
+                                    <dt class="col-sm-3">Category</dt>
+                                    <dd class="col-sm-9">{{ $product['category']['category_name'] }}</dd>
+                                    <dt class="col-sm-3">SubCategory</dt>
+                                    <dd class="col-sm-9">{{ $product['subcategory']['subcategory_name'] }}</dd>
+                                    <dt class="col-sm-3">Stock</dt>
+                                    <dd class="col-sm-9">{{ $product->product_qty }} Products in Stock</dd>
                                 </dl>
                                 <div class="row row-cols-auto align-items-center mt-3">
                                     <div class="col">
@@ -233,20 +249,10 @@
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
                     </div>
                     <div class="tab-pane fade" id="tags" role="tabpanel">
-                        <div class="tags-box w-50"> <a href="javascript:;" class="tag-link">Cloths</a>
-                            <a href="javascript:;" class="tag-link">Electronis</a>
-                            <a href="javascript:;" class="tag-link">Furniture</a>
-                            <a href="javascript:;" class="tag-link">Sports</a>
-                            <a href="javascript:;" class="tag-link">Men Wear</a>
-                            <a href="javascript:;" class="tag-link">Women Wear</a>
-                            <a href="javascript:;" class="tag-link">Laptops</a>
-                            <a href="javascript:;" class="tag-link">Formal Shirts</a>
-                            <a href="javascript:;" class="tag-link">Topwear</a>
-                            <a href="javascript:;" class="tag-link">Headphones</a>
-                            <a href="javascript:;" class="tag-link">Bottom Wear</a>
-                            <a href="javascript:;" class="tag-link">Bags</a>
-                            <a href="javascript:;" class="tag-link">Sofa</a>
-                            <a href="javascript:;" class="tag-link">Shoes</a>
+                        <div class="tags-box w-50"> 
+                            @foreach ($tags as $tag)
+                            <a href="#" class="tag-link">{{ $tag }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tab-pane fade" id="reviews" role="tabpanel">

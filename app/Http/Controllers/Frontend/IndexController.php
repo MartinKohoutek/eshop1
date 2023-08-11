@@ -12,6 +12,7 @@ class IndexController extends Controller
         $product = Product::findOrFail($id);
         $colors = explode(',', $product->product_color);
         $sizes = explode(',', $product->product_size);
-        return view('frontend.product.product_details', compact('product', 'colors', 'sizes'));
+        $tags = explode(',', $product->product_tags);
+        return view('frontend.product.product_details', compact('product', 'colors', 'sizes', 'tags'));
     }
 }

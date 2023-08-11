@@ -193,7 +193,7 @@
             <div class="product-more-info">
                 <ul class="nav nav-tabs mb-0" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#discription" role="tab" aria-selected="true">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#description" role="tab" aria-selected="true">
                             <div class="d-flex align-items-center">
                                 <div class="tab-title text-uppercase fw-500">Description</div>
                             </div>
@@ -203,6 +203,13 @@
                         <a class="nav-link" data-bs-toggle="tab" href="#more-info" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
                                 <div class="tab-title text-uppercase fw-500">More Info</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#vendor" role="tab" aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-title text-uppercase fw-500">Vendor</div>
                             </div>
                         </a>
                     </li>
@@ -222,19 +229,34 @@
                     </li>
                 </ul>
                 <div class="tab-content pt-3">
-                    <div class="tab-pane fade show active" id="discription" role="tabpanel">
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
-                        <ul>
-                            <li>Not just for commute</li>
-                            <li>Branded tongue and cuff</li>
-                            <li>Super fast and amazing</li>
-                            <li>Lorem sed do eiusmod tempor</li>
-                        </ul>
-                        <p class="mb-1">Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone.</p>
-                        <p class="mb-1">Seitan aliquip quis cardigan american apparel, butcher voluptate nisi.</p>
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        {!! $product->long_description !!}
                     </div>
                     <div class="tab-pane fade" id="more-info" role="tabpanel">
                         <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+                    </div>
+                    <div class="tab-pane fade" id="vendor" role="tabpanel">
+                        <div class="vendor-logo d-flex mb-30">
+                            <img src="{{ (!empty($product['vendor']['photo'])) ? url('upload/vendor_images/'.$product['vendor']['photo']) : url('upload/no_image') }}"  alt="">
+                            <div class="vendor-name ml-15">
+                                <h6>
+                                    @if ($product->vendor_id == NULL)
+                                    <a href="#">Owner</a>
+                                    @else
+                                    <a href="#">{{ $product['vendor']['name'] }}</a>
+                                    @endif
+                                </h6>
+                                <div class="product-rate-cover text-end">
+                                    <div class="product-rating" style="width: 90%;"></div> 
+                                    <span class="text-small ml-5 text-muted"> (32 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="contact-infor mb-50">
+                            <li><img src="#" alt=""><strong>Address: </strong><span>{{ $product['vendor']['address'] }}</span></li>
+                            <li><img src="" alt=""><strong>Contact Seller: </strong><span>{{ $product['vendor']['phone'] }}</span></li>
+                        </ul>
+                        <p>{{ $product['vendor']['vendor_short_info'] }}</p>
                     </div>
                     <div class="tab-pane fade" id="tags" role="tabpanel">
                         <div class="tags-box w-50"> 
@@ -243,6 +265,7 @@
                             @endforeach
                         </div>
                     </div>
+                   
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col col-lg-8">

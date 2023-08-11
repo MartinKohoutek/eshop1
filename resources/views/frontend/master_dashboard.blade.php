@@ -28,7 +28,7 @@
 	<div class="wrapper">
 		@include('frontend.body.discount')
 		@include('frontend.body.header')
-		@include('frontend.home.home_slider')
+	
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			@yield('home')
@@ -53,6 +53,7 @@
 	<!--app JS-->
 	<script src="{{ asset('frontend/assets/js/app.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/index.js') }}"></script>
+	<script src="{{ asset('frontend/assets/js/product-details.js') }}"></script>
 </body>
 
 </html>

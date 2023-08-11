@@ -80,15 +80,15 @@
                                     <h5 class="mb-0 text-decoration-line-through text-light-3">${{ $product->selling_price}} </h5>
                                     <h4 class="mb-0">${{ $product->discount_price }}</h4>
                                     <span class="badge bg-success">- {{ round($discount) }} %</span>
-                                </div>    
+                                </div>
                                 @endif
-                                
+
                                 <div class="mt-3">
                                     <h6>Description :</h6>
                                     <p class="mb-0">{{ $product->short_description }}</p>
                                 </div>
 
-                                
+
                                 <dl class="row mt-3">
                                     <dt class="col-sm-3">Product id</dt>
                                     <dd class="col-sm-9">{{ $product->product_code }}</dd>
@@ -122,7 +122,7 @@
                                     </div>
 
                                     @if ($product->product_size == NULL)
-                                    @else    
+                                    @else
                                     <div class="col">
                                         <label class="form-label">Size</label>
                                         <select class="form-select form-select-sm" id="size">
@@ -136,7 +136,7 @@
                                     @endif
 
                                     @if ($product->product_color == NULL)
-                                    @else    
+                                    @else
                                     <div class="col">
                                         <label class="form-label">Color</label>
                                         <select class="form-select form-select-sm" id="color">
@@ -181,7 +181,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--end row-->
+                    
                 </div>
             </div>
         </div>
@@ -237,7 +237,7 @@
                     </div>
                     <div class="tab-pane fade" id="vendor" role="tabpanel">
                         <div class="vendor-logo d-flex mb-30">
-                            <img src="{{ (!empty($product['vendor']['photo'])) ? url('upload/vendor_images/'.$product['vendor']['photo']) : url('upload/no_image') }}"  alt="">
+                            <img src="{{ (!empty($product['vendor']['photo'])) ? url('upload/vendor_images/'.$product['vendor']['photo']) : url('upload/no_image') }}" alt="">
                             <div class="vendor-name ml-15">
                                 <h6>
                                     @if ($product->vendor_id == NULL)
@@ -247,7 +247,7 @@
                                     @endif
                                 </h6>
                                 <div class="product-rate-cover text-end">
-                                    <div class="product-rating" style="width: 90%;"></div> 
+                                    <div class="product-rating" style="width: 90%;"></div>
                                     <span class="text-small ml-5 text-muted"> (32 reviews)</span>
                                 </div>
                             </div>
@@ -259,13 +259,13 @@
                         <p>{{ $product['vendor']['vendor_short_info'] }}</p>
                     </div>
                     <div class="tab-pane fade" id="tags" role="tabpanel">
-                        <div class="tags-box w-50"> 
+                        <div class="tags-box w-50">
                             @foreach ($tags as $tag)
                             <a href="#" class="tag-link">{{ $tag }}</a>
                             @endforeach
                         </div>
                     </div>
-                   
+
                     <div class="tab-pane fade" id="reviews" role="tabpanel">
                         <div class="row">
                             <div class="col col-lg-8">
@@ -274,7 +274,7 @@
                                     <div class="review-list">
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
-                                                <img src="assets/images/avatars/avatar-1.png" width="65" height="65" class="rounded-circle" alt="" />
+                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-1.png') }}" width="65" height="65" class="rounded-circle" alt="" />
                                             </div>
                                             <div class="review-content ms-3">
                                                 <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
@@ -293,7 +293,7 @@
                                         <hr />
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
-                                                <img src="assets/images/avatars/avatar-2.png" width="65" height="65" class="rounded-circle" alt="" />
+                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-2.png') }}" width="65" height="65" class="rounded-circle" alt="" />
                                             </div>
                                             <div class="review-content ms-3">
                                                 <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
@@ -312,7 +312,7 @@
                                         <hr />
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
-                                                <img src="assets/images/avatars/avatar-3.png" width="65" height="65" class="rounded-circle" alt="" />
+                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-3.png') }}" width="65" height="65" class="rounded-circle" alt="" />
                                             </div>
                                             <div class="review-content ms-3">
                                                 <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
@@ -365,7 +365,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--end row-->
+                        
                     </div>
                 </div>
             </div>
@@ -394,7 +394,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/01.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/01.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -429,7 +429,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/02.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/02.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -464,7 +464,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/03.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/03.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -499,7 +499,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/04.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/04.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -534,7 +534,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/05.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/05.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -569,7 +569,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/06.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/06.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">
@@ -604,7 +604,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="assets/images/similar-products/07.png" class="card-img-top" alt="...">
+                            <img src="{{ asset('frontend/assets/images/similar-products/07.png') }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="product-info">
                                     <a href="javascript:;">

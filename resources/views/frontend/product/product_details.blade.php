@@ -9,9 +9,11 @@
                 <div class="ms-auto">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="bx bx-home-alt"></i> Home</a>
                             </li>
-                            <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
+                            <li class="breadcrumb-item"><a href="javascript:;">{{ $product['category']['category_name'] }}</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="javascript:;">{{ $product['subcategory']['subcategory_name'] }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Product Details</li>
                         </ol>
@@ -30,32 +32,18 @@
                         <div class="col-12 col-lg-5">
                             <div class="image-zoom-section">
                                 <div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
+                                    @foreach ($images as $image)
                                     <div class="item">
-                                        <img src="assets/images/product-gallery/01.png" class="img-fluid" alt="">
+                                        <img src="{{ asset($image->photo_name) }}" class="img-fluid" alt="">
                                     </div>
-                                    <div class="item">
-                                        <img src="assets/images/product-gallery/02.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="item">
-                                        <img src="assets/images/product-gallery/03.png" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="item">
-                                        <img src="assets/images/product-gallery/04.png" class="img-fluid" alt="">
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
+                                    @foreach ($images as $image)
                                     <button class="owl-thumb-item">
-                                        <img src="assets/images/product-gallery/01.png" class="" alt="">
+                                        <img src="{{ asset($image->photo_name) }}" class="" alt="">
                                     </button>
-                                    <button class="owl-thumb-item">
-                                        <img src="assets/images/product-gallery/02.png" class="" alt="">
-                                    </button>
-                                    <button class="owl-thumb-item">
-                                        <img src="assets/images/product-gallery/03.png" class="" alt="">
-                                    </button>
-                                    <button class="owl-thumb-item">
-                                        <img src="assets/images/product-gallery/04.png" class="" alt="">
-                                    </button>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

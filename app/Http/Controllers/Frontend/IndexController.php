@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\MultiImg;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class IndexController extends Controller
         $colors = explode(',', $product->product_color);
         $sizes = explode(',', $product->product_size);
         $tags = explode(',', $product->product_tags);
-        return view('frontend.product.product_details', compact('product', 'colors', 'sizes', 'tags'));
+        $images = MultiImg::where('product_id', $id)->get();
+        return view('frontend.product.product_details', compact('product', 'colors', 'sizes', 'tags', 'images'));
     }
 }

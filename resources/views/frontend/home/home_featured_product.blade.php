@@ -57,7 +57,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a href="product-details.html" style="position: relative;">
+                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"" style="position: relative;">
                                     <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="...">
                                     @if ($product->discount_price)
                                     <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
@@ -70,7 +70,7 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                         </a>
-                                        <a href="javascript:;">
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"">
                                             <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
                                         </a>
                                         <div>
@@ -140,7 +140,7 @@
                                         </a>
                                     </div>
                                 </div>
-                                <a href="product-details.html" style="position: relative;">
+                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" style="position: relative;">
                                     <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="...">
                                     @if ($product->discount_price)
                                     <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
@@ -153,7 +153,7 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                         </a>
-                                        <a href="javascript:;">
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                                             <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
                                         </a>
                                         <div>

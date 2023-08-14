@@ -7,11 +7,9 @@
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="bx bx-home-alt"></i> Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Shop Left Sidebar</li>
+                        <li class="breadcrumb-item active" aria-current="page">Vendor Details</li>
                     </ol>
                 </nav>
             </div>
@@ -36,15 +34,40 @@
                             <hr class="d-flex d-xl-none" />
                             <div class="product-categories">
                                 <h6 class="text-uppercase mb-3">Vendor Details</h6>
-                                <img src="{{ url('upload/no_image.jpg') }}" class="card-img-top" alt="...">
+                                <img src="{{ (!empty($vendor->photo)) ? url('upload/vendor_images/'.$vendor->photo) : url('upload/no_image.jpg') }}" class="card-img-top" alt="...">
                                 <div class="position-absolute top-0 end-0 m-3 product-discount"><span class="">-10%</span>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="card-title">name</h5>
-                                    <h6 class="text-muted">Since </h6>
-                                    
-                                    <span class="badge bg-success">50 Products</span>
-                                    <p class="card-text">Lorem ipsum</p> <a href="{{ route('vendor.details', $vendor->id) }}" class="btn btn-light btn-ecomm">Visit Store</a>
+                                    <h5 class="card-title">{{ $vendor->name }}</h5>
+                                    <h6 class="text-muted">Since {{ $vendor->vendor_join }}</h6>
+
+                                    <p class="card-text">{{ $vendor->vendor_short_info }}</p>
+                                    <hr>
+                                    <div class="follow-social mb-20">
+                                        <h6 class="mb-15">Follow Us</h6>
+                                        <ul class="social-network">
+                                            <li class="hover-up">
+                                                <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+                                            </li>
+                                            <li class="hover-up">
+                                                <a href="#"><i class='bx bxl-twitter'></i></a>
+                                            </li>
+                                            <li class="hover-up">
+                                                <a href="#"><i class='bx bxl-instagram'></i></a>
+                                            </li>
+                                            <li class="hover-up">
+                                                <a href="#"><i class='bx bxl-pinterest'></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <hr>
+                                    <h6>Vendor Contact</h6>
+                                    <div class="vendor-info">
+                                        <ul class="font-sm mb-20">
+                                            <li><i class='bx bx-location-plus'></i><strong>Address: </strong><span>{{ $vendor->address }}</span></li>
+                                            <li><i class='bx bx-phone'></i><strong>Phone: </strong><span>{{ $vendor->phone }}</span></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,9 +108,17 @@
                         <div> <a href="shop-list-left-sidebar.html" class="btn btn-light rounded-0"><i class='bx bx-list-ul me-0'></i></a>
                         </div>
                     </div>
+                    <div class="totall-product">
+                        <p>We found <strong class="text-brand">{{ count($products) }}</strong> items for you!</p>
+                    </div>
                     <div class="product-grid">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">
+                            @foreach ($products as $product)
                             <div class="col">
+                                @php
+                                $amount = $product->selling_price - $product->discount_price;
+                                $discount = round(($amount/$product->selling_price) * 100);
+                                @endphp
                                 <div class="card rounded-0 product-card">
                                     <div class="card-header bg-transparent border-bottom-0">
                                         <div class="d-flex align-items-center justify-content-end gap-3">
@@ -101,18 +132,30 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <img src="{{ asset('frontend/assets/images/products/01.png') }}" class="card-img-top" alt="...">
+                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
+                                        <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" alt="...">
+                                        @if ($product->discount_price)
+                                        <span class="badge bg-primary" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">- {{ $discount }} %</span>
+                                        @else
+                                        <span class="badge bg-success" style="font-size: 15px; position:absolute; left: 5px; top: 5px;">New</span>
+                                        @endif
+                                    </a>
                                     <div class="card-body">
                                         <div class="product-info">
                                             <a href="javascript:;">
-                                                <p class="product-catergory font-13 mb-1">Catergory Name</p>
+                                                <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                             </a>
-                                            <a href="javascript:;">
-                                                <h6 class="product-name mb-2">Product Short Name</h6>
+                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
+                                                <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
                                             </a>
                                             <div class="d-flex align-items-center">
-                                                <div class="mb-1 product-price"> <span class="me-1 text-decoration-line-through">$99.00</span>
-                                                    <span class="text-white fs-5">$49.00</span>
+                                                <div class="mb-1 product-price">
+                                                    @if ($product->discount_price)
+                                                    <span class="me-1 text-decoration-line-through">${{ $product->selling_price }}</span>
+                                                    <span class="text-white fs-5">${{ $product->discount_price }}</span>
+                                                    @else
+                                                    <span class="text-white fs-5">${{ $product->selling_price }}</span>
+                                                    @endif
                                                 </div>
                                                 <div class="cursor-pointer ms-auto"> <i class="bx bxs-star text-white"></i>
                                                     <i class="bx bxs-star text-white"></i>
@@ -130,7 +173,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            @endforeach
                         </div>
                         <!--end row-->
                     </div>
@@ -165,4 +208,25 @@
 </section>
 <!--end shop area-->
 </div>
+<style>
+    .social-network li {
+        display: inline-block;
+        margin: 0 8px 0 0;
+        font-size: 24px;
+    }
+
+    .vendor-info ul {
+        list-style-type: none;
+    }
+
+    .vendor-info i {
+        font-size: 24px;
+        margin: 0 12px 0 0;
+        color: white;
+        position: relative;
+        /* Adjust these values accordingly */
+        top: 5px;
+        left: -10px;
+    }
+</style>
 @endsection

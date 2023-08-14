@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -32,5 +33,11 @@ class IndexController extends Controller
         $skip_product_2 = Product::where('status', 1)->where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->limit(5)->get();
 
         return view('frontend.index', compact('skip_category_0', 'skip_product_0', 'skip_category_1', 'skip_product_1', 'skip_category_2', 'skip_product_2'));
+    }
+
+    public function VendorDetails($id) {
+        $vendor = User::findOrFail($id);
+        $products = Product::where('vendor_id', $id)->get();
+        return view('frontend.vendor.vendor_details', compact('vendor', 'products'));
     }
 }

@@ -18,7 +18,7 @@ $vendors = App\Models\User::where('status', 'active')->where('role', 'vendor')->
                                 $products = App\Models\Product::where('vendor_id', $vendor->id)->get();
                             @endphp
                             <span class="badge bg-success">{{ count($products) }} Products</span>
-                            <p class="card-text">{{ Str::limit($vendor->vendor_short_info, 30) }}</p> <a href="javascript:;" class="btn btn-light btn-ecomm">SHOP BY GLASSES</a>
+                            <p class="card-text">{{ Str::limit($vendor->vendor_short_info, 30) }}</p> <a href="{{ route('vendor.details', $vendor->id) }}" class="btn btn-light btn-ecomm">Visit Store</a>
                         </div>
                     </div>
                 </div>

@@ -208,6 +208,7 @@
         </div>
     </section>
 
+    @include('frontend.home.home_vendor_list')
     @include('frontend.home.home_categories')
     @include('frontend.home.home_support_info')
     @include('frontend.home.home_news')

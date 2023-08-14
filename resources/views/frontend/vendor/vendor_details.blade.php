@@ -3,7 +3,7 @@
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
-            <h3 class="breadcrumb-title pe-3">Shop Grid Left Sidebar</h3>
+            <h3 class="breadcrumb-title pe-3">{{ $vendor->name }}</h3>
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">

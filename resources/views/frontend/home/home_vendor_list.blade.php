@@ -3,6 +3,11 @@ $vendors = App\Models\User::where('status', 'active')->where('role', 'vendor')->
 @endphp
 <section class="py-4">
     <div class="container">
+        <div class="d-flex align-items-center">
+            <h5 class="text-uppercase mb-0">All Our Vendor List</h5>
+            <a href="{{ route('vendor.all') }}" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+        </div>
+        <hr />
         <div class="add-banner">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
                 @foreach ($vendors as $vendor)
@@ -15,7 +20,7 @@ $vendors = App\Models\User::where('status', 'active')->where('role', 'vendor')->
                             <h5 class="card-title">{{ $vendor->name }}</h5>
                             <h6 class="text-muted">Since {{ $vendor->vendor_join }}</h6>
                             @php
-                                $products = App\Models\Product::where('vendor_id', $vendor->id)->get();
+                            $products = App\Models\Product::where('vendor_id', $vendor->id)->get();
                             @endphp
                             <span class="badge bg-success">{{ count($products) }} Products</span>
                             <p class="card-text">{{ Str::limit($vendor->vendor_short_info, 30) }}</p> <a href="{{ route('vendor.details', $vendor->id) }}" class="btn btn-light btn-ecomm">Visit Store</a>

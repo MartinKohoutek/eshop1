@@ -5,7 +5,6 @@
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
             <h3 class="breadcrumb-title pe-3">{{ $bread_cat->category_name }}</h3>
-            <h4 style="margin-left: 15px;">We found {{ count($products) }} products</h4>
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -41,9 +40,14 @@
                                 <ul class="list-unstyled mb-0 categories-list">
                                     @foreach ($categories as $category)
                                     @php
-                                        $catProducts = App\Models\Product::where('category_id', $category->id)->where('status', 1)->get();
+                                    $catProducts = App\Models\Product::where('category_id', $category->id)->where('status', 1)->get();
                                     @endphp
-                                    <li><a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">{{ $category->category_name}} <span class="float-end badge rounded-pill bg-light">{{ count($catProducts) }}</span></a>
+                                    <li>
+                                        <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">
+                                            <img src="{{ asset($category->category_image) }}" alt="" style="width: 30px; height: 30px; margin-right: 10px"> 
+                                            {{ $category->category_name}}
+                                            <span class="float-end badge rounded-pill bg-light">{{ count($catProducts) }}</span>
+                                        </a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -85,6 +89,9 @@
                         </div>
                         <div> <a href="shop-list-left-sidebar.html" class="btn btn-light rounded-0"><i class='bx bx-list-ul me-0'></i></a>
                         </div>
+                    </div>
+                    <div class="totall-product">
+                        <p>We found <strong class="text-brand">{{ count($products) }}</strong> items for you!</p>
                     </div>
                     <div class="product-grid">
                         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3">

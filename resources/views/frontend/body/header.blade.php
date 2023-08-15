@@ -325,13 +325,14 @@
                     @endphp
 
                     @foreach ($categories as $cat)
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}" data-bs-toggle="dropdown">{{ $cat->category_name}} <i class='bx bx-chevron-down'></i></a>
-                        @php
-                        $subcategories = App\Models\SubCategory::where('category_id', $cat->id)->orderBy('subcategory_name', 'ASC')->limit(6)->get();
-                        @endphp
-                        <ul class="dropdown-menu">
+                    <li class="nav-item dropdown"> 
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}" data-bs-toggle="dropdown" data-bs-target="#cat{{$cat->id}}" role="button" aria-expanded="false">{{ $cat->category_name}} <i class='bx bx-chevron-down'></i></a>
+                        <ul class="dropdown-menu" aria-labelledby="cat{{$cat->id}}">
+                            @php
+                            $subcategories = App\Models\SubCategory::where('category_id', $cat->id)->orderBy('subcategory_name', 'ASC')->limit(6)->get();
+                            @endphp
                             @foreach ($subcategories as $subcat)
-                            <li><a class="dropdown-item" href="account-dashboard.html">{{ $subcat->subcategory_name}}</a>
+                            <li><a class="dropdown-item" href="{{ url('/') }}">{{ $subcat->subcategory_name}}</a>
                             </li>
                             @endforeach
                         </ul>

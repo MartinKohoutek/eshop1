@@ -15,10 +15,14 @@
                  <div class="item">
                      <div class="card rounded-0 product-card border">
                          <div class="card-body">
-                             <img src="{{ asset($cat->category_image) }}" class="img-fluid" alt="...">
+                            <a href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}">
+                                <img src="{{ asset($cat->category_image) }}" class="img-fluid" alt="...">
+                            </a>
                          </div>
                          <div class="card-footer text-center">
-                             <h6 class="mb-1 text-uppercase">{{ $cat->category_name }}</h6>
+                            <a href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}">
+                                <h6 class="mb-1 text-uppercase">{{ $cat->category_name }}</h6>
+                            </a>
                              @php
                                  $products = App\Models\Product::where('category_id', $cat->id)->get();
                              @endphp

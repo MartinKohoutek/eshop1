@@ -25,32 +25,82 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-3">
-                <div class="btn-mobile-filter d-xl-none"><i class='bx bx-slider-alt'></i>
-                </div>
-                <div class="filter-sidebar d-none d-xl-flex">
-                    <div class="card rounded-0 w-100">
-                        <div class="card-body">
-                            <div class="align-items-center d-flex d-xl-none">
-                                <h6 class="text-uppercase mb-0">Filter</h6>
-                                <div class="btn-mobile-filter-close btn-close ms-auto cursor-pointer"></div>
+                <div style="display: flex; flex-direction: column">
+                    <div class="btn-mobile-filter d-xl-none"><i class='bx bx-slider-alt'></i>
+                    </div>
+                    <div class="filter-sidebar d-none d-xl-flex">
+                        <div class="card rounded-0 w-100">
+                            <div class="card-body">
+                                <div class="align-items-center d-flex d-xl-none">
+                                    <h6 class="text-uppercase mb-0">Filter</h6>
+                                    <div class="btn-mobile-filter-close btn-close ms-auto cursor-pointer"></div>
+                                </div>
+                                <hr class="d-flex d-xl-none" />
+                                <div class="product-categories">
+                                    <h6 class="text-uppercase mb-3">Categories</h6>
+                                    <ul class="list-unstyled mb-0 categories-list">
+                                        @foreach ($categories as $category)
+                                        @php
+                                        $catProducts = App\Models\Product::where('category_id', $category->id)->where('status', 1)->get();
+                                        @endphp
+                                        <li>
+                                            <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">
+                                                <img src="{{ asset($category->category_image) }}" alt="" style="width: 30px; height: 30px; margin-right: 10px">
+                                                {{ $category->category_name}}
+                                                <span class="float-end badge rounded-pill bg-light">{{ count($catProducts) }}</span>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             </div>
-                            <hr class="d-flex d-xl-none" />
-                            <div class="product-categories">
-                                <h6 class="text-uppercase mb-3">Categories</h6>
-                                <ul class="list-unstyled mb-0 categories-list">
-                                    @foreach ($categories as $category)
-                                    @php
-                                    $catProducts = App\Models\Product::where('category_id', $category->id)->where('status', 1)->get();
-                                    @endphp
-                                    <li>
-                                        <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">
-                                            <img src="{{ asset($category->category_image) }}" alt="" style="width: 30px; height: 30px; margin-right: 10px"> 
-                                            {{ $category->category_name}}
-                                            <span class="float-end badge rounded-pill bg-light">{{ count($catProducts) }}</span>
-                                        </a>
-                                    </li>
+                        </div>
+                    </div>
+
+                </div>
+                <div>
+                    <div class="filter-sidebar d-none d-xl-flex">
+                        <div class="card rounded-0 w-100">
+                            <div class="card-body">
+                                <div class="new-arrivals-list mb-3">
+                                    <h6 class="mb-3 text-uppercase">Recently Added</h6>
+                                    @foreach ($new_products as $key => $item)
+                                    <div class="d-flex align-items-center">
+                                        <div class="bottom-product-img">
+                                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
+                                                <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="ms-0">
+                                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
+                                                <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
+                                            </a>
+                                            <div class="rating font-12"> <i class="bx bxs-star text-white"></i>
+                                                <i class="bx bxs-star text-white"></i>
+                                                <i class="bx bxs-star text-white"></i>
+                                                <i class="bx bxs-star text-white"></i>
+                                                <i class="bx bxs-star text-white"></i>
+                                            </div>
+                                            @php
+                                            $amount = $item->selling_price - $item->discount_price;
+                                            $discount = round(($amount/$item->selling_price) * 100);
+                                            @endphp
+                                            <p class="mb-0 text-white">
+                                                <!-- <strong>$59.00</strong> -->
+                                                @if ($item->discount_price)
+                                                <span class="me-1 text-decoration-line-through">${{ $item->selling_price }}</span>
+                                                <span class="text-white">${{ $item->discount_price }}</span>
+                                                @else
+                                                <span class="text-white">${{ $item->selling_price }}</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+                                    @if ($key != count($new_products) - 1)
+                                    <hr />
+                                    @endif
                                     @endforeach
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     </div>

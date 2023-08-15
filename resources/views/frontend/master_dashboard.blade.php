@@ -5,6 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="{{ csrf-token() }}">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('frontend/assets/images/favicon-32x32.png') }}" type="image/png" />
 	<!--plugins-->
@@ -54,6 +55,17 @@
 	<script src="{{ asset('frontend/assets/js/app.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/index.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/product-details.js') }}"></script>
+
+	<script>
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+			}
+		});
+
+		// Modal View
+		
+	</script>
 </body>
 
 </html>

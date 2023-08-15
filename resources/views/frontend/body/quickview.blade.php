@@ -10,7 +10,7 @@
                         <div class="image-zoom-section">
                             <div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
                                 <div class="item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/01.png') }}" class="img-fluid" alt="">
+                                    <img src="" id="product-image" class="img-fluid" alt="">
                                 </div>
 
                             </div>
@@ -24,7 +24,9 @@
                     </div>
                     <div class="col-12 col-lg-6">
                         <div class="product-info-section p-3">
-                            <h3 class="mt-3 mt-lg-0 mb-0">Allen Solly Men's Polo T-Shirt</h3>
+                            <a href="">
+                                <h3 class="mt-3 mt-lg-0 mb-0" id="pname"></h3>
+                            </a>
                             <div class="product-rating d-flex align-items-center mt-2">
                                 <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
                                     <i class="bx bxs-star text-warning"></i>
@@ -37,55 +39,43 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mt-3 gap-2">
-                                <h5 class="mb-0 text-decoration-line-through text-light-3">$98.00</h5>
-                                <h4 class="mb-0">$49.00</h4>
+                                <h5 class="mb-0 text-decoration-line-through text-light-3" id="oldprice">$98.00</h5>
+                                <h4 class="mb-0" id="newprice">$49.00</h4>
                             </div>
                             <div class="mt-3">
                                 <h6>Discription :</h6>
                                 <p class="mb-0">Virgil Abloh’s Off-White is a streetwear-inspired collection that continues to break away from the conventions of mainstream fashion. Made in Italy, these black and brown Odsy-1000 low-top sneakers.</p>
                             </div>
                             <dl class="row mt-3">
-                                <dt class="col-sm-3">Product id</dt>
-                                <dd class="col-sm-9">#BHU5879</dd>
+                                <dt class="col-sm-3">Product code</dt>
+                                <dd class="col-sm-9" id="pcode">#BHU5879</dd>
                                 <dt class="col-sm-3">Stock</dt>
                                 <dd class="col-sm-9">
                                     <span class="badge badge-pill bg-success" id="available">Available</span>
                                     <span class="badge badge-pill bg-danger" id="stockout">Stockout</span>
                                 </dd>
                                 <dt class="col-sm-3">Brand</dt>
-                                <dd class="col-sm-9">#BHU5879</dd>
+                                <dd class="col-sm-9" id="pbrand">#BHU5879</dd>
                                 <dt class="col-sm-3">Category</dt>
-                                <dd class="col-sm-9">Russia, USA, and Europe</dd>
+                                <dd class="col-sm-9" id="pcategory">Russia, USA, and Europe</dd>
                             </dl>
-                            <div class="row row-cols-auto align-items-center mt-3">
+                            <div class="row row-cols-auto align-items-center mt-3" id="quantityAraea">
                                 <div class="col">
                                     <label class="form-label">Quantity</label>
-                                    <select class="form-select form-select-sm">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <select class="form-select form-select-sm" min="1" id="qty" name="qty">
+                                    
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="sizeArea">
                                     <label class="form-label">Size</label>
-                                    <select class="form-select form-select-sm">
-                                        <option>S</option>
-                                        <option>M</option>
-                                        <option>L</option>
-                                        <option>XS</option>
-                                        <option>XL</option>
+                                    <select class="form-select form-select-sm" id="size" name="size">
+                                       
                                     </select>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="colorArea">
                                     <label class="form-label">Color</label>
-                                    <select class="form-select form-select-sm">
-                                        <option>Red</option>
-                                        <option>Blue</option>
-                                        <option>L</option>
-                                        <option>XS</option>
-                                        <option>XL</option>
+                                    <select class="form-select form-select-sm" id="color" name="color">
+                        
                                     </select>
                                 </div>
                                 <div class="col">
@@ -100,7 +90,12 @@
                             </div>
                             <!--end row-->
                             <div class="d-flex gap-2 mt-3">
-                                <a href="javascript:;" class="btn btn-white btn-ecomm"> <i class="bx bxs-cart-add"></i>Add to Cart</a> <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()">
+                                    <i class="bx bxs-cart-add"></i>Add to Cart
+                                </button>
+                                <a href="javascript:;" class="btn btn-light btn-ecomm">
+                                    <i class="bx bx-heart"></i>Add to Wishlist
+                                </a>
                             </div>
                         </div>
                     </div>

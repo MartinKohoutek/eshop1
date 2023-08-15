@@ -332,7 +332,7 @@
                             $subcategories = App\Models\SubCategory::where('category_id', $cat->id)->orderBy('subcategory_name', 'ASC')->limit(6)->get();
                             @endphp
                             @foreach ($subcategories as $subcat)
-                            <li><a class="dropdown-item" href="{{ url('/') }}">{{ $subcat->subcategory_name}}</a>
+                            <li><a class="dropdown-item" href="{{ url('product/subcategory/'.$subcat->id.'/'.$subcat->subcategory_slug) }}">{{ $subcat->subcategory_name}}</a>
                             </li>
                             @endforeach
                         </ul>

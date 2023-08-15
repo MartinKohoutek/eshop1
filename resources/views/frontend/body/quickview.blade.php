@@ -12,29 +12,13 @@
                                 <div class="item">
                                     <img src="{{ asset('frontend/assets/images/product-gallery/01.png') }}" class="img-fluid" alt="">
                                 </div>
-                                <div class="item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/02.png') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/03.png') }}" class="img-fluid" alt="">
-                                </div>
-                                <div class="item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/04.png') }}" class="img-fluid" alt="">
-                                </div>
+
                             </div>
                             <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
                                 <button class="owl-thumb-item">
                                     <img src="{{ asset('frontend/assets/images/product-gallery/01.png') }}" class="" alt="">
                                 </button>
-                                <button class="owl-thumb-item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/02.png') }}" class="" alt="">
-                                </button>
-                                <button class="owl-thumb-item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/03.png') }}" class="" alt="">
-                                </button>
-                                <button class="owl-thumb-item">
-                                    <img src="{{ asset('frontend/assets/images/product-gallery/04.png') }}" class="" alt="">
-                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -63,7 +47,14 @@
                             <dl class="row mt-3">
                                 <dt class="col-sm-3">Product id</dt>
                                 <dd class="col-sm-9">#BHU5879</dd>
-                                <dt class="col-sm-3">Delivery</dt>
+                                <dt class="col-sm-3">Stock</dt>
+                                <dd class="col-sm-9">
+                                    <span class="badge badge-pill bg-success" id="available">Available</span>
+                                    <span class="badge badge-pill bg-danger" id="stockout">Stockout</span>
+                                </dd>
+                                <dt class="col-sm-3">Brand</dt>
+                                <dd class="col-sm-9">#BHU5879</dd>
+                                <dt class="col-sm-3">Category</dt>
                                 <dd class="col-sm-9">Russia, USA, and Europe</dd>
                             </dl>
                             <div class="row row-cols-auto align-items-center mt-3">
@@ -82,6 +73,16 @@
                                     <select class="form-select form-select-sm">
                                         <option>S</option>
                                         <option>M</option>
+                                        <option>L</option>
+                                        <option>XS</option>
+                                        <option>XL</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Color</label>
+                                    <select class="form-select form-select-sm">
+                                        <option>Red</option>
+                                        <option>Blue</option>
                                         <option>L</option>
                                         <option>XS</option>
                                         <option>XL</option>

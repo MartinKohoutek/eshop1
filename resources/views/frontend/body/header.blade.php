@@ -325,7 +325,7 @@
                     @endphp
 
                     @foreach ($categories as $cat)
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">{{ $cat->category_name}} <i class='bx bx-chevron-down'></i></a>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}" data-bs-toggle="dropdown">{{ $cat->category_name}} <i class='bx bx-chevron-down'></i></a>
                         @php
                         $subcategories = App\Models\SubCategory::where('category_id', $cat->id)->orderBy('subcategory_name', 'ASC')->limit(6)->get();
                         @endphp

@@ -86,6 +86,37 @@
 						$('#newprice').text('$' + data.product.discount_price);
 						$('#oldprice').text('$' +data.product.selling_price);
 					}
+
+					if (data.product.product_qty > 0) {
+						$('#available').text('');
+						$('#stockout').text('');
+						$('#available').text('available');
+					} else {
+						$('#available').text('');
+						$('#stockout').text('');
+						$('#stockout').text('stockout');
+					}
+
+					$('select[name="size"]').empty();
+					$.each(data.size, function(key, value){
+						$('select[name="size"]').append('<option value="' + value + '">' + value + '</option>');
+						if (data.size == "") {
+							$('#sizeArea').hide();
+						} else {
+							$('#sizeArea').show();
+						}
+					});
+
+					
+					$('select[name="color"]').empty();
+					$.each(data.color, function(key, value){
+						$('select[name="color"]').append('<option value="' + value + '">' + value + '</option>');
+						if (data.color == "") {
+							$('#colorArea').hide();
+						} else {
+							$('#colorArea').show();
+						}
+					});
 				}
 			})
 		}

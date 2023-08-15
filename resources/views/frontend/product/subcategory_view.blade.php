@@ -10,9 +10,9 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="bx bx-home-alt"></i> Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
+                        <li class="breadcrumb-item"><a href="{{ url('product/category/'.$bread_subcat['category']['id'].'/'.$bread_subcat['category']['category_slug']) }}">{{ $bread_subcat['category']['category_name'] }}</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $bread_subcat->category_name }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $bread_subcat->subcategory_name }}</li>
                     </ol>
                 </nav>
             </div>

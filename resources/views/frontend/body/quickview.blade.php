@@ -10,7 +10,7 @@
                         <div class="image-zoom-section">
                             <div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
                                 <div class="item">
-                                    <img src="" id="product-image" class="img-fluid" alt="">
+                                    <img src="" id="pimage" class="img-fluid" alt="">
                                 </div>
 
                             </div>
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="d-flex align-items-center mt-3 gap-2">
-                                <h5 class="mb-0 text-decoration-line-through text-light-3" id="oldprice">$98.00</h5>
+                                <h5 class="mb-0 text-decoration-line-through text-light-3" id="oldprice"></h5>
                                 <h4 class="mb-0" id="newprice">$49.00</h4>
                             </div>
                             <div class="mt-3">
@@ -48,16 +48,16 @@
                             </div>
                             <dl class="row mt-3">
                                 <dt class="col-sm-3">Product code</dt>
-                                <dd class="col-sm-9" id="pcode">#BHU5879</dd>
+                                <dd class="col-sm-9" id="pcode"></dd>
                                 <dt class="col-sm-3">Stock</dt>
                                 <dd class="col-sm-9">
                                     <span class="badge badge-pill bg-success" id="available">Available</span>
                                     <span class="badge badge-pill bg-danger" id="stockout">Stockout</span>
                                 </dd>
                                 <dt class="col-sm-3">Brand</dt>
-                                <dd class="col-sm-9" id="pbrand">#BHU5879</dd>
+                                <dd class="col-sm-9" id="pbrand"></dd>
                                 <dt class="col-sm-3">Category</dt>
-                                <dd class="col-sm-9" id="pcategory">Russia, USA, and Europe</dd>
+                                <dd class="col-sm-9" id="pcategory"></dd>
                             </dl>
                             <div class="row row-cols-auto align-items-center mt-3" id="quantityAraea">
                                 <div class="col">

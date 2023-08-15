@@ -5,7 +5,7 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="csrf-token" content="{{ csrf-token() }}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('frontend/assets/images/favicon-32x32.png') }}" type="image/png" />
 	<!--plugins-->
@@ -64,7 +64,31 @@
 		});
 
 		// Modal View
-		
+		function productView(id) {
+			// alert(id);
+			$.ajax({
+				type: 'GET',
+				url: '/product/view/modal/' + id,
+				dataType: 'json',
+				success: function(data) {		
+					// console.log(data);
+					$('#pname').text(data.product.product_name);	
+					$('#pprice').text(data.product.selling_price);
+					$('#pcode').text(data.product.product_code);
+					$('#pcategory').text(data.product.category.category_name);
+					$('#pbrand').text(data.product.brand.brand_name);
+					$('#pimage').attr('src', '/' + data.product.product_thumbnail);
+					if (data.product.discount_price == null) {
+						$('#newprice').text('');
+						$('#oldprice').text('');
+						$('#newprice').text('$' + data.product.selling_price)
+					} else {
+						$('#newprice').text('$' + data.product.discount_price);
+						$('#oldprice').text('$' +data.product.selling_price);
+					}
+				}
+			})
+		}
 	</script>
 </body>
 

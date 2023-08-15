@@ -62,4 +62,15 @@ class IndexController extends Controller
         $new_products = Product::orderBy('id', 'DESC')->limit(3)->get();
         return view('frontend.product.subcategory_view', compact('products', 'categories', 'bread_subcat', 'new_products'));
     }
+
+    public function ProductViewAjax($id) {
+        $product = Product::with('category', 'brand')->findOrFail($id);
+        $size = explode(',', $product->product_size);
+        $color = explode(',', $product->product_color);
+        return response()->json([
+            'product' => $product,
+            'size' => $size,
+            'color' => $color,
+        ]);
+    }
 }

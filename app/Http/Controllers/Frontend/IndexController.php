@@ -42,13 +42,14 @@ class IndexController extends Controller
     }
 
     public function VendorAll() {
-        $vendors = User::where('status', 'active')->where('role', 'vendor')->orderBy('id', 'DESC')->get();
+        $vendors = User::where('status', '1')->where('role', 'vendor')->orderBy('id', 'DESC')->get();
         return view('frontend.vendor.vendor_all', compact('vendors'));
     }
 
     public function CatWiseProduct(Request $request, $id, $slug) {
         $categories = Category::orderBy('category_name', 'ASC')->get();
-        $products = Product::where('status', 'active')->where('category_id', $id)->orderBy('id', 'DESC')->get();
-        return view('frontend.product.category_view', compact('products', 'categories'));
+        $products = Product::where('status', 1)->where('category_id', $id)->orderBy('id', 'DESC')->get();
+        $bread_cat = Category::where('id', $id)->first();
+        return view('frontend.product.category_view', compact('products', 'categories', 'bread_cat'));
     }
 }

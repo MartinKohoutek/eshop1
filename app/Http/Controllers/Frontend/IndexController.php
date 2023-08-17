@@ -67,10 +67,12 @@ class IndexController extends Controller
         $product = Product::with('category', 'brand')->findOrFail($id);
         $size = explode(',', $product->product_size);
         $color = explode(',', $product->product_color);
+        $images = MultiImg::where('product_id', $id)->get();
         return response()->json([
             'product' => $product,
             'size' => $size,
             'color' => $color,
+            'images' => $images,
         ]);
     }
 }

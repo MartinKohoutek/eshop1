@@ -24,12 +24,12 @@
 	<title>MKShop - Home</title>
 </head>
 
-<body class="bg-theme bg-theme1">	<b class="screen-overlay"></b>
+<body class="bg-theme bg-theme1"> <b class="screen-overlay"></b>
 	<!--wrapper-->
 	<div class="wrapper">
 		@include('frontend.body.discount')
 		@include('frontend.body.header')
-	
+
 		<!--start page wrapper -->
 		<div class="page-wrapper">
 			@yield('home')
@@ -70,21 +70,21 @@
 				type: 'GET',
 				url: '/product/view/modal/' + id,
 				dataType: 'json',
-				success: function(data) {		
-					// console.log(data);
-					$('#pname').text(data.product.product_name);	
+				success: function(data) {
+					console.log(data);
+					$('#pname').text(data.product.product_name);
 					$('#pprice').text(data.product.selling_price);
 					$('#pcode').text(data.product.product_code);
 					$('#pcategory').text(data.product.category.category_name);
 					$('#pbrand').text(data.product.brand.brand_name);
-					$('#pimage').attr('src', '/' + data.product.product_thumbnail);
+					// $('#pimage').attr('src', '/' + data.product.product_thumbnail);
 					if (data.product.discount_price == null) {
 						$('#newprice').text('');
 						$('#oldprice').text('');
 						$('#newprice').text('$' + data.product.selling_price)
 					} else {
 						$('#newprice').text('$' + data.product.discount_price);
-						$('#oldprice').text('$' +data.product.selling_price);
+						$('#oldprice').text('$' + data.product.selling_price);
 					}
 
 					if (data.product.product_qty > 0) {
@@ -98,7 +98,7 @@
 					}
 
 					$('select[name="size"]').empty();
-					$.each(data.size, function(key, value){
+					$.each(data.size, function(key, value) {
 						$('select[name="size"]').append('<option value="' + value + '">' + value + '</option>');
 						if (data.size == "") {
 							$('#sizeArea').hide();
@@ -107,9 +107,9 @@
 						}
 					});
 
-					
+
 					$('select[name="color"]').empty();
-					$.each(data.color, function(key, value){
+					$.each(data.color, function(key, value) {
 						$('select[name="color"]').append('<option value="' + value + '">' + value + '</option>');
 						if (data.color == "") {
 							$('#colorArea').hide();
@@ -117,8 +117,66 @@
 							$('#colorArea').show();
 						}
 					});
+
+					$('#product_id').val(id);
+					$('#qty').val(1);
+
+					$('#imgArea').empty();
+					$.each(data.images, function(key, value) {
+						console.log('val: ' + value.photo_name);
+						$('#imgArea').append('<button class="owl-thumb-item"><img src="' + value.photo_name + '" class="" alt=""></button>');
+						if (data.images == "") {
+							$('#imgArea').hide();
+						} else {
+							$('#imgArea').show();
+						}
+					});
+
+					$('#bigImg').empty();
+					$.each(data.images, function(key, value) {
+						// console.log('val: ' + value.photo_name);
+
+						$('#bigImg').append('<div class="item"><img src="' + value.photo_name + '" class="img-fluid" alt=""></div>');
+						if (data.images == "") {
+							$('#bigImg').hide();
+						} else {
+							$('#bigImg').show();
+						}
+					});
+
+					console.log($('#bigImg'));
+					$(".owl-carousel").owlCarousel({
+						center: true,
+						loop: true,
+						autoplay: true,
+						autoplayTimeout: 1000,
+						autoplayHoverPause: true
+					});
 				}
 			})
+		}
+
+		function addToCart() {
+			var product_name = $('#pname').text;
+			var id = $('#product_id').val();
+			var color = $('#pcolor option:selected').text();
+			var size = $('#psize option:selected').text();
+			var qty = $('#qty').val();
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					color: color,
+					size: size,
+					qty: qty,
+					product_name: product_name,
+				},
+				url: '/cart/data/store/' + id,
+				success: function(data) {
+					console.log(data);
+				}
+			});
 		}
 	</script>
 </body>

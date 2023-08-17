@@ -8,16 +8,16 @@
                 <div class="row g-0">
                     <div class="col-12 col-lg-6">
                         <div class="image-zoom-section">
-                            <div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1">
-                                <div class="item">
+                            <div class="product-gallery owl-carousel owl-theme border mb-3 p-3" data-slider-id="1" id="bigImg">
+                                <!-- <div class="item">
                                     <img src="" id="pimage" class="img-fluid" alt="">
-                                </div>
+                                </div> -->
 
                             </div>
-                            <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1">
-                                <button class="owl-thumb-item">
+                            <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1" id="imgArea">
+                                <!-- <button class="owl-thumb-item">
                                     <img src="{{ asset('frontend/assets/images/product-gallery/01.png') }}" class="" alt="">
-                                </button>
+                                </button> -->
 
                             </div>
                         </div>
@@ -90,6 +90,7 @@
                             </div>
                             <!--end row-->
                             <div class="d-flex gap-2 mt-3">
+                                <input type="hidden" name="product_id">
                                 <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()">
                                     <i class="bx bxs-cart-add"></i>Add to Cart
                                 </button>

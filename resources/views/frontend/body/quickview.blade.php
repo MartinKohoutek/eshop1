@@ -62,9 +62,7 @@
                             <div class="row row-cols-auto align-items-center mt-3" id="quantityAraea">
                                 <div class="col">
                                     <label class="form-label">Quantity</label>
-                                    <select class="form-select form-select-sm" min="1" id="qty" name="qty">
-                                    
-                                    </select>
+                                    <input type="text" class="form-select form-select-sm" value="1" min="1" id="qty" name="qty">
                                 </div>
                                 <div class="col" id="sizeArea">
                                     <label class="form-label">Size</label>
@@ -90,7 +88,7 @@
                             </div>
                             <!--end row-->
                             <div class="d-flex gap-2 mt-3">
-                                <input type="hidden" name="product_id">
+                                <input type="hidden" id="product_id">
                                 <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()">
                                     <i class="bx bxs-cart-add"></i>Add to Cart
                                 </button>

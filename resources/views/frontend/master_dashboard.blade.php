@@ -107,7 +107,6 @@
 						}
 					});
 
-
 					$('select[name="color"]').empty();
 					$.each(data.color, function(key, value) {
 						$('select[name="color"]').append('<option value="' + value + '">' + value + '</option>');
@@ -157,11 +156,17 @@
 		}
 
 		function addToCart() {
-			var product_name = $('#pname').text;
+			var product_name = $('#pname').text();
 			var id = $('#product_id').val();
-			var color = $('#pcolor option:selected').text();
-			var size = $('#psize option:selected').text();
+			var color = $('#color option:selected').text();
+			var size = $('#size option:selected').text();
 			var qty = $('#qty').val();
+
+			console.log(product_name);
+			console.log(id);
+			console.log(color);
+			console.log(size);
+			console.log(qty);
 
 			$.ajax({
 				type: 'POST',
@@ -175,6 +180,9 @@
 				url: '/cart/data/store/' + id,
 				success: function(data) {
 					console.log(data);
+				},
+				error: function() {
+					
 				}
 			});
 		}

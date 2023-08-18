@@ -216,10 +216,34 @@
 				url: '/product/mini/cart',
 				dataType: 'json',
 				success: function(response) {
-					console.log(response);
+					// console.log(response);
+
+					var miniCart = "";
+					$.each(response.carts, function(key, value){
+						miniCart += `                                       
+							<a class="dropdown-item" href="javascript:;">
+                             	<div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <h6 class="cart-product-title">${value.name}</h6>
+                                        <p class="cart-product-price">${value.qty} X $${value.price}</p>
+                                    </div>
+                                    <div class="position-relative">
+            	                        <div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
+                                        </div>
+                                        <div class="cart-product">
+                                            <img src="/${value.options.image}" class="" alt="product image" style="width: 50px; height: 50px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>`;
+					});;
+
+					$('#miniCart').html(miniCart);
 				}
 			});
 		}
+
+		miniCart();
 	</script>
 </body>
 

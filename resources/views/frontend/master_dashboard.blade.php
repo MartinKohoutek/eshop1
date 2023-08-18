@@ -234,7 +234,7 @@
                                         <p class="cart-product-price">${value.qty} X $${value.price}</p>
                                     </div>
                                     <div class="position-relative">
-            	                        <div class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
+										<div id="${value.rowId}" onClick="miniCartRemove(this.id)" class="cart-product-cancel position-absolute"><i class='bx bx-x'></i>
                                         </div>
                                         <div class="cart-product">
                                             <img src="/${value.options.image}" class="" alt="product image" style="width: 50px; height: 50px">
@@ -245,6 +245,37 @@
 					});;
 
 					$('#miniCart').html(miniCart);
+				}
+			});
+		}
+
+		function miniCartRemove(rowId) {
+			$.ajax({
+				type: 'GET',
+				url: '/minicart/product/remove/' + rowId,
+				dataType: 'json',
+				success: function(data) {
+					miniCart();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							title: data.error,
+						});
+					}
 				}
 			});
 		}

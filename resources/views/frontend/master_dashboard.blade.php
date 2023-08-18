@@ -181,6 +181,8 @@
 				},
 				url: '/cart/data/store/' + id,
 				success: function(data) {
+
+					miniCart();
 					// console.log(data);
 					$('#closeModal').click();
 
@@ -217,6 +219,10 @@
 				dataType: 'json',
 				success: function(response) {
 					// console.log(response);
+
+					$('#cartQty').text(response.cartQty + " ITEMS");
+					$('#cartQty2').text(response.cartQty);
+					$('#cartTotal').text("$" + response.cartTotal);
 
 					var miniCart = "";
 					$.each(response.carts, function(key, value){

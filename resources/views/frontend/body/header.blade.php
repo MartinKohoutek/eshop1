@@ -107,13 +107,13 @@
                                 <li class="nav-item"><a href="javascript:;" class="nav-link cart-link"><i class='bx bx-heart'></i></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count">8</span>
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty2">8</span>
                                         <i class='bx bx-shopping-bag'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <a href="javascript:;">
                                             <div class="cart-header">
-                                                <p class="cart-header-title mb-0">8 ITEMS</p>
+                                                <p class="cart-header-title mb-0" id="cartQty">8 ITEMS</p>
                                                 <p class="cart-header-clear ms-auto mb-0">VIEW CART</p>
                                             </div>
                                         </a>
@@ -123,7 +123,7 @@
                                         <a href="javascript:;">
                                             <div class="text-center cart-footer d-flex align-items-center">
                                                 <h5 class="mb-0">TOTAL</h5>
-                                                <h5 class="mb-0 ms-auto">$189.00</h5>
+                                                <h5 class="mb-0 ms-auto" id="cartTotal">$189.00</h5>
                                             </div>
                                         </a>
                                         <div class="d-grid p-3 border-top"> <a href="javascript:;" class="btn btn-light btn-ecomm">CHECKOUT</a>

@@ -54,7 +54,7 @@
                                 @else
                                 <span class="btn btn-danger">Stock Out (neni skladem)</span>
                                 @endif
-                                <h3 class="mt-3 mt-lg-0 mb-0">{{ $product->product_name }}</h3>
+                                <h3 class="mt-3 mt-lg-0 mb-0" id="dpname">{{ $product->product_name }}</h3>
                                 <div class="product-rating d-flex align-items-center mt-2">
                                     <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-warning"></i>
@@ -112,7 +112,7 @@
                                 <div class="row row-cols-auto align-items-center mt-3">
                                     <div class="col">
                                         <label class="form-label">Quantity</label>
-                                        <select class="form-select form-select-sm">
+                                        <select class="form-select form-select-sm" id="dqty">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -125,7 +125,7 @@
                                     @else
                                     <div class="col">
                                         <label class="form-label">Size</label>
-                                        <select class="form-select form-select-sm" id="size">
+                                        <select class="form-select form-select-sm" id="dsize">
                                             <!-- <select class="form-contol unicase-form-control" id="size"> -->
                                             <option selected="" disabled="">--Choose Size--</option>
                                             @foreach ($sizes as $size)
@@ -139,7 +139,7 @@
                                     @else
                                     <div class="col">
                                         <label class="form-label">Color</label>
-                                        <select class="form-select form-select-sm" id="color">
+                                        <select class="form-select form-select-sm" id="dcolor">
                                             <!-- <select class="form-contol unicase-form-control" id="size"> -->
                                             <option selected="" disabled="">--Choose Color--</option>
                                             @foreach ($colors as $color)
@@ -161,7 +161,8 @@
                                 </div>
                                 <!--end row-->
                                 <div class="d-flex gap-2 mt-3">
-                                    <a href="javascript:;" class="btn btn-white btn-ecomm"> <i class="bx bxs-cart-add"></i>Add to Cart</a> <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
+                                    <input type="hidden" id="dproduct_id" value="{{ $product->id }}">
+                                    <a href="javascript:;" class="btn btn-white btn-ecomm" onclick="addToCartDetails()"> <i class="bx bxs-cart-add"></i>Add to Cart</a> <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
                                 </div>
                                 <hr />
                                 <div class="product-sharing">

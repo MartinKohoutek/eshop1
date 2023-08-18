@@ -21,6 +21,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('frontend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('frontend/assets/css/icons.css') }}" rel="stylesheet">
+
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<title>MKShop - Home</title>
 </head>
 
@@ -179,10 +181,31 @@
 				},
 				url: '/cart/data/store/' + id,
 				success: function(data) {
-					console.log(data);
+					// console.log(data);
+					$('#closeModal').click();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							title: data.error,
+						});
+					}
 				},
 				error: function() {
-					
+
 				}
 			});
 		}

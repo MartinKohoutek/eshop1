@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-xl-down">
         <div class="modal-content bg-dark-4 rounded-0 border-0">
             <div class="modal-body">
-                <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close float-end" data-bs-dismiss="modal" id="closeModal"></button>
                 <div class="row g-0">
                     <div class="col-12 col-lg-6">
                         <div class="image-zoom-section">

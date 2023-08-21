@@ -51,7 +51,7 @@
                                             <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
                                             </div>
                                         </a>
-                                        <a href="javascript:;" id="{{ $product->id }}" onclick="addToWishlist(this.id)">
+                                        <a id="{{ $product->id }}" onclick="addToWishlist(this.id)">
                                             <div class="product-wishlist"> <i class='bx bx-heart'></i>
                                             </div>
                                         </a>
@@ -70,7 +70,7 @@
                                         <a href="javascript:;">
                                             <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                         </a>
-                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"">
+                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                                             <h6 class=" product-name mb-2">{{ $product->product_name }}</h6>
                                         </a>
                                         <div>

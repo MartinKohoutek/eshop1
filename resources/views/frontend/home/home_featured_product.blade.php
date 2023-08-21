@@ -51,7 +51,7 @@
                                             <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
                                             </div>
                                         </a>
-                                        <a href="javascript:;">
+                                        <a href="javascript:;" id="{{ $product->id }}" onclick="addToWishlist(this.id)">
                                             <div class="product-wishlist"> <i class='bx bx-heart'></i>
                                             </div>
                                         </a>

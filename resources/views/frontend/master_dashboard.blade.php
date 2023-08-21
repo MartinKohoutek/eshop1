@@ -369,6 +369,21 @@
 				}
 			});
 		}
+
+		function wishlist() {
+			$.ajax({
+				type: 'GET',
+				dataType: 'json',
+				url: '/get-wishlist-product/',
+				success: function(response) {
+					var rows = "";
+					$.each(response.wishlist, function(key, value){
+						rows += `
+						`;
+					});
+				}
+			});
+		}
 	</script>
 </body>
 

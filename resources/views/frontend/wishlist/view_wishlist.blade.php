@@ -33,6 +33,7 @@
                                         <table class="table">
                                             <thead class="table-light">
                                                 <tr>
+                                                    <th></th>
                                                     <th>Product</th>
                                                     <th>Price</th>
                                                     <th>Stock Status</th>
@@ -41,14 +42,29 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>#800</td>
-                                                    <td>$100.00</td>
-                                                    <td>
-                                                        <div class="badge rounded-pill bg-light w-100">Completed</div>
+                                                    <td class="image product-thumbnail pt-40">
+                                                        <img src="#" alt="#">
                                                     </td>
-                                                    <td>
-                                                        <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+                                                    <td class="product-des product-name">
+                                                        <h6><a href="a.html" class="product-name mb-10">Field Roast Chao Cheese Creamy Original</a></h6>
+                                                        <div class="product-rate-cover">
+                                                            <div class="product-rate d-inline-block">
+                                                                <div class="product-rating" style="width: 90%;"></div>
+                                                            </div>
+                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
                                                         </div>
+                                                    </td>
+                                                    <td class="price" data-title="Price">
+                                                        <h3 class="text-brand">$2.51</h3>
+                                                    </td>
+                                                    <td class="text-center detail-info" data-title="Stock">
+                                                        <!-- <div class="badge rounded-pill bg-light w-100">Completed</div> -->
+                                                        <span class="stock-status in-stock mb-0">In Stock</span>
+                                                    </td>
+                                                    <td class="action text-center" data-title="Remove">
+                                                        <!-- <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+                                                        </div> -->
+                                                        <a href="#" class="text-body"><i class='bx bx-trash'></i></a>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -65,4 +81,63 @@
     </section>
     <!--end shop cart-->
 </div>
+<style>
+    .product-thumbnail img {
+        max-width: 120px;
+        border-radius: 15px;
+        border: 1px solid #ececec;
+        padding: 5px;
+    }
+
+    .product-rate-cover {
+        margin-bottom: 20px;
+    }
+
+    .product-rate {
+        background-image: url("{{ asset('frontend/assets/images/rating-stars.png') }}");
+        background-position: 0 -12px;
+        background-repeat: repeat-x;
+        height: 12px;
+        width: 60px;
+        transition: all 0.5s ease-out 0s;
+        -webkit-transition: all 0.5s ease-out 0s;
+    }
+
+    .product-rating {
+        height: 12px;
+        background-repeat: repeat-x;
+        background-image: url("{{ asset('frontend/assets/images/rating-stars.png') }}");
+        background-position: 0 0;
+    }
+
+    .detail-info {
+        padding: 0 !important;
+    }
+
+    .stock-status {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-family: "Quicksand", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        margin-top: 10px;
+    }
+
+    .stock-status.in-stock {
+        background: #DEF9EC;
+        color: #3BB77E;
+    }
+
+    .stock-status.out-stock {
+        color: #f74b81;
+        background: #fde0e9;
+    }
+
+    table td.action i {
+        font-size: 24px;
+    }
+</style>
 @endsection

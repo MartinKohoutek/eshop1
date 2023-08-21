@@ -183,3 +183,9 @@ Route::get('/product/mini/cart', [CartController::class, 'AddMiniCart']);
 Route::get('/minicart/product/remove/{rowId}', [CartController::class, 'RemoveMiniCart']);
 Route::post('/dcart/data/store/{id}', [CartController::class, 'AddToCartDetails']);
 Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToWishlist']);
+
+Route::middleware(['auth', 'role:user'])->group(function(){
+    Route::controller(WishlistController::class)->group(function(){
+        Route::get('/wishlist', 'AllWishlist')->name('wishlist');
+    });
+});

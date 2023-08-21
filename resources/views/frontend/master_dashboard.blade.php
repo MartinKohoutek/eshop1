@@ -225,7 +225,7 @@
 					$('#cartTotal').text("$" + response.cartTotal);
 
 					var miniCart = "";
-					$.each(response.carts, function(key, value){
+					$.each(response.carts, function(key, value) {
 						miniCart += `                                       
 							<a class="dropdown-item" href="javascript:;">
                              	<div class="d-flex align-items-center">
@@ -377,13 +377,44 @@
 				url: '/get-wishlist-product/',
 				success: function(response) {
 					var rows = "";
-					$.each(response.wishlist, function(key, value){
-						rows += `
+					$.each(response.wishlist, function(key, value) {
+						rows += `<tr>
+									<td class="image product-thumbnail pt-40">
+										<img src="/${value.product.product_thumbnail}" alt="#">
+									</td>
+									<td class="product-des product-name">
+										<h6><a href="a.html" class="product-name mb-10">${value.product.product_name}</a></h6>
+										<div class="product-rate-cover">
+											<div class="product-rate d-inline-block">
+												<div class="product-rating" style="width: 90%;"></div>
+											</div>
+											<span class="font-small ml-5 text-muted"> (4.0)</span>
+										</div>
+									</td>
+									<td class="price" data-title="Price">
+									${value.product.discount_price === null 
+									? `<h3 class="text-brand">$${value.product.selling_price}</h3>`
+									: `<h3 class="text-brand">$${value.product.discount_price}</h3>`}
+									</td>
+									<td class="text-center detail-info" data-title="Stock">
+										<!-- <div class="badge rounded-pill bg-light w-100">Completed</div> -->
+										${value.product.product_qty > 0 
+										? `<span class="stock-status in-stock mb-0">In Stock</span>`
+										: `<span class="stock-status out-stock mb-0">Stock Out</span>`}
+									</td>
+									<td class="action text-center" data-title="Remove">
+										<!-- <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
+										</div> -->
+										<a href="#" class="text-body"><i class='bx bx-trash'></i></a>
+									</td>
+								</tr>
 						`;
 					});
+					$('#wishlist').html(rows);
 				}
 			});
 		}
+		wishlist();
 	</script>
 </body>
 

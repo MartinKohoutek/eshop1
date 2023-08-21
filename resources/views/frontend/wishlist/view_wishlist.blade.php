@@ -40,33 +40,8 @@
                                                     <th>Remove</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="image product-thumbnail pt-40">
-                                                        <img src="#" alt="#">
-                                                    </td>
-                                                    <td class="product-des product-name">
-                                                        <h6><a href="a.html" class="product-name mb-10">Field Roast Chao Cheese Creamy Original</a></h6>
-                                                        <div class="product-rate-cover">
-                                                            <div class="product-rate d-inline-block">
-                                                                <div class="product-rating" style="width: 90%;"></div>
-                                                            </div>
-                                                            <span class="font-small ml-5 text-muted"> (4.0)</span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="price" data-title="Price">
-                                                        <h3 class="text-brand">$2.51</h3>
-                                                    </td>
-                                                    <td class="text-center detail-info" data-title="Stock">
-                                                        <!-- <div class="badge rounded-pill bg-light w-100">Completed</div> -->
-                                                        <span class="stock-status in-stock mb-0">In Stock</span>
-                                                    </td>
-                                                    <td class="action text-center" data-title="Remove">
-                                                        <!-- <div class="d-flex gap-2"> <a href="javascript:;" class="btn btn-light btn-sm rounded-0">View</a>
-                                                        </div> -->
-                                                        <a href="#" class="text-body"><i class='bx bx-trash'></i></a>
-                                                    </td>
-                                                </tr>
+                                            <tbody id="wishlist">
+                                                
                                             </tbody>
                                         </table>
                                     </div>

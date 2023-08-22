@@ -104,6 +104,8 @@
                                 <li class="nav-item"><a href="{{ route('register') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Register</a>
                                 </li>
                                 @endauth
+                                <li class="nav-item"><a href="{{ route('compare') }}" class="nav-link cart-link"><i class='bx bx-heart'></i><span></span></a>
+                                </li>
                                 <li class="nav-item"><a href="{{ route('wishlist') }}" class="nav-link cart-link"><i class='bx bx-heart'></i><span id="wishlistCount"></span></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">

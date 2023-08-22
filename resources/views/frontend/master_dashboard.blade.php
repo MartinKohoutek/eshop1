@@ -23,6 +23,11 @@
 	<link href="{{ asset('frontend/assets/css/icons.css') }}" rel="stylesheet">
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<style>
+	.table-responsive {
+		white-space: normal;
+	}
+</style>
 	<title>MKShop - Home</title>
 </head>
 
@@ -491,84 +496,133 @@
 				success: function(response) {
 					// $('#wishlistCount').text(response.wishlistCount);
 
-					var heads = "";
-					$.each(response.compare, function(key, value){
-						heads += `
-						<tr>
+					var heads = `<tr>
                             <th class="align-middle text-center">
                                 <p class="mb-0 text-uppercase fs-3 fw-light text-white">Product
                                     <br>Photo
                                 </p>
-                            </th>
+                            </th>`;
+					$.each(response.compare, function(key, value) {
+						heads += `
                             <th class="align-middle text-center">
                                 <img src="${value.product.product_thumbnail}" alt="" width="230">
                             </th>
-                        </tr>
 						`;
 					});
+					heads += `</tr>`;
 
 					var rows = "";
+
+					var row1 = `<tr><td>Price</td>`;
 					$.each(response.compare, function(key, value) {
-						rows += `<tr>
-                            <td>Price</td>
-                            <td>
-							${value.product.discount_price === null 
+						row1 += `<td>${value.product.discount_price === null 
 									? `$${value.product.selling_price}`
 									: `$${value.product.discount_price}`}
-							</td>
-                        </tr>
-                        <tr>
-                            <td>Model</td>
-                            <td>${value.product.product_name}</td>
-                        </tr>
-                        <tr>
-                            <td>Brand</td>
-                            <td>Apple</td>
-                        </tr>
-                        <tr>
-                            <td>Rating</td>
-                            <td>4.8 <i class='bx bx-star'></i>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Summary</td>
-                            <td>${value.product.short_description}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Stock</td>
-                            <td>
-							${value.product.product_qty > 0 
-										? `<span class="stock-status in-stock mb-0">In Stock</span>`
-										: `<span class="stock-status out-stock mb-0">Stock Out</span>`}
-							</td>
-                        </tr>
-                        <tr>
-                            <td>Num of Cores</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>RAM</td>
-                            <td>8 GB</td>
-                        </tr>
-                        <tr>
-                            <td>System</td>
-                            <td>iOS 12</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td> <a href="javascript:;" class="btn btn-white btn-ecomm">Add to Cart</a>
-                                <a href="javascript:;" class="btn btn-light btn-ecomm">Remove</a>
-                            </td>
-                        </tr>
-						`;
+								</td>`
 					});
+					row1 += "</tr>";
+
+					var row2 = `<tr><td>Model</td>`;
+					$.each(response.compare, function(key, value) {
+						row2 += `<td>${value.product.product_name}</td>`;
+					});
+					row2 += "</tr>";
+
+					var row3 = `<tr><td>Brand</td>`;
+					$.each(response.compare, function(key, valur) {
+						row3 += `<td>Apple</td>`;
+					});
+					row3 += `</tr>`;
+
+					var row4 = `<tr><td>Rating</td>`;
+					$.each(response.compare, function(key, value) {
+						row4 += `<td>4.8<i class = 'bx bx-star'></i></td>`;
+					});
+					row4 += `</tr>`;
+
+					var row5 = `<tr><td>Summary</td>`;
+					$.each(response.compare, function(key, value) {
+						row5 += `<td>${value.product.short_description}</td>`;
+					});
+					row5 += `</tr>`;
+
+					var row6 = `<tr><td>Stock</td>`;
+					$.each(response.compare, function(key, value) {
+						row6 += `<td>${value.product.product_qty > 0 ?
+							`<span class="stock-status in-stock mb-0">In Stock</span>` :
+							`<span class="stock-status out-stock mb-0">Stock Out</span>`
+							}</td>`;
+					});
+					row6 += `</tr>`;
+
+					var row7 = `<tr><td>Num of Cores</td>`;
+					$.each(response.compare, function(key, value) {
+						row7 += `<td>2</td>`;
+					});
+					row7 += `</tr>`;
+
+					var row8 = `<tr><td>RAM</td>`;
+					$.each(response.compare, function(key, value) {
+						row8 += `<td>8 GB</td>`;
+					});
+					row8 += `</tr>`;
+
+					var row9 = `<tr><td>System </td>`;
+					$.each(response.compare, function(key, value) {
+						row9 += `<td>iOS 12</td>`;
+					});
+					row9 += `</tr>`;
+
+					var row10 = `<tr><td></td>`;
+					$.each(response.compare, function(key, value) {
+						row10 += `<td>
+									<a href = "javascript:;" class = "btn btn-white btn-ecomm" >Add to Cart</a>
+									<a type = "submit" id = ${value.id} onclick = "compareRemove(this.id)" 
+										class = "btn btn-light btn-ecomm" >Remove</a>
+								</td>`;
+					});
+					row10 += `</tr>`;
+
+					rows = row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9 + row10;
 					$('#heads').html(heads);
 					$('#compare').html(rows);
 				}
 			});
 		}
 		compare();
+
+		function compareRemove(id) {
+			$.ajax({
+				type: 'GET',
+				url: '/compare-remove/' + id,
+				dataType: 'json',
+				success: function(data) {
+					compare();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						// icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							icon: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							icon: 'error',
+							title: data.error,
+						});
+					}
+				}
+			});
+		}
 	</script>
 </body>
 

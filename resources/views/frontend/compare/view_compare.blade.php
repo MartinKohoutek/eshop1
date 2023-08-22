@@ -24,7 +24,7 @@
         <div class="container">
             <h3 class="d-none">Product Table</h3>
             <div class="table-responsive">
-                <table class="table table-bordered align-middle">
+                <table class="table table-bordered align-middle" style="table-layout: fixed;">
                     <thead id="heads">
                         
                     </thead>

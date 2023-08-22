@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -187,7 +188,10 @@ Route::post('/add-to-wishlist/{product_id}', [WishlistController::class, 'AddToW
 Route::middleware(['auth', 'role:user'])->group(function(){
     Route::controller(WishlistController::class)->group(function(){
         Route::get('/wishlist', 'AllWishlist')->name('wishlist');
-        Route::get('/get-wishlist-product/', 'GetWishlistProduct');
+        Route::get('/get-wishlist-product', 'GetWishlistProduct');
         Route::get('/wishlist-remove/{id}', 'WishlistRemove');
     });
+
 });
+
+Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);

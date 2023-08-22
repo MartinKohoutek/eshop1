@@ -450,6 +450,38 @@
 				}
 			});
 		}
+
+		function addToCompare(product_id) {
+			$.ajax({
+				type: 'POST',
+				url: '/add-to-compare/' + product_id,
+				dataType: 'json',
+				success: function(data) {
+					// wishlist();
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						// icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							icon: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							icon: 'error',
+							title: data.error,
+						});
+					}
+				}
+			});
+		}
 	</script>
 </body>
 

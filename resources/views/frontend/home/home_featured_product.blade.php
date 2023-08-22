@@ -47,7 +47,7 @@
                                 <div class="card-header bg-transparent border-bottom-0">
                                     <div class="d-flex align-items-center justify-content-end gap-3">
 
-                                        <a href="javascript:;">
+                                        <a id="{{ $product->id }}" onclick="addToCompare(this.id)">
                                             <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
                                             </div>
                                         </a>

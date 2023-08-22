@@ -31,4 +31,10 @@ class CompareController extends Controller
     public function AllCompare() {
         return view('frontend.compare.view_compare');
     }
+
+    public function GetCompareProduct() {
+        $compare = Compare::with('product')->where('user_id', Auth::id())->latest()->get();
+        $compareCount = $compare->count();
+        return response()->json(['compare' => $compare, 'compareCount' => $compareCount]);
+    }
 }

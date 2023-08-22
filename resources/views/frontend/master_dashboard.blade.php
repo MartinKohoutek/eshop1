@@ -482,6 +482,93 @@
 				}
 			});
 		}
+
+		function compare() {
+			$.ajax({
+				type: 'GET',
+				dataType: 'json',
+				url: '/get-compare-product/',
+				success: function(response) {
+					// $('#wishlistCount').text(response.wishlistCount);
+
+					var heads = "";
+					$.each(response.compare, function(key, value){
+						heads += `
+						<tr>
+                            <th class="align-middle text-center">
+                                <p class="mb-0 text-uppercase fs-3 fw-light text-white">Product
+                                    <br>Photo
+                                </p>
+                            </th>
+                            <th class="align-middle text-center">
+                                <img src="${value.product.product_thumbnail}" alt="" width="230">
+                            </th>
+                        </tr>
+						`;
+					});
+
+					var rows = "";
+					$.each(response.compare, function(key, value) {
+						rows += `<tr>
+                            <td>Price</td>
+                            <td>
+							${value.product.discount_price === null 
+									? `$${value.product.selling_price}`
+									: `$${value.product.discount_price}`}
+							</td>
+                        </tr>
+                        <tr>
+                            <td>Model</td>
+                            <td>${value.product.product_name}</td>
+                        </tr>
+                        <tr>
+                            <td>Brand</td>
+                            <td>Apple</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>4.8 <i class='bx bx-star'></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Summary</td>
+                            <td>${value.product.short_description}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Stock</td>
+                            <td>
+							${value.product.product_qty > 0 
+										? `<span class="stock-status in-stock mb-0">In Stock</span>`
+										: `<span class="stock-status out-stock mb-0">Stock Out</span>`}
+							</td>
+                        </tr>
+                        <tr>
+                            <td>Num of Cores</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>8 GB</td>
+                        </tr>
+                        <tr>
+                            <td>System</td>
+                            <td>iOS 12</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td> <a href="javascript:;" class="btn btn-white btn-ecomm">Add to Cart</a>
+                                <a href="javascript:;" class="btn btn-light btn-ecomm">Remove</a>
+                            </td>
+                        </tr>
+						`;
+					});
+					$('#heads').html(heads);
+					$('#compare').html(rows);
+				}
+			});
+		}
+		compare();
 	</script>
 </body>
 

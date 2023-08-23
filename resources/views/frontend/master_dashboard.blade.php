@@ -728,7 +728,7 @@
                                 </div>
                                 <div class="col-12 col-lg-3">
                                     <div class="text-center">
-                                        <div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
+                                        <div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a type="submit" id=${value.rowId} onclick="cartRemove(this.id)" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
                                             <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
                                         </div>
                                     </div>
@@ -743,6 +743,40 @@
 			});
 		}
 		cart();
+
+		function cartRemove(id) {
+			$.ajax({
+				type: 'GET',
+				url: '/cart-remove/' + id,
+				dataType: 'json',
+				success: function(data) {
+					cart();
+					miniCart();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						// icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							icon: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							icon: 'error',
+							title: data.error,
+						});
+					}
+				}
+			});
+		}
 	</script>
 </body>
 

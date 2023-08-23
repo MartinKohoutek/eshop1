@@ -219,6 +219,62 @@
 			});
 		}
 
+		function addToCart2() {
+			var product_name = $('#pname').text();
+			var id = $('#product_id').val();
+			var color = $('#color option:selected').text();
+			var size = $('#size option:selected').text();
+			var qty = $('#qty').val();
+			
+
+			console.log(product_name);
+			console.log(id);
+			console.log(color);
+			console.log(size);
+			console.log(qty);
+
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					color: color,
+					size: size,
+					qty: qty,
+					product_name: product_name,
+				},
+				url: '/cart/data/store/' + id,
+				success: function(data) {
+					
+					miniCart();
+					// console.log(data);
+					$('#closeModal').click();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							title: data.error,
+						});
+					}
+				},
+				error: function() {
+
+				}
+			});
+		}
+
 		function miniCart() {
 			$.ajax({
 				type: 'GET',
@@ -633,6 +689,60 @@
 				}
 			});
 		}
+
+		function cart() {
+			$.ajax({
+				type: 'GET',
+				url: '/get-cart-product',
+				dataType: 'json',
+				success: function(response) {
+					// console.log(response);
+
+					var rows = "";
+					$.each(response.carts, function(key, value) {
+						rows += `<div class="row align-items-center g-3">
+                                <div class="col-12 col-lg-6">
+                                    <div class="d-lg-flex align-items-center gap-2">
+                                        <div class="cart-img text-center text-lg-start">
+                                            <img src="${value.options.image}" width="130" alt="">
+                                        </div>
+                                        <div class="cart-detail text-center text-lg-start">
+                                            <h6 class="mb-2">${value.name}</h6>
+                                            <p class="mb-0">Size: <span>${value.options.size == null
+												? `...`
+												: `${value.options.size}`}</span>
+                                            </p>
+                                            <p class="mb-2">Color: <span>${value.options.color == null
+												? `....`
+												: `${value.options.color}`}</span>
+                                            </p>
+                                            <h5 class="mb-0">$${value.price}</h5>
+											<h5 class="mb-0">$${value.subtotal}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="cart-action text-center">
+                                        <input type="number" class="form-control rounded-0" value="${value.qty}" min="1">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-3">
+                                    <div class="text-center">
+                                        <div class="d-flex gap-2 justify-content-center justify-content-lg-end"> <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-x-circle'></i> Remove</a>
+                                            <a href="javascript:;" class="btn btn-light rounded-0 btn-ecomm"><i class='bx bx-heart me-0'></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-4 border-top"></div>                                       
+							`;
+					});
+
+					$('#cartPage').html(rows);
+				}
+			});
+		}
+		cart();
 	</script>
 </body>
 

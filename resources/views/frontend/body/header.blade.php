@@ -109,11 +109,11 @@
                                 <li class="nav-item"><a href="{{ route('wishlist') }}" class="nav-link cart-link position-relative"><span class="alert-count" id="wishlistCount">0</span><i class='bx bx-heart'></i></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty2">0</span>
+                                    <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty2">0</span>
                                         <i class='bx bx-shopping-bag'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">
-                                        <a href="javascript:;">
+                                        <a href="{{ route('mycart') }}">
                                             <div class="cart-header">
                                                 <p class="cart-header-title mb-0" id="cartQty">8 ITEMS</p>
                                                 <p class="cart-header-clear ms-auto mb-0">VIEW CART</p>

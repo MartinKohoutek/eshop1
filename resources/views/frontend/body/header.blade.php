@@ -104,12 +104,12 @@
                                 <li class="nav-item"><a href="{{ route('register') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Register</a>
                                 </li>
                                 @endauth
-                                <li class="nav-item"><a href="{{ route('compare') }}" class="nav-link cart-link"><i class='bx bx-heart'></i><span></span></a>
+                                <li class="nav-item"><a href="{{ route('compare') }}" class="nav-link cart-link position-relative"><span class="alert-count" id="compareCount">0</span><i class='bx bx-git-compare'></i><span></span></a>
                                 </li>
-                                <li class="nav-item"><a href="{{ route('wishlist') }}" class="nav-link cart-link"><i class='bx bx-heart'></i><span id="wishlistCount"></span></a>
+                                <li class="nav-item"><a href="{{ route('wishlist') }}" class="nav-link cart-link position-relative"><span class="alert-count" id="wishlistCount">0</span><i class='bx bx-heart'></i></a>
                                 </li>
                                 <li class="nav-item dropdown dropdown-large">
-                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty2">8</span>
+                                    <a href="#" class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative cart-link" data-bs-toggle="dropdown"> <span class="alert-count" id="cartQty2">0</span>
                                         <i class='bx bx-shopping-bag'></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-end">

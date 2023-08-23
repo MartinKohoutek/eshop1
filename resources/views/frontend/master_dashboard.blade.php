@@ -494,7 +494,12 @@
 				dataType: 'json',
 				url: '/get-compare-product/',
 				success: function(response) {
-					// $('#wishlistCount').text(response.wishlistCount);
+					if (response.compareCount > 0) {
+						$('#compareCount').text(response.compareCount);
+						$('#compareCount').show();
+					} else {
+						$('#compareCount').hide();
+					}
 
 					var heads = `<tr>
                             <th class="align-middle text-center">
@@ -586,6 +591,9 @@
 					rows = row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9 + row10;
 					$('#heads').html(heads);
 					$('#compare').html(rows);
+				},
+				error: function() {
+					$('#compareCount').hide();
 				}
 			});
 		}

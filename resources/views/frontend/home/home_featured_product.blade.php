@@ -99,7 +99,7 @@
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
                                                 <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> 
-                                                <a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class='bx bx-zoom-in'></i>Quick View</a>
+                                                <a class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class='bx bx-zoom-in'></i>Quick View</a>
                                             </div>
                                         </div>
                                     </div>
@@ -132,14 +132,14 @@
                                 <div class="card-header bg-transparent border-bottom-0">
                                     <div class="d-flex align-items-center justify-content-end gap-3">
 
-                                        <a href="javascript:;">
-                                            <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:;">
-                                            <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                            </div>
-                                        </a>
+                                    <a id="{{ $product->id }}" onclick="addToCompare(this.id)">
+                                    <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
+                                    </div>
+                                </a>
+                                <a id="{{ $product->id }}" onclick="addToWishlist(this.id)">
+                                    <div class="product-wishlist"> <i class='bx bx-heart'></i>
+                                    </div>
+                                </a>
                                     </div>
                                 </div>
                                 <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" style="position: relative;">

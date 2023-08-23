@@ -84,6 +84,7 @@
 					$('#pcode').text(data.product.product_code);
 					$('#pcategory').text(data.product.category.category_name);
 					$('#pbrand').text(data.product.brand.brand_name);
+					$('.pwish').attr('id', data.product.id);
 					// $('#pimage').attr('src', '/' + data.product.product_thumbnail);
 					if (data.product.discount_price == null) {
 						$('#newprice').text('');
@@ -168,6 +169,7 @@
 			var color = $('#color option:selected').text();
 			var size = $('#size option:selected').text();
 			var qty = $('#qty').val();
+			
 
 			console.log(product_name);
 			console.log(id);
@@ -186,7 +188,7 @@
 				},
 				url: '/cart/data/store/' + id,
 				success: function(data) {
-
+					
 					miniCart();
 					// console.log(data);
 					$('#closeModal').click();

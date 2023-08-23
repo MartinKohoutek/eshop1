@@ -92,8 +92,8 @@
                                 <button type="submit" class="btn btn-white btn-ecomm" onclick="addToCart()">
                                     <i class="bx bxs-cart-add"></i>Add to Cart
                                 </button>
-                                <a href="javascript:;" class="btn btn-light btn-ecomm">
-                                    <i class="bx bx-heart"></i>Add to Wishlist
+                                <a id="" onclick="addToWishlist(this.id)" class="pwish btn btn-light btn-ecomm">
+                                    <i class='bx bx-heart'></i>Add to Wishlist
                                 </a>
                             </div>
                         </div>

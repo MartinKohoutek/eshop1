@@ -16,7 +16,11 @@ $featured = App\Models\Product::where('featured', 1)->orderBy('id', 'DESC')->lim
                     <div class="card rounded-0 product-card">
                         <div class="card-header bg-transparent border-bottom-0">
                             <div class="d-flex align-items-center justify-content-end">
-                                <a href="javascript:;">
+                                <a id="{{ $item->id }}" onclick="addToCompare(this.id)">
+                                    <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
+                                    </div>
+                                </a>
+                                <a id="{{ $item->id }}" onclick="addToWishlist(this.id)">
                                     <div class="product-wishlist"> <i class='bx bx-heart'></i>
                                     </div>
                                 </a>
@@ -56,7 +60,7 @@ $featured = App\Models\Product::where('featured', 1)->orderBy('id', 'DESC')->lim
                                 </div>
                                 <div class="product-action mt-2">
                                     <div class="d-grid gap-2">
-                                        <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> 
+                                        <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
                                         <a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $item->id }}" onclick="productView(this.id)"><i class='bx bx-zoom-in'></i>Quick View</a>
                                     </div>
                                 </div>

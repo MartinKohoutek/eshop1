@@ -119,4 +119,10 @@ class CartController extends Controller
         Cart::update($rowId, $row->qty - 1);        // qty je z <input value="${value.qty}">
         return response()->json('Decrement');
     }
+
+    public function CartIncrement($rowId) {
+        $row = Cart::get($rowId);
+        Cart::update($rowId, $row->qty + 1);        // qty je z <input value="${value.qty}">
+        return response()->json('Increment');
+    }
 }

@@ -725,7 +725,7 @@
                                     <div class="cart-action text-center">
 										<a type="submit" id="${value.rowId}" onclick="cartDecrement(this.id)"  class="qty-down"><i class='bx bx-chevron-down'></i></a>
                                         <input type="number" class="form-control rounded-0" value="${value.qty}" min="1">
-										<a href="" class="qty-up"><i class='bx bx-chevron-up'></i></a>
+										<a type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" class="qty-up"><i class='bx bx-chevron-up'></i></a>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-3">
@@ -784,6 +784,18 @@
 			$.ajax({
 				type: 'GET',
 				url: '/cart-decrement/' + rowId,
+				dataType: 'json',
+				success: function(data) {
+					cart();
+					miniCart();
+				}
+			});
+		}
+
+		function cartIncrement(rowId) {
+			$.ajax({
+				type: 'GET',
+				url: '/cart-increment/' + rowId,
 				dataType: 'json',
 				success: function(data) {
 					cart();

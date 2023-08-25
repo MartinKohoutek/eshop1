@@ -51,8 +51,8 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('edit.subcategory', $item->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('delete.subcategory', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('edit.coupon', $item->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('delete.coupon', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach

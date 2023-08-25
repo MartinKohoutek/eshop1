@@ -119,7 +119,7 @@
             <ul>
                 <li> <a href="{{ route('all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupons</a>
                 </li>
-                <li> <a href="{{ route('add.banner') }}"><i class='bx bx-radio-circle'></i>Add Coupon</a>
+                <li> <a href="{{ route('add.coupon') }}"><i class='bx bx-radio-circle'></i>Add Coupon</a>
                 </li>
             </ul>
         </li>

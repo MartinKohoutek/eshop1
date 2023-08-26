@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorProductController;
@@ -169,6 +170,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/coupon/{id}', 'EditCoupon')->name('edit.coupon');
         Route::post('/update/coupon', 'UpdateCoupon')->name('update.coupon');
         Route::get('/delete/coupon/{id}', 'DeleteCoupon')->name('delete.coupon');
+    });
+
+    Route::controller(ShippingAreaController::class)->group(function(){
+        Route::get('/all/division', 'AllDivision')->name('all.division');
+        Route::get('/add/division', 'AddDivision')->name('add.division');
+        Route::post('/store/division', 'StoreDivision')->name('store.division');
     });
 });
 

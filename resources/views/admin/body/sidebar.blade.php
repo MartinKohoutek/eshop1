@@ -130,7 +130,7 @@
                 <div class="menu-title">Shipping Area</div>
             </a>
             <ul>
-                <li> <a href="{{ route('all.coupon') }}"><i class='bx bx-radio-circle'></i>All Division</a>
+                <li> <a href="{{ route('all.division') }}"><i class='bx bx-radio-circle'></i>All Division</a>
                 </li>
                 <li> <a href="{{ route('add.coupon') }}"><i class='bx bx-radio-circle'></i>All District</a>
                 </li>

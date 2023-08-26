@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ShipDistricts;
 use App\Models\ShipDivision;
 use Illuminate\Http\Request;
 
@@ -57,5 +58,29 @@ class ShippingAreaController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function AllDistrict() {
+        $districts = ShipDistricts::latest()->get();
+        return view('backend.ship.district.district_all', compact('districts'));
+    }
+
+    public function AddDistrict() {
+        $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
+        return view('backend.ship.district.district_add', compact('divisions'));
+    }
+
+    public function StoreDistrict(Request $request) {
+        ShipDistricts::insert([
+            'division_id' => $request->division_id,
+            'district_name' => $request->district_name,
+        ]);
+
+        $notification = [
+            'message' => 'Shipping District Inserted Successfully!',
+            'alert-mesage' => 'success',
+        ];
+
+        return redirect()->route('all.district')->with($notification);
     }
 }

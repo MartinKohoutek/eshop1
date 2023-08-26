@@ -190,6 +190,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/all/state', 'AllState')->name('all.state');
         Route::get('/add/state', 'AddState')->name('add.state');
         Route::get('/district/ajax/{id}', 'GetDistrict');
+        Route::post('/store/state', 'StoreState')->name('store.state');
     });
 });
 

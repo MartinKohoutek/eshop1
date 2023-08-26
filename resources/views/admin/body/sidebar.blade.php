@@ -134,7 +134,7 @@
                 </li>
                 <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
                 </li>
-                <li> <a href="{{ route('add.coupon') }}"><i class='bx bx-radio-circle'></i>All State</a>
+                <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
                 </li>
             </ul>
         </li>

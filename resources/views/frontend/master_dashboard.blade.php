@@ -804,12 +804,12 @@
 			});
 		}
 
-		function applyCoupon(id) {
+		function applyCoupon() {
 			var coupon_name = $('#coupon_name').val();
 
 			$.ajax({
 				type: 'POST',
-				url: '/coupon-apply/',
+				url: '/coupon-apply',
 				dataType: 'json',
 				data: {
 					coupon_name: coupon_name,

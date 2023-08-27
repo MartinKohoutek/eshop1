@@ -754,6 +754,7 @@
 				success: function(data) {
 					cart();
 					miniCart();
+					couponCalculation();
 
 					const Toast = Swal.mixin({
 						toast: true,
@@ -788,6 +789,7 @@
 				success: function(data) {
 					cart();
 					miniCart();
+					couponCalculation();
 				}
 			});
 		}
@@ -800,6 +802,7 @@
 				success: function(data) {
 					cart();
 					miniCart();
+					couponCalculation();
 				}
 			});
 		}
@@ -875,7 +878,7 @@
 							<p class="mb-2">Discount Amount: <span class="float-end">-$${data.discount_amount}</span>
 							</p>
 							<p class="mb-2">Coupon: <span class="float-end">${data.coupon_name}</span>
-							<a><i class="bx bx-trash"></i></a>
+							<a type="submit" onclick="couponRemove()"><i class="bx bx-trash"></i></a>
 							</p>
 							<p class="mb-2">Shipping: <span class="float-end">--</span>
 							</p>
@@ -892,6 +895,42 @@
 			});
 		}
 		couponCalculation();
+
+		function couponRemove() {
+			$.ajax({
+				type: 'GET',
+				url: '/coupon-remove',
+				dataType: 'json',
+				success: function(data) {
+					// cart();
+					// miniCart();
+					couponCalculation();
+					$('#couponField').show();
+
+					const Toast = Swal.mixin({
+						toast: true,
+						position: 'top-end',
+						// icon: 'success',
+						showConfirmButton: false,
+						timer: 3000,
+					});
+
+					if ($.isEmptyObject(data.error)) {
+						Toast.fire({
+							type: 'success',
+							icon: 'success',
+							title: data.success,
+						});
+					} else {
+						Toast.fire({
+							type: 'error',
+							icon: 'error',
+							title: data.error,
+						});
+					}
+				}
+			});
+		}
 	</script>
 </body>
 

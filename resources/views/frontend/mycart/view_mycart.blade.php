@@ -40,8 +40,8 @@
                                 <div class="card-body">
                                     <p class="fs-5 text-white">Apply Discount Code</p>
                                     <div class="input-group">
-                                        <input type="text" class="form-control rounded-0" placeholder="Enter discount code">
-                                        <button class="btn btn-light btn-ecomm" type="button">Apply Discount</button>
+                                        <input id="coupon_name" type="text" class="form-control rounded-0" placeholder="Enter discount code">
+                                        <a type="submit" onclick="applyCoupon()" class="btn btn-light btn-ecomm" type="button">Apply Discount</a>
                                     </div>
                                 </div>
                             </div>

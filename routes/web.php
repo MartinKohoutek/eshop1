@@ -243,3 +243,4 @@ Route::middleware(['auth', 'role:user'])->group(function(){
 });
 
 Route::post('/add-to-compare/{product_id}', [CompareController::class, 'AddToCompare']);
+Route::post('/apply_coupon', [CartController::class, 'CouponApply']);

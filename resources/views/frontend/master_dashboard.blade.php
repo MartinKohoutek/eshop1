@@ -815,6 +815,7 @@
 					coupon_name: coupon_name,
 				},
 				success: function(data) {
+					couponCalculation();
 					// cart();
 					// miniCart();
 
@@ -853,10 +854,44 @@
 				url: '/coupon-calculation',
 				dataType: 'json',
 				success: function(data) {
-					
+					if (data.total) {
+						$('#couponCalField').html(
+							`<p class="mb-2">Subtotal: <span class="float-end">$${data.total}</span>
+							</p>
+							<p class="mb-2">Shipping: <span class="float-end">--</span>
+							</p>
+							<p class="mb-2">Taxes: <span class="float-end">$14.00</span>
+							</p>
+							<div class="my-3 border-top"></div>
+							<h5 class="mb-0">Order Total: <span class="float-end">$${data.total}</span></h5>
+							<div class="my-4"></div>
+							<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+							</div>`
+						);
+					} else {
+						$('#couponCalField').html(
+							`<p class="mb-2">Subtotal: <span class="float-end">$${data.subtotal}</span>
+							</p>
+							<p class="mb-2">Discount Amount: <span class="float-end">-$${data.discount_amount}</span>
+							</p>
+							<p class="mb-2">Coupon: <span class="float-end">${data.coupon_name}</span>
+							<a><i class="bx bx-trash"></i></a>
+							</p>
+							<p class="mb-2">Shipping: <span class="float-end">--</span>
+							</p>
+							<p class="mb-0">Taxes: <span class="float-end">$14.00</span>
+							</p>
+							<div class="my-3 border-top"></div>
+							<h5 class="mb-0">Order Total: <span class="float-end">$${data.total_amount}</span></h5>
+							<div class="my-4"></div>
+							<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+							</div>`
+						)
+					}
 				}
 			});
 		}
+		couponCalculation();
 	</script>
 </body>
 

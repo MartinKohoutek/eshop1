@@ -36,7 +36,10 @@
                     </div>
                     <div class="col-12 col-xl-4">
                         <div class="checkout-form p-3 bg-dark-1">
-                            <div class="card rounded-0 border bg-transparent shadow-none">
+                            @if (Session::has('coupon'))
+
+                            @else  
+                            <div class="card rounded-0 border bg-transparent shadow-none" id="couponField">
                                 <div class="card-body">
                                     <p class="fs-5 text-white">Apply Discount Code</p>
                                     <div class="input-group">
@@ -45,6 +48,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             <div class="card rounded-0 border bg-transparent shadow-none">
                                 <div class="card-body">
                                     <p class="fs-5 text-white">Estimate Shipping and Tax</p>

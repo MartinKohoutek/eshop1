@@ -818,6 +818,10 @@
 					// cart();
 					// miniCart();
 
+					if (data.validity == true) {
+						$('#couponField').hide();
+					}
+
 					const Toast = Swal.mixin({
 						toast: true,
 						position: 'top-end',

@@ -168,64 +168,46 @@
                                     <div class="card rounded-0 border bg-transparent shadow-none">
                                         <div class="card-body">
                                             <p class="fs-5 text-white">Order summary</p>
+                                            
+                                            @foreach ($carts as $key => $cart)
                                             <div class="my-3 border-top"></div>
                                             <div class="d-flex align-items-center">
                                                 <a class="d-block flex-shrink-0" href="javascript:;">
-                                                    <img src="assets/images/products/01.png" width="75" alt="Product">
+                                                    <img src="{{ asset($cart->options->image) }}" width="75" alt="Product">
                                                 </a>
                                                 <div class="ps-2">
-                                                    <h6 class="mb-1"><a href="javascript:;">White Polo T-Shirt</a></h6>
-                                                    <div class="widget-product-meta"><span class="me-2">$19.<small>00</small></span><span class="">x 1</span>
+                                                    <h6 class="mb-1"><a href="javascript:;">{{ $cart->name }}</a></h6>
+                                                    <div class="widget-product-meta"><span class="me-2">${{ $cart->price }}</span><span class="">x {{ $cart->qty }}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="my-3 border-top"></div>
-                                            <div class="d-flex align-items-center">
-                                                <a class="d-block flex-shrink-0" href="javascript:;">
-                                                    <img src="assets/images/products/17.png" width="75" alt="Product">
-                                                </a>
-                                                <div class="ps-2">
-                                                    <h6 class="mb-1"><a href="javascript:;">Fancy Red Sneakers</a></h6>
-                                                    <div class="widget-product-meta"><span class="me-2">$16.<small>00</small></span><span class="">x 2</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="my-3 border-top"></div>
-                                            <div class="d-flex align-items-center">
-                                                <a class="d-block flex-shrink-0" href="javascript:;">
-                                                    <img src="assets/images/products/04.png" width="75" alt="Product">
-                                                </a>
-                                                <div class="ps-2">
-                                                    <h6 class="mb-1"><a href="javascript:;">Yellow Shine Blazer</a></h6>
-                                                    <div class="widget-product-meta"><span class="me-2">$22.<small>00</small></span><span class="">x 1</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="my-3 border-top"></div>
-                                            <div class="d-flex align-items-center">
-                                                <a class="d-block flex-shrink-0" href="javascript:;">
-                                                    <img src="assets/images/products/09.png" width="75" alt="Product">
-                                                </a>
-                                                <div class="ps-2">
-                                                    <h6 class="mb-1"><a href="javascript:;">Men Black Hat Cap</a></h6>
-                                                    <div class="widget-product-meta"><span class="me-2">$14.<small>00</small></span><span class="">x 1</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
                                     </div>
                                     <div class="card rounded-0 border bg-transparent mb-0 shadow-none">
                                         <div class="card-body">
-                                            <p class="mb-2">Subtotal: <span class="float-end">$198.00</span>
+                                            @if (Session::has('coupon'))
+                                            <p class="mb-2">Subtotal: <span class="float-end">${{ $cartTotal }}</span>
+                                            </p>
+                                            <p class="mb-0">Discount: <span class="float-end">{{ session()->get('coupon')['coupon_name'] }} ({{ session()->get('coupon')['coupon_discount']}})%</span>
+                                            </p>
+                                            <p class="mb-0">Coupon Discount: <span class="float-end">-${{ session()->get('coupon')['discount_amount'] }}</span>
                                             </p>
                                             <p class="mb-2">Shipping: <span class="float-end">--</span>
                                             </p>
                                             <p class="mb-2">Taxes: <span class="float-end">$14.00</span>
                                             </p>
-                                            <p class="mb-0">Discount: <span class="float-end">--</span>
+                                            <div class="my-3 border-top"></div>
+                                            <h5 class="mb-0">Order Total: <span class="float-end">${{ session()->get('coupon')['total_amount'] }}</span></h5>
+                                            @else
+                                            <p class="mb-2">Shipping: <span class="float-end">--</span>
+                                            </p>
+                                            <p class="mb-2">Taxes: <span class="float-end">$14.00</span>
                                             </p>
                                             <div class="my-3 border-top"></div>
-                                            <h5 class="mb-0">Order Total: <span class="float-end">212.00</span></h5>
+                                            <h5 class="mb-0">Order Total: <span class="float-end">${{ $cartTotal}}</span></h5>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

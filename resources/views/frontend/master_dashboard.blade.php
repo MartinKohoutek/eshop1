@@ -868,7 +868,7 @@
 							<div class="my-3 border-top"></div>
 							<h5 class="mb-0">Order Total: <span class="float-end">$${data.total}</span></h5>
 							<div class="my-4"></div>
-							<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+							<div class="d-grid"> <a href="{{ route('checkout') }}" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
 							</div>`
 						);
 					} else {
@@ -887,7 +887,7 @@
 							<div class="my-3 border-top"></div>
 							<h5 class="mb-0">Order Total: <span class="float-end">$${data.total_amount}</span></h5>
 							<div class="my-4"></div>
-							<div class="d-grid"> <a href="javascript:;" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
+							<div class="d-grid"> <a href="{{ route('checkout') }}" class="btn btn-white btn-ecomm">Proceed to Checkout</a>
 							</div>`
 						)
 					}

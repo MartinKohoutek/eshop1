@@ -8,6 +8,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -193,5 +194,31 @@ class CartController extends Controller
     public function CouponRemove() {
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Removed Successfully!']);
+    }
+
+    public function CheckoutCreate() {
+        if (Auth::check()) {
+            if (Cart::total() > 0) {
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $cartTotal = Cart::total();
+        
+                return view('frontend.checkout.checkout_view', compact('carts', 'cartQty', 'cartTotal'));
+            } else {
+                $notification = [
+                    'message' => 'Cart is empty. sShopping At List One Product!',
+                    'alert-type' => 'error',
+                ];
+    
+                return redirect()->to('/')->with($notification);    
+            }
+        } else {
+            $notification = [
+                'message' => 'You need to login first!',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->route('login')->with($notification);
+        }
     }
 }

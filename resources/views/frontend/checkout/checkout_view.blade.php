@@ -1,5 +1,6 @@
 @extends('frontend.master_dashboard')
 @section('home')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="page-content">
     <!--start breadcrumb-->
     <section class="py-3 border-bottom d-none d-md-flex">
@@ -97,9 +98,13 @@
                                                     <label class="form-label">Phone Number</label>
                                                     <input type="text" name="shipping_phone" class="form-control rounded-0" value="{{ Auth::user()->phone }}">
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <label class="form-label">Company</label>
                                                     <input type="text" class="form-control rounded-0">
+                                                </div> -->
+                                                <div class="col-md-6">
+                                                    <label class="form-label">Zip/Postal Code</label>
+                                                    <input type="text" class="form-control rounded-0" name="post_code">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">State/Province/Division</label>
@@ -110,17 +115,17 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Zip/Postal Code</label>
-                                                    <input type="text" class="form-control rounded-0" name="post_code">
+                                                    <label class="form-label">Country/District</label>
+                                                    <select name="district_id" class="form-select rounded-0">
+                                                        
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Country</label>
-                                                    <select class="form-select rounded-0">
-                                                        <option>United States</option>
-                                                        <option>India</option>
-                                                        <option>China</option>
-                                                        <option>Turkey</option>
+                                                    <label class="form-label">State</label>
+                                                    <select name="state_id" class="form-select rounded-0">
+                                                        
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
@@ -223,4 +228,49 @@
     </section>
     <!--end shop cart-->
 </div>
+<script>
+     $(document).ready(function() {
+        $('select[name="division_id"]').on('change', function() {
+            var division_id = $(this).val();
+            if (division_id) {
+                $.ajax({
+                    url: "{{ url('/district-get/ajax/') }}/" + division_id, // jako /axaj/{id}
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="district_id"]').html('');
+                        var d = $('select[name="district_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.district_name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('select[name="district_id"]').on('change', function() {
+            var district_id = $(this).val();
+            if (district_id) {
+                $.ajax({
+                    url: "{{ url('/state-get/ajax/') }}/" + district_id, // jako /axaj/{id}
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        $('select[name="state_id"]').html('');
+                        var d = $('select[name="state_id"]').empty();
+                        $.each(data, function(key, value) {
+                            $('select[name="state_id"]').append('<option value="' + value.id + '">' + value.state_name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    });
+</script>
 @endsection

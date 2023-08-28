@@ -83,7 +83,7 @@
                                             <form class="row g-3">
                                                 <div class="col-md-6">
                                                     <label class="form-label">First Name</label>
-                                                    <input type="text" class="form-control rounded-0">
+                                                    <input type="text" name="shipping_name" class="form-control rounded-0" value="{{ Auth::user()->name }}">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Last Name</label>
@@ -91,26 +91,28 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">E-mail id</label>
-                                                    <input type="text" class="form-control rounded-0">
+                                                    <input type="text" name="shipping_email" class="form-control rounded-0" value="{{ Auth::user()->email }}">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Phone Number</label>
-                                                    <input type="text" class="form-control rounded-0">
+                                                    <input type="text" name="shipping_phone" class="form-control rounded-0" value="{{ Auth::user()->phone }}">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Company</label>
                                                     <input type="text" class="form-control rounded-0">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">State/Province</label>
-                                                    <select class="form-select rounded-0">
-                                                        <option>United Kingdom</option>
-                                                        <option>California</option>
+                                                    <label class="form-label">State/Province/Division</label>
+                                                    <select name="division_id" class="form-select rounded-0">
+                                                        <option>Select an division ...</option>
+                                                        @foreach ($divisions as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->division_name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Zip/Postal Code</label>
-                                                    <input type="text" class="form-control rounded-0">
+                                                    <input type="text" class="form-control rounded-0" name="post_code">
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Country</label>
@@ -122,12 +124,12 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Address 1</label>
-                                                    <textarea class="form-control rounded-0"></textarea>
+                                                    <label class="form-label">Address</label>
+                                                    <textarea class="form-control rounded-0" name="shipping_address">{{ Auth::user()->address }}</textarea>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Address 2</label>
-                                                    <textarea class="form-control rounded-0"></textarea>
+                                                    <label class="form-label">Additional Information</label>
+                                                    <textarea class="form-control rounded-0" name="notes"></textarea>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <h6 class="mb-0 h5">Billing Address</h6>

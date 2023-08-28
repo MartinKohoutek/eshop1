@@ -16,6 +16,11 @@ class CartController extends Controller
 {
     public function AddToCart(Request $request, $id) {
         $product = Product::findOrFail($id);
+
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
+        
         if ($product->discount_price == NULL) {
             Cart::add([
                 'id' => $id,
@@ -65,6 +70,10 @@ class CartController extends Controller
     }
 
     public function AddToCartDetails(Request $request, $id) {
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
+
         $product = Product::findOrFail($id);
         if ($product->discount_price == NULL) {
             Cart::add([
@@ -126,7 +135,7 @@ class CartController extends Controller
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount / 100),
             ]);
         }
-        
+
         return response()->json(["success" => "Product Remove From Cart"]);
     }
 

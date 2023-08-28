@@ -254,3 +254,4 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 Route::get('/checkout', [CartController::class,'CheckoutCreate'])->name('checkout');
+Route::get('/checkout-payment', [CheckoutController::class, 'CheckoutPayment'])->name('checkout.payment');

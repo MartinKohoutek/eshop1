@@ -81,7 +81,8 @@
                                         <h2 class="h5 mb-0">Shipping Address</h2>
                                         <div class="my-3 border-bottom"></div>
                                         <div class="form-body">
-                                            <form class="row g-3">
+                                            <form class="row g-3" method="post" action="{{ route('checkout.store') }}">
+                                                @csrf
                                                 <div class="col-md-6">
                                                     <label class="form-label">First Name</label>
                                                     <input type="text" name="shipping_name" class="form-control rounded-0" value="{{ Auth::user()->name }}">
@@ -149,7 +150,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="d-grid"> <a href="{{ route('checkout.payment') }}" class="btn btn-white btn-ecomm">Proceed to Checkout<i class='bx bx-chevron-right'></i></a>
+                                                    <div class="d-grid"> <button type="submit" class="btn btn-white btn-ecomm">Proceed to Checkout<i class='bx bx-chevron-right'></i></a>
                                                     </div>
                                                 </div>
                                             </form>

@@ -12,40 +12,34 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    public function DistrictGetAjax($division_id) {
+    public function DistrictGetAjax($division_id)
+    {
         $ship = ShipDistricts::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
         return json_encode($ship);
     }
 
-    public function StateGetAjax($district_id) {
+    public function StateGetAjax($district_id)
+    {
         $ship = ShipState::where('district_id', $district_id)->orderBy('state_name', 'ASC')->get();
         return json_encode($ship);
     }
 
-    public function CheckoutPayment() {
-        if (Auth::check()) {
-            if (Cart::total() > 0) {
-                $carts = Cart::content();
-                $cartQty = Cart::count();
-                $cartTotal = Cart::total();
-                $divisions = ShipDivision::orderBy('division_name', 'ASC')->get();
-        
-                return view('frontend.checkout.checkout_payment', compact('carts', 'cartQty', 'cartTotal', 'divisions'));
-            } else {
-                $notification = [
-                    'message' => 'Cart is empty. sShopping At List One Product!',
-                    'alert-type' => 'error',
-                ];
-    
-                return redirect()->to('/')->with($notification);    
-            }
-        } else {
-            $notification = [
-                'message' => 'You need to login first!',
-                'alert-type' => 'error',
-            ];
+    public function CheckoutStore(Request $request)
+    {
+        $data = [];
+        $data['shipping_name'] = $request->shipping_name;
+        $data['shiping_email'] = $request->shipping_email;
+        $data['shipping_phone'] = $request->shipping_phone;
+        $data['division_id'] = $request->division_id;
+        $data['district_id'] = $request->district_id;
+        $data['state_id'] = $request->state_id;
+        $data['post_code'] = $request->post_code;
+        $data['shipping_address'] = $request->shipping_address;
+        $data['notes'] = $request->notes;
+        $cartTotal = Cart::total();
+        $carts = Cart::content();
+        $cartQty = Cart::count();
 
-            return redirect()->route('login')->with($notification);
-        }
+        return view('frontend.checkout.checkout_payment', compact('data', 'carts', 'cartTotal', 'cartQty'));
     }
 }

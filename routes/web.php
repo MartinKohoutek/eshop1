@@ -237,6 +237,7 @@ Route::middleware(['auth', 'role:user'])->group(function(){
    Route::controller(CheckoutController::class)->group(function(){
         Route::get('/district-get/ajax/{division_id}', 'DistrictGetAjax');
         Route::get('/state-get/ajax/{district_id}', 'StateGetAjax'); 
+        Route::post('/checkout-store', 'CheckoutStore')->name('checkout.store');
    });
 });
 
@@ -254,4 +255,3 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 Route::get('/checkout', [CartController::class,'CheckoutCreate'])->name('checkout');
-Route::get('/checkout-payment', [CheckoutController::class, 'CheckoutPayment'])->name('checkout.payment');

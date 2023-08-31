@@ -277,22 +277,25 @@
                                             <div class="tab-pane fade" id="cash-on-delivery" role="tabpanel">
                                                 <div class="p-3 border">
                                                     <h6>Cash On Delivery</h6>
-                                                    <div class="mb-3">
-                                                        <p>Select your Bank</p>
-                                                        <select class="form-select rounded-0" aria-label="Default select example">
-                                                            <option selected>--Please Select Your Bank--</option>
-                                                            <option value="1">Bank Name 1</option>
-                                                            <option value="2">Bank Name 2</option>
-                                                            <option value="3">Bank Name 3</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <div class="d-block"> <a href="javscript:;" class="btn btn-light rounded-0"><i class='bx bxl-paypal'></i>Login to my Paypal</a>
+                                                    <form action="{{ route('cash.order') }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="name" value="{{ $data['shipping_name'] }}">
+                                                        <input type="hidden" name="email" value="{{ $data['shipping_email'] }}">
+                                                        <input type="hidden" name="phone" value="{{ $data['shipping_phone'] }}">
+                                                        <input type="hidden" name="post_code" value="{{ $data['post_code'] }}">
+                                                        <input type="hidden" name="division_id" value="{{ $data['division_id'] }}">
+                                                        <input type="hidden" name="district_id" value="{{ $data['district_id'] }}">
+                                                        <input type="hidden" name="state_id" value="{{ $data['state_id'] }}">
+                                                        <input type="hidden" name="address" value="{{ $data['shipping_address'] }}">
+                                                        <input type="hidden" name="notes" value="{{ $data['notes'] }}">
+                                                        <div class="mb-3">
+                                                            <div class="d-block"> <button type="submit" class="btn btn-light rounded-0"><i class='bx bxl-paypal'></i>Submit Payment</button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <p class="mb-0">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order.</p>
-                                                    </div>
+                                                        <div class="mb-3">
+                                                            <p class="mb-0">Note: After clicking on the button, you will be directed to a secure gateway for payment. After completing the payment process, you will be redirected back to the website to view details of your order.</p>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

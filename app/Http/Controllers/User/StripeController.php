@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -60,5 +61,32 @@ class StripeController extends Controller
             'status' => 'pending',
             'created_at' => Carbon::now(),
         ]);
+
+        $carts = Cart::content();
+        foreach ($carts as $cart) {
+            OrderItem::insert([
+                'order_id' => $order_id,
+                'product_id' => $cart->id,
+                'vendor_id' => $cart->options->vendor_id,
+                'color' => $cart->options->color,
+                'size' => $cart->options->size,
+                'qty' => $cart->qty,
+                'price' => $cart->price,
+                'created_at' => Carbon::now(),
+            ]);
+        }
+
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
+
+        Cart::destroy();
+
+        $notification = [
+            "message" => "Your Order Placed Successfully!",
+            "alert-type" => "success",
+        ];
+
+        return redirect()->route('dashboard')->with($notification);
     }
 }

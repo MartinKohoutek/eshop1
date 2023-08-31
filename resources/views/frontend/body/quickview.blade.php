@@ -58,6 +58,8 @@
                                 <dd class="col-sm-9" id="pbrand"></dd>
                                 <dt class="col-sm-3">Category</dt>
                                 <dd class="col-sm-9" id="pcategory"></dd>
+                                <dt class="col-sm-3">Vendor</dt>
+                                <dd class="col-sm-9" id="pvendor_id"></dd>
                             </dl>
                             <div class="row row-cols-auto align-items-center mt-3" id="quantityAraea">
                                 <div class="col">

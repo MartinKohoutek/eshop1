@@ -162,6 +162,7 @@
                                 <!--end row-->
                                 <div class="d-flex gap-2 mt-3">
                                     <input type="hidden" id="dproduct_id" value="{{ $product->id }}">
+                                    <input type="hidden" id="vendor_id" value="{{ $product->vendor_id }}">
                                     <a href="javascript:;" class="btn btn-white btn-ecomm" onclick="addToCartDetails()"> <i class="bx bxs-cart-add"></i>Add to Cart</a> <a href="javascript:;" class="btn btn-light btn-ecomm"><i class="bx bx-heart"></i>Add to Wishlist</a>
                                 </div>
                                 <hr />

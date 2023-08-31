@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
@@ -196,6 +197,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/state/{id}', 'EditState')->name('edit.state');
         Route::post('/update/state', 'UpdateState')->name('update.state');
         Route::get('/delete/state/{id}', 'DeleteState')->name('delete.state');
+    });
+
+    Route::controller(OrderController::class)->group(function(){
+        Route::get('/pending/order', 'PendingOrder')->name('pending.order');
     });
 });
 

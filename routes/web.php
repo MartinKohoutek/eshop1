@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -93,6 +94,10 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::get('/vendor/product/inactive/{id}', 'VendorProductInactive')->name('vendor.product.inactive');
         Route::get('/vendor/product/active/{id}', 'VendorProductActive')->name('vendor.product.active');
         Route::get('/vendor/delete/product/{id}', 'VendorDeleteProduct')->name('vendor.delete.product');
+    });
+
+    Route::controller(VendorOrderController::class)->group(function(){
+        Route::get('/vendor/order', 'VendorOrder')->name('vendor.order');
     });
 });
 

@@ -1,4 +1,152 @@
 @extends('dashboard')
 @section('user')
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="page-content">
+    <!--start breadcrumb-->
+    <section class="py-3 border-bottom d-none d-md-flex">
+        <div class="container">
+            <div class="page-breadcrumb d-flex align-items-center">
+                <h3 class="breadcrumb-title pe-3">My Orders</h3>
+                <div class="ms-auto">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0 p-0">
+                            <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="javascript:;">Account</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Order Details</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end breadcrumb-->
+    <!--start shop cart-->
+    <section class="py-4">
+        <div class="container">
+            <h3 class="d-none">Account</h3>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card shadow-none mb-3 mb-lg-0">
+                                @include('frontend.user.body.sidebar')
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <!-- <div class="card shadow-none mb-0">
+                                <div class="card-body">                                    
+                                </div>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Shipping Details</h4>
+                                        </div>
+                                        <hr>
+                                        <div class="card-body">
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Shipping Name:</th>
+                                                    <td>{{ $order->name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Shipping Phone:</th>
+                                                    <td>{{ $order->phone }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Shipping Email:</th>
+                                                    <td>{{ $order->email }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Shipping Address:</th>
+                                                    <td>{{ $order->address }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Division:</th>
+                                                    <td>{{ $order['division']['division_name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>District:</th>
+                                                    <td>{{ $order['district']['district_name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>State:</th>
+                                                    <td>{{ $order['state']['state_name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Post Code:</th>
+                                                    <td>{{ $order->post_code }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Order Date:</th>
+                                                    <td>{{ $order->order_date }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>Order Details</h4>
+                                            <span class="text-warning">Invoice: {{ $order->invoice_no }}</span>
+                                        </div>
+                                        <hr>
+                                        <div class="card-body">
+                                            <table class="table">
+                                                <tr>
+                                                    <th>Name:</th>
+                                                    <td>{{ $order['user']['name'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email:</th>
+                                                    <td>{{ $order['user']['email'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Payment Type:</th>
+                                                    <td>{{ $order->payment_method }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Transaction ID:</th>
+                                                    <td>{{ $order->transaction_id }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Invoice:</th>
+                                                    <td>{{ $order->invoice_no }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Total Amount:</th>
+                                                    <td>${{ $order->amount }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Order Status:</th>
+                                                    <td>
+                                                        @if ($order->status == 'pending')
+                                                        <div class="badge rounded-pill bg-warning">Pending</div>
+                                                        @elseif ($order->status == 'confirm')
+                                                        <div class="badge rounded-pill bg-info">Confirm</div>
+                                                        @elseif ($order->status == 'processing')
+                                                        <div class="badge rounded-pill bg-danger">Processing</div>
+                                                        @elseif ($order->status == 'delivered')
+                                                        <div class="badge rounded-pill bg-success">Delivered</div>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end row-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--end shop cart-->
+</div>
 @endsection

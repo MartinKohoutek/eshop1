@@ -143,6 +143,75 @@
                         </div>
                     </div>
                     <!--end row-->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card shadow-none mb-0">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Image</th>
+                                                    <th>Product Name</th>
+                                                    <th>Vendor Name</th>
+                                                    <th>Product Code</th>
+                                                    <th>Color</th>
+                                                    <th>Size</th>
+                                                    <th>Quantity</th>
+                                                    <th>Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($orderItems as $key => $order)
+                                                <tr>
+                                                    <td>{{ $key+1 }}</td>
+                                                    <td>
+                                                        <img src="{{ asset($order['product']['product_thumbnail']) }}" alt="" style="width: 50px; height: 50px">
+                                                    </td>
+                                                    <td>{{ $order['product']['product_name'] }}</td>
+                                                    <td>
+                                                        @if ($order->vendor_id == NULL)
+                                                        Owner
+                                                        @else
+                                                        {{ $order['product']['vendor']['name'] }}
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $order['product']['product_code'] }}</td>
+                                                    <td>
+                                                        @if ($order['color'] == NULL)
+                                                            ...
+                                                        @else
+                                                            {{ $order['color'] }}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($order['size'] == NULL)
+                                                            ...
+                                                        @else
+                                                            {{ $order['size'] }}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if ($order['qty'] == NULL)
+                                                            ...
+                                                        @else
+                                                            {{ $order['qty'] }}
+                                                        @endif
+                                                    </td>
+                                                    <td>${{ $order['price'] }}
+                                                        <br>Total: ${{$order['price'] * $order['qty'] }}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

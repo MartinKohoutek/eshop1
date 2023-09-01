@@ -260,6 +260,7 @@ Route::middleware(['auth', 'role:user'])->group(function(){
    Route::controller(UserOrderController::class)->group(function(){
        Route::get('/user/orders', 'UserOrders')->name('user.orders');
        Route::get('/user/order-details/{order_id}', 'UserOrderDetails');
+       Route::get('/user/invoice-download/{order_id}', 'UserOrderInvoice');
    });
 });
 

@@ -18,6 +18,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\StripeController;
+use App\Http\Controllers\User\UserOrderController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
@@ -254,6 +255,10 @@ Route::middleware(['auth', 'role:user'])->group(function(){
    Route::controller(StripeController::class)->group(function(){
         Route::post('/stripe/order', 'StripeOrder')->name('stripe.order');
         Route::post('/cash/order', 'CashOrder')->name('cash.order');
+   });
+
+   Route::controller(UserOrderController::class)->group(function(){
+       Route::get('/user/orders', 'UserOrders')->name('user.orders');
    });
 });
 

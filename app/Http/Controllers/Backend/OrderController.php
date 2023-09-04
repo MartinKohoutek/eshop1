@@ -43,6 +43,32 @@ class OrderController extends Controller
         return redirect()->route('admin.confirmed.order')->with($notification);
     }
 
+    public function ConfirmToProcessing($order_id) {
+        Order::findOrFail($order_id)->update([
+            'status' => 'processing',
+        ]);
+
+        $notification = [
+            'message' => 'Order Processing Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.processing.order')->with($notification);
+    }
+
+    public function ProcessingToDelivered($order_id) {
+        Order::findOrFail($order_id)->update([
+            'status' => 'delivered',
+        ]);
+
+        $notification = [
+            'message' => 'Order Delivered Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.delivered.order')->with($notification);
+    }
+
     public function AdminOrderDetails($order_id) {
         $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
         $orderItems = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();

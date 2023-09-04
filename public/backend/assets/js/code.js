@@ -51,3 +51,57 @@ $(function () {
     });
 
 });
+
+$(function () {
+    $(document).on('click', '#processing', function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: 'Are you sure to Processing Order?',
+            text: "Once Processing, You will not be able to confirmed again?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Processing!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                    'Processing!',
+                    'Confirm Change.',
+                    'success'
+                )
+            }
+        })
+    });
+
+});
+
+$(function () {
+    $(document).on('click', '#delivered', function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: 'Are you sure to Delivered Order?',
+            text: "Once Delivered, You will not be able to process again?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Deliver!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                    'Delivered!',
+                    'Confirm Change.',
+                    'success'
+                )
+            }
+        })
+    });
+
+});

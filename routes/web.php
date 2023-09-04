@@ -211,6 +211,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('admin/processing/order', 'AdminProcessingOrder')->name('admin.processing.order');
         Route::get('admin/delivered/order', 'AdminDeliveredOrder')->name('admin.delivered.order');
         Route::get('/pending/confirm/{order_id}', 'PendingToConfirm')->name('pending-confirm');
+        Route::get('/confirm/processing/{order_id}', 'ConfirmToProcessing')->name('confirm-processing');
+        Route::get('/processing/delivered/{order_id}', 'ProcessingToDelivered')->name('processing-delivered');
         Route::get('/admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
     });
 });

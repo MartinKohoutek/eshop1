@@ -109,8 +109,8 @@
                             <td>
                                 @if ($order->status == 'pending')
                                 <div class="badge rounded-pill bg-warning">Pending</div>
-                                @elseif ($order->status == 'confirm')
-                                <div class="badge rounded-pill bg-info">Confirm</div>
+                                @elseif ($order->status == 'confirmed')
+                                <div class="badge rounded-pill bg-info">Confirmed</div>
                                 @elseif ($order->status == 'processing')
                                 <div class="badge rounded-pill bg-danger">Processing</div>
                                 @elseif ($order->status == 'delivered')
@@ -124,9 +124,9 @@
                                 @if ($order->status == 'pending')
                                 <a id="confirm" href="{{ route('pending-confirm', $order->id) }}" class="btn btn-block btn-success">Confirm Order</a>
                                 @elseif ($order->status == 'confirmed')
-                                <a href="" class="btn btn-block btn-success">Processing Order</a>
+                                <a id="processing" href="{{ route('confirm-processing', $order->id) }}" class="btn btn-block btn-success">Processing Order</a>
                                 @elseif ($order->status == 'processing')
-                                <a href="" class="btn btn-block btn-success">Delivered Order</a>
+                                <a id="delivered" href="{{ route('processing-delivered', $order->id) }}" class="btn btn-block btn-success">Delivered Order</a>
                                 @endif
                             </td>
                         </tr>

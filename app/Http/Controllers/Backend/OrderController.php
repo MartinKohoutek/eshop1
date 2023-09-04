@@ -30,6 +30,19 @@ class OrderController extends Controller
         return view('backend.orders.delivered_orders', compact('orders'));
     }
 
+    public function PendingToConfirm($order_id) {
+        Order::findOrFail($order_id)->update([
+            'status' => 'confirmed',
+        ]);
+
+        $notification = [
+            'message' => 'Order Confirmed Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('admin.confirmed.order')->with($notification);
+    }
+
     public function AdminOrderDetails($order_id) {
         $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
         $orderItems = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();

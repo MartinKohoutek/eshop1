@@ -80,7 +80,11 @@
             <ul>
                 <li> <a href="{{ route('pending.order') }}"><i class='bx bx-radio-circle'></i>Pending Orders</a>
                 </li>
-                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
+                <li> <a href="{{ route('admin.confirmed.order') }}"><i class='bx bx-radio-circle'></i>Confirmed Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.processing.order') }}"><i class='bx bx-radio-circle'></i>Processing Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.delivered.order') }}"><i class='bx bx-radio-circle'></i>Delivered Orders</a>
                 </li>
             </ul>
         </li>

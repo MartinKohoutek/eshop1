@@ -15,6 +15,21 @@ class OrderController extends Controller
         return view('backend.orders.pending_orders', compact('orders'));
     }
 
+    public function AdminConfirmedOrder() {
+        $orders = Order::where('status', 'confirmed')->orderBy('id', 'DESC')->get();
+        return view('backend.orders.confirmed_orders', compact('orders'));
+    }
+
+    public function AdminProcessingOrder() {
+        $orders = Order::where('status', 'processing')->orderBy('id', 'DESC')->get();
+        return view('backend.orders.processing_orders', compact('orders'));
+    }
+
+    public function AdminDeliveredOrder() {
+        $orders = Order::where('status', 'delivered')->orderBy('id', 'DESC')->get();
+        return view('backend.orders.delivered_orders', compact('orders'));
+    }
+
     public function AdminOrderDetails($order_id) {
         $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
         $orderItems = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();

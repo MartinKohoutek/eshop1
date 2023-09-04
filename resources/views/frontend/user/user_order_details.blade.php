@@ -163,44 +163,44 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($orderItems as $key => $order)
+                                                @foreach ($orderItems as $key => $item)
                                                 <tr>
                                                     <td>{{ $key+1 }}</td>
                                                     <td>
-                                                        <img src="{{ asset($order['product']['product_thumbnail']) }}" alt="" style="width: 50px; height: 50px">
+                                                        <img src="{{ asset($item['product']['product_thumbnail']) }}" alt="" style="width: 50px; height: 50px">
                                                     </td>
-                                                    <td>{{ $order['product']['product_name'] }}</td>
+                                                    <td>{{ $item['product']['product_name'] }}</td>
                                                     <td>
-                                                        @if ($order->vendor_id == NULL)
+                                                        @if ($item->vendor_id == NULL)
                                                         Owner
                                                         @else
-                                                        {{ $order['product']['vendor']['name'] }}
+                                                        {{ $item['product']['vendor']['name'] }}
                                                         @endif
                                                     </td>
-                                                    <td>{{ $order['product']['product_code'] }}</td>
+                                                    <td>{{ $item['product']['product_code'] }}</td>
                                                     <td>
-                                                        @if ($order['color'] == NULL)
+                                                        @if ($item['color'] == NULL)
                                                             ...
                                                         @else
-                                                            {{ $order['color'] }}
-                                                        @endif
-                                                    </td>
-                                                    <td>
-                                                        @if ($order['size'] == NULL)
-                                                            ...
-                                                        @else
-                                                            {{ $order['size'] }}
+                                                            {{ $item['color'] }}
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if ($order['qty'] == NULL)
+                                                        @if ($item['size'] == NULL)
                                                             ...
                                                         @else
-                                                            {{ $order['qty'] }}
+                                                            {{ $item['size'] }}
                                                         @endif
                                                     </td>
-                                                    <td>${{ $order['price'] }}
-                                                        <br>Total: ${{$order['price'] * $order['qty'] }}
+                                                    <td>
+                                                        @if ($item['qty'] == NULL)
+                                                            ...
+                                                        @else
+                                                            {{ $item['qty'] }}
+                                                        @endif
+                                                    </td>
+                                                    <td>${{ $item['price'] }}
+                                                        <br>Total: ${{$item['price'] * $item['qty'] }}
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -211,6 +211,14 @@
                                 </div>
                             </div>
                         </div>
+                        @if ($order->status !== 'delivered')
+                        @else
+                        <div class="form-group">
+                            <label for="">Order Return Reason</label>
+                            <textarea name="return_reason" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn-sm btn-danger">Order Return</button>
+                        @endif
                     </div>
                 </div>
             </div>

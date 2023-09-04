@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Pdf;
 
 class OrderController extends Controller
 {
@@ -73,5 +74,14 @@ class OrderController extends Controller
         $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
         $orderItems = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
         return view('backend.orders.admin_order_details', compact('order', 'orderItems'));
+    }
+
+    public function AdminInvoiceDownload($order_id) {
+        $order = Order::with('division', 'district', 'state', 'user')->where('id', $order_id)->first();
+        $orderItems = OrderItem::with('product')->where('order_id', $order_id)->orderBy('id', 'DESC')->get();
+
+        $pdf = Pdf::loadView('backend.orders.admin_order_invoice', compact('order', 'orderItems'))->setPaper('a4')
+            ->setOption(['tempDir' => public_path(), 'chroot' => public_path()]);
+        return $pdf->download('invoice.pdf');
     }
 }

@@ -105,3 +105,30 @@ $(function () {
     });
 
 });
+
+$(function () {
+    $(document).on('click', '#approved', function (e) {
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+            title: 'Are you sure to Approve Return Order?',
+            text: "Once Approved, You will not be able to process again?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Approve!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link
+                Swal.fire(
+                    'Return Approved!',
+                    'Confirm Change.',
+                    'success'
+                )
+            }
+        })
+    });
+
+});

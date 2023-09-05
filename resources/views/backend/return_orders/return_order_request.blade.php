@@ -48,9 +48,9 @@
                             <td>{{ $item->payment_method }}</td>
                             <td>
                                 @if ($item->return_order == 1)
-                                <span class="badge rounded-pill bg-danger">Return Pending</span>
+                                <span class="badge rounded-pill bg-danger">Pending</span>
                                 @elseif ($item->return_order == 2)
-                                <span class="badge rounded-pill bg-success">Return Completed</span>
+                                <span class="badge rounded-pill bg-success">Completed</span>
                                 @endif
                             </td>
                             <td>
@@ -58,7 +58,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.order.details', $item->id) }}" class="btn btn-info" title="details"><i class="fa fa-eye"></i></a>
-                                <a href="{{ route('admin.order.details', $item->id) }}" class="btn btn-danger" title="Complete Return Order"><i class="fa-solid fa-person-circle-check"></i></a>
+                                <a  id="approved" href="{{ route('return.request.approved', $item->id) }}" class="btn btn-danger" title="Complete Return Order"><i class="fa-solid fa-person-circle-check"></i></a>
                             </td>
                         </tr>
                         @endforeach

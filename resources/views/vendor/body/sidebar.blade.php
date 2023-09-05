@@ -49,6 +49,8 @@
                 </li>
                 <li> <a href="{{ route('vendor.return.order') }}"><i class='bx bx-radio-circle'></i>Returned Orders</a>
                 </li>
+                <li> <a href="{{ route('complete.return.order') }}"><i class='bx bx-radio-circle'></i>Complete Returned Orders</a>
+                </li>
             </ul>
         </li>
        

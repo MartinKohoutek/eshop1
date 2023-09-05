@@ -270,6 +270,7 @@ Route::middleware(['auth', 'role:user'])->group(function(){
        Route::get('/user/order-details/{order_id}', 'UserOrderDetails');
        Route::get('/user/invoice-download/{order_id}', 'UserOrderInvoice');
        Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
+       Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
    });
 });
 

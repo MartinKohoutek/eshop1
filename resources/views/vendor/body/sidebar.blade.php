@@ -47,7 +47,7 @@
             <ul>
                 <li> <a href="{{ route('vendor.order') }}"><i class='bx bx-radio-circle'></i>Vendor Orders</a>
                 </li>
-                <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
+                <li> <a href="{{ route('vendor.return.order') }}"><i class='bx bx-radio-circle'></i>Returned Orders</a>
                 </li>
             </ul>
         </li>

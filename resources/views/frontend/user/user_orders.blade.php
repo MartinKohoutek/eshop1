@@ -64,9 +64,13 @@
                                                         @elseif ($order->status == 'confirmed')
                                                         <div class="badge rounded-pill bg-info w-100">Confirmed</div>
                                                         @elseif ($order->status == 'processing')
-                                                        <div class="badge rounded-pill bg-danger w-100">Processing</div>
-                                                        @elseif ($order->status == 'delivered')
+                                                        <div class="badge rounded-pill bg-dark w-100">Processing</div>
+                                                        @elseif ($order->status == 'delivered' && $order->return_order == 0)
                                                         <div class="badge rounded-pill bg-success w-100">Delivered</div>
+                                                        @endif
+
+                                                        @if ($order->return_order == '1')
+                                                        <div class="badge rounded-pill bg-danger w-100">Returned</div>    
                                                         @endif
                                                     </td>
                                                     <td>

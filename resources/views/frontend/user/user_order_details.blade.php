@@ -180,23 +180,23 @@
                                                     <td>{{ $item['product']['product_code'] }}</td>
                                                     <td>
                                                         @if ($item['color'] == NULL)
-                                                            ...
+                                                        ...
                                                         @else
-                                                            {{ $item['color'] }}
+                                                        {{ $item['color'] }}
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if ($item['size'] == NULL)
-                                                            ...
+                                                        ...
                                                         @else
-                                                            {{ $item['size'] }}
+                                                        {{ $item['size'] }}
                                                         @endif
                                                     </td>
                                                     <td>
                                                         @if ($item['qty'] == NULL)
-                                                            ...
+                                                        ...
                                                         @else
-                                                            {{ $item['qty'] }}
+                                                        {{ $item['qty'] }}
                                                         @endif
                                                     </td>
                                                     <td>${{ $item['price'] }}
@@ -213,14 +213,21 @@
                         </div>
                         @if ($order->status !== 'delivered')
                         @else
-                        <form action="{{ route('return.order', $order->id) }}" method="post">
-                            @csrf
-                            <div class="form-group">
-                                <label for="">Order Return Reason</label>
-                                <textarea name="return_reason" class="form-control" style="width: 40%;"></textarea>
-                            </div>
-                            <button type="submit" class="btn-sm btn-danger" style="width: 40%;">Order Return</button>
-                        </form>
+                            @php
+                            $returnedOrder = App\Models\Order::where('id', $order->id)->where('return_reason', '=', NULL)->first();
+                            @endphp
+                            @if ($returnedOrder)       
+                            <form action="{{ route('return.order', $order->id) }}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="">Order Return Reason</label>
+                                    <textarea name="return_reason" class="form-control" style="width: 40%;"></textarea>
+                                </div>
+                                <button type="submit" class="btn-sm btn-danger" style="width: 40%;">Order Return</button>
+                            </form>
+                            @else
+                            <h5><span class="badge badge-pill bg-danger">You Have Send Return Request For This Product</span></h5>
+                            @endif
                         @endif
                     </div>
                 </div>

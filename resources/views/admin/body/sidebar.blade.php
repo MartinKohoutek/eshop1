@@ -92,6 +92,23 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
+                <div class="menu-title">Returned Orders</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('return.request') }}"><i class='bx bx-radio-circle'></i>All Returned Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.confirmed.order') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.processing.order') }}"><i class='bx bx-radio-circle'></i>Processing Orders</a>
+                </li>
+                <li> <a href="{{ route('admin.delivered.order') }}"><i class='bx bx-radio-circle'></i>Delivered Orders</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>

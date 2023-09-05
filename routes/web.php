@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -26,6 +27,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use PhpParser\Node\Stmt\Return_;
 
 /*
 |--------------------------------------------------------------------------
@@ -216,6 +218,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/invoice/download/{order_id}', 'AdminInvoiceDownload')->name('admin.invoice.download');
         Route::get('/admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
     });
+
+    Route::controller(ReturnController::class)->group(function(){
+        Route::get('/return/request', 'ReturnRequest')->name('return.request');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -272,6 +278,8 @@ Route::middleware(['auth', 'role:user'])->group(function(){
        Route::post('/return/order/{order_id}', 'ReturnOrder')->name('return.order');
        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
    });
+
+   
 });
 
 Route::controller(CartController::class)->group(function(){

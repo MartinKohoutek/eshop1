@@ -97,12 +97,8 @@
             <ul>
                 <li> <a href="{{ route('return.request') }}"><i class='bx bx-radio-circle'></i>All Returned Orders</a>
                 </li>
-                <li> <a href="{{ route('admin.confirmed.order') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
-                </li>
-                <li> <a href="{{ route('admin.processing.order') }}"><i class='bx bx-radio-circle'></i>Processing Orders</a>
-                </li>
-                <li> <a href="{{ route('admin.delivered.order') }}"><i class='bx bx-radio-circle'></i>Delivered Orders</a>
-                </li>
+                <li> <a href="{{ route('complete.return.request') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
+</li>
             </ul>
         </li>
         <li>

@@ -61,8 +61,8 @@
                                                     <td>
                                                         @if ($order->status == 'pending')
                                                         <div class="badge rounded-pill bg-warning w-100">Pending</div>
-                                                        @elseif ($order->status == 'confirm')
-                                                        <div class="badge rounded-pill bg-info w-100">Confirm</div>
+                                                        @elseif ($order->status == 'confirmed')
+                                                        <div class="badge rounded-pill bg-info w-100">Confirmed</div>
                                                         @elseif ($order->status == 'processing')
                                                         <div class="badge rounded-pill bg-danger w-100">Processing</div>
                                                         @elseif ($order->status == 'delivered')

@@ -213,11 +213,14 @@
                         </div>
                         @if ($order->status !== 'delivered')
                         @else
-                        <div class="form-group">
-                            <label for="">Order Return Reason</label>
-                            <textarea name="return_reason" class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn-sm btn-danger">Order Return</button>
+                        <form action="{{ route('return.order', $order->id) }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="">Order Return Reason</label>
+                                <textarea name="return_reason" class="form-control" style="width: 40%;"></textarea>
+                            </div>
+                            <button type="submit" class="btn-sm btn-danger" style="width: 40%;">Order Return</button>
+                        </form>
                         @endif
                     </div>
                 </div>

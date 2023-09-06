@@ -108,9 +108,9 @@
                 <div class="menu-title">Report Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('report.view') }}"><i class='bx bx-radio-circle'></i>Report View</a>
+                <li> <a href="{{ route('report.view') }}"><i class='bx bx-radio-circle'></i>Search By Date</a>
                 </li>
-                <li> <a href="{{ route('complete.return.request') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
+                <li> <a href="{{ route('order.by.user') }}"><i class='bx bx-radio-circle'></i>Search By User</a>
                 </li>
             </ul>
         </li>

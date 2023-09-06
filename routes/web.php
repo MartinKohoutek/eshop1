@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
@@ -242,6 +243,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(ActiveUserController::class)->group(function(){
         Route::get('/all/user', 'AllUser')->name('all-user');
         Route::get('/all/vendor', 'AllVendor')->name('all-vendor');
+    });
+
+    Route::controller(BlogController::class)->group(function(){
+        Route::get('/admin/blog/category', 'AdminBlogCategory')->name('admin.blog.category');
     });
 });
 

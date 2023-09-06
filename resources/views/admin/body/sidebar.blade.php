@@ -12,7 +12,7 @@
     </div>
     <!--navigation-->
     <ul class="metismenu" id="menu">
-    <li>
+        <li>
             <a href="{{ route('admin.dashboard') }}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
@@ -98,7 +98,20 @@
                 <li> <a href="{{ route('return.request') }}"><i class='bx bx-radio-circle'></i>All Returned Orders</a>
                 </li>
                 <li> <a href="{{ route('complete.return.request') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
-</li>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Report Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('report.view') }}"><i class='bx bx-radio-circle'></i>Report View</a>
+                </li>
+                <li> <a href="{{ route('complete.return.request') }}"><i class='bx bx-radio-circle'></i>Completed Return Orders</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -182,7 +195,7 @@
             </ul>
         </li>
         <li class="menu-label">UI Elements</li>
-        
+
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-cart'></i>
@@ -242,8 +255,8 @@
                 <div class="menu-title">Froala Editor</div>
             </a>
         </li>
-       
-       
+
+
         <li class="menu-label">Charts & Maps</li>
         <li>
             <a class="has-arrow" href="javascript:;">

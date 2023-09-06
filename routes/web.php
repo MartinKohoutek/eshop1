@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -236,6 +237,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/search/by/year', 'SearchByYear')->name('search-by-year');
         Route::get('/order/by/user', 'OrderByUser')->name('order.by.user');
         Route::post('/search/by/user', 'SearchByUser')->name('search-by-user');
+    });
+
+    Route::controller(ActiveUserController::class)->group(function(){
+        Route::get('/all/user', 'AllUser')->name('all-user');
     });
 });
 

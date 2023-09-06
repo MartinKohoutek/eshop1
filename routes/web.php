@@ -252,6 +252,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/edit/blog/category/{id}', 'EditBlogCategory')->name('edit.blog.category');
         Route::post('/admin/update/blog/category', 'UpdateBlogCategory')->name('update.blog.category');
         Route::get('/admin/delete/blog/category/{id}', 'DeleteBlogCategory')->name('delete.blog.category');
+
+        Route::get('/admin/blog/posts', 'AdminBlogPosts')->name('admin.blog.post');
+        Route::get('/admin/add/blog/post', 'AddBlogPost')->name('add.blog.post');
     });
 });
 

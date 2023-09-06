@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use App\Models\BlogPost;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -61,5 +62,15 @@ class BlogController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function AdminBlogPosts() {
+        $posts = BlogPost::latest()->get();
+        return view('backend.blog.blog_post_all', compact('posts'));
+    }
+
+    public function AddBlogPost() {
+        $categories = BlogCategory::latest()->get();
+        return view('backend.blog.blog_post_add', compact('categories'));
     }
 }

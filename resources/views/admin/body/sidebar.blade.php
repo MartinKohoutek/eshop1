@@ -136,7 +136,7 @@
             <ul>
                 <li> <a href="{{ route('admin.blog.category') }}"><i class='bx bx-radio-circle'></i>All Blog Categories</a>
                 </li>
-                <li> <a href="{{ route('all-vendor') }}"><i class='bx bx-radio-circle'></i>All Blog Posts</a>
+                <li> <a href="{{ route('admin.blog.post') }}"><i class='bx bx-radio-circle'></i>All Blog Posts</a>
                 </li>
             </ul>
         </li>

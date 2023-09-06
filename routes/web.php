@@ -255,6 +255,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/admin/blog/posts', 'AdminBlogPosts')->name('admin.blog.post');
         Route::get('/admin/add/blog/post', 'AddBlogPost')->name('add.blog.post');
+        Route::post('/admin/store/blog/post', 'StoreBlogPost')->name('store.blog.post');
     });
 });
 

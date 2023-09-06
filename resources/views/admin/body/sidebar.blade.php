@@ -123,7 +123,7 @@
             <ul>
                 <li> <a href="{{ route('all-user') }}"><i class='bx bx-radio-circle'></i>All Customers</a>
                 </li>
-                <li> <a href="{{ route('order.by.user') }}"><i class='bx bx-radio-circle'></i>All Vendors</a>
+                <li> <a href="{{ route('all-vendor') }}"><i class='bx bx-radio-circle'></i>All Vendors</a>
                 </li>
             </ul>
         </li>

@@ -33,6 +33,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
+                            <th>Last Seen</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,7 +46,14 @@
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->phone }}</td>
                             <td>
-                                <span class="badge badge-pill bg-success">{{ $item->status }}</span>
+                                <span class="badge badge-pill bg-warning">{{ $item->status }}</span>
+                            </td>
+                            <td>
+                                @if ($item->UserOnline())
+                                <span class="badge badge-pill bg-success">Active Now</span>
+                                @else
+                                <span class="badge badge-pill bg-danger">{{ Carbon\Carbon::parse($item->last_seen)->diffForHumans() }}</span>
+                                @endif
                             </td>
                             <td>
                                 <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info">Edit</a>
@@ -62,6 +70,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Status</th>
+                            <th>Last Seen</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

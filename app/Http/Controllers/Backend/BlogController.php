@@ -159,21 +159,23 @@ class BlogController extends Controller
     public function AllBlog() {
         $categories = BlogCategory::latest()->get();
         $posts = BlogPost::latest()->get();
-
-        return view('frontend.blog.home_blog', compact('categories', 'posts'));
+        $recentPosts = BlogPost::latest()->limit(4)->get();
+        return view('frontend.blog.home_blog', compact('categories', 'posts', 'recentPosts'));
     }
 
     public function BlogDetails($id, $slug) {
         $categories = BlogCategory::latest()->get();
         $post = BlogPost::findOrFail($id);
         $breadCat = BlogCategory::where('id', $id)->get();
-        return view('frontend.blog.blog_details', compact('categories', 'post', 'breadCat'));
+        $recentPosts = BlogPost::latest()->limit(4)->get();
+        return view('frontend.blog.blog_details', compact('categories', 'post', 'breadCat', 'recentPosts'));
     }
 
     public function BlogCategory($id, $slug) {
         $categories = BlogCategory::latest()->get();
         $posts = BlogPost::where('category_id', $id)->get();
         $breadCat = BlogCategory::where('id', $id)->get();
-        return view('frontend.blog.category_post', compact('categories', 'posts', 'breadCat'));
+        $recentPosts = BlogPost::latest()->limit(4)->get();
+        return view('frontend.blog.category_post', compact('categories', 'posts', 'breadCat', 'recentPosts'));
     }
 }

@@ -90,160 +90,33 @@
                         <div class="product-grid">
                             <h5 class="text-uppercase mb-4">Latest Post</h5>
                             <div class="latest-news owl-carousel owl-theme">
+                                @foreach ($recentPosts as $post)           
                                 <div class="item">
                                     <div class="card rounded-0 product-card border">
                                         <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
+                                            <div class="date-number">{{ $post->created_at->format('d')}}</div>
+                                            <div class="date-month">{{ $post->created_at->format('M') }}</div>
                                         </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/01.png" class="card-img-top border-bottom bg-dark-1" alt="...">
+                                        <a href="{{ url('/post/details/'.$post->id.'/'.$post->post_slug) }}">
+                                            <img src="{{ asset($post->post_image) }}" class="card-img-top border-bottom bg-dark-1" alt="..." style="height: 250px">
                                         </a>
                                         <div class="card-body">
                                             <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
+                                                <a href="{{ url('/post/details/'.$post->id.'/'.$post->post_slug) }}">
+                                                    <h5 class="mb-3 text-capitalize">{{ $post->post_title}}</h5>
                                                 </a>
                                             </div>
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
+                                            <p class="news-content mb-0">{{ Str::limit($post->post_short_description, 100)}}</p>
                                         </div>
                                         <div class="card-footer border-top">
-                                            <a href="javascript:;">
+                                            <a href="{{ url('/post/details/'.$post->id.'/'.$post->post_slug) }}">
                                                 <p class="mb-0"><small class="text-white">0 Comments</small>
                                                 </p>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <div class="card rounded-0 product-card border">
-                                        <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/02.png" class="card-img-top border-bottom bg-dark-1" alt="...">
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                                </a>
-                                            </div>
-
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="javascript:;">
-                                                <p class="mb-0"><small class="text-white">0 Comments</small>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="card rounded-0 product-card border">
-                                        <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/03.png" class="card-img-top border-bottom bg-dark-1" alt="...">
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                                </a>
-                                            </div>
-
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="javascript:;">
-                                                <p class="mb-0"><small class="text-white">0 Comments</small>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="card rounded-0 product-card border">
-                                        <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/04.png" class="card-img-top border-bottom bg-dark-1" alt="...">
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                                </a>
-                                            </div>
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="javascript:;">
-                                                <p class="mb-0"><small class="text-white">0 Comments</small>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="card rounded-0 product-card border">
-                                        <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/05.png" class="card-img-top border-bottom bg-dark-1" alt="...">
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                                </a>
-                                            </div>
-
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="javascript:;">
-                                                <p class="mb-0"><small class="text-white">0 Comments</small>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="card rounded-0 product-card border">
-                                        <div class="news-date">
-                                            <div class="date-number">24</div>
-                                            <div class="date-month">FEB</div>
-                                        </div>
-                                        <a href="javascript:;">
-                                            <img src="assets/images/blogs/06.png" class="card-img-top border-bottom bg-dark-1" alt="...">
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="news-title">
-                                                <a href="javascript:;">
-                                                    <h5 class="mb-3 text-capitalize">Blog Short Title</h5>
-                                                </a>
-                                            </div>
-
-                                            <p class="news-content mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non placerat mi. Etiam non tellus sem. Aenean...</p>
-                                        </div>
-                                        <div class="card-footer border-top">
-                                            <a href="javascript:;">
-                                                <p class="mb-0"><small class="text-white">0 Comments</small>
-                                                </p>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -270,33 +143,17 @@
                             </div>
                             <div class="blog-categories mb-3">
                                 <h5 class="mb-4">Recent Posts</h5>
+                                @foreach ($recentPosts as $key => $post)
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/05.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
+                                    <img src="{{ asset($post->post_image) }}" width="75" height="60" alt="">
+                                    <div class="ms-3"> <a href="{{ url('/post/details/'.$post->id.'/'.$post->post_slug) }}" class="fs-6">{{ $post->post_title }}</a>
+                                        <p class="mb-0">{{ $post->created_at->format('M d, Y') }}</p>
                                     </div>
                                 </div>
+                                @if ($key+1 < count($recentPosts))
                                 <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/07.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/16.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/01.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
+                                @endif
+                                @endforeach
                             </div>
                             <div class="blog-categories mb-3">
                                 <h5 class="mb-4">Popular Tags</h5>

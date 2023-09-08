@@ -96,33 +96,17 @@
                             </div>
                             <div class="blog-categories mb-3">
                                 <h5 class="mb-4">Recent Posts</h5>
+                                @foreach ($recentPosts as $key => $post)
                                 <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/05.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
+                                    <img src="{{ asset($post->post_image) }}" width="75" height="60" alt="">
+                                    <div class="ms-3"> <a href="{{ url('/post/details/'.$post->id.'/'.$post->post_slug) }}" class="fs-6">{{ $post->post_title }}</a>
+                                        <p class="mb-0">{{ $post->created_at->format('M d, Y') }}</p>
                                     </div>
                                 </div>
+                                @if ($key+1 < count($recentPosts))
                                 <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/07.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/16.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
-                                <div class="my-3 border-bottom"></div>
-                                <div class="d-flex align-items-center">
-                                    <img src="assets/images/gallery/01.png" width="75" alt="">
-                                    <div class="ms-3"> <a href="javascript:;" class="fs-6">Post title here</a>
-                                        <p class="mb-0">March 15, 2021</p>
-                                    </div>
-                                </div>
+                                @endif
+                                @endforeach
                             </div>
                             <div class="blog-categories mb-3">
                                 <h5 class="mb-4">Popular Tags</h5>

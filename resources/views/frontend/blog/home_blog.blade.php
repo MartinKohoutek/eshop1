@@ -36,7 +36,7 @@
                                     <a href="javascript:;" class="list-inline-item"><i class='bx bx-calendar me-1'></i>{{ $post->created_at->format('M d Y') }}</a>
                                 </div>
                                 <h4 class="mt-4">{{ $post->post_title }}</h4>
-                                <p>{!! $post->post_short_description !!}</p> <a href="single.html" class="btn btn-light btn-ecomm">Read More <i class='bx bx-chevrons-right'></i></a>
+                                <p>{!! $post->post_short_description !!}</p> <a href="{{ url('post/details/'.$post->id.'/'.$post->post_slug) }}" class="btn btn-light btn-ecomm">Read More <i class='bx bx-chevrons-right'></i></a>
                             </div>
                         </div>
                         @endforeach

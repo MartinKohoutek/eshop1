@@ -13,7 +13,11 @@
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">Blog</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">Blog Posts</li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                @foreach ($breadCat as $cat)
+                                {{ $cat->blog_category_name }}
+                                @endforeach
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -24,6 +28,10 @@
     <!--start page content-->
     <section class="py-4">
         <div class="container">
+            <h3> @foreach ($breadCat as $cat)
+                {{ $cat->blog_category_name }}
+                @endforeach
+            </h3>
             <div class="row">
                 <div class="col-12 col-lg-9">
                     <div class="blog-right-sidebar p-3">
@@ -78,10 +86,10 @@
                                 <h5 class="mb-4">Blog Categories</h5>
                                 <div class="list-group list-group-flush">
                                     @foreach ($categories as $category)
-                                        @php
-                                            $blogPosts = App\Models\BlogPost::where('category_id', $category->id)->get();
-                                            $blogCount = count($blogPosts);
-                                        @endphp
+                                    @php
+                                    $blogPosts = App\Models\BlogPost::where('category_id', $category->id)->get();
+                                    $blogCount = count($blogPosts);
+                                    @endphp
                                     <a href="{{ url('/post/category/'.$category->id.'/'.$category->blog_category_slug) }}" class="list-group-item bg-transparent"><i class='bx bx-chevron-right me-1'></i>{{ $category->blog_category_name }}<span class="badge rounded-pill bg-success">{{ $blogCount }}</span></a>
                                     @endforeach
                                 </div>

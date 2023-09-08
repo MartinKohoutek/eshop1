@@ -264,7 +264,7 @@
                                         $blogPosts = App\Models\BlogPost::where('category_id', $category->id)->get();
                                         $blogCount = count($blogPosts);
                                         @endphp
-                                    <a href="javascript:;" class="list-group-item bg-transparent"><i class='bx bx-chevron-right me-1'></i>{{ $category->blog_category_name }}<span class="badge rounded-pill bg-success">{{ $blogCount }}</span></a>
+                                    <a href="{{ url('/post/category/'.$category->id.'/'.$category->blog_category_slug) }}" class="list-group-item bg-transparent"><i class='bx bx-chevron-right me-1'></i>{{ $category->blog_category_name }}<span class="badge rounded-pill bg-success">{{ $blogCount }}</span></a>
                                     @endforeach
                                 </div>
                             </div>

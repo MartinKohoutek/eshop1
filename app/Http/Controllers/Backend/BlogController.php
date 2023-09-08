@@ -169,4 +169,11 @@ class BlogController extends Controller
         $breadCat = BlogCategory::where('id', $id)->get();
         return view('frontend.blog.blog_details', compact('categories', 'post', 'breadCat'));
     }
+
+    public function BlogCategory($id, $slug) {
+        $categories = BlogCategory::latest()->get();
+        $posts = BlogPost::where('category_id', $id)->get();
+        $breadCat = BlogCategory::where('id', $id)->get();
+        return view('frontend.blog.category_post', compact('categories', 'posts', 'breadCat'));
+    }
 }

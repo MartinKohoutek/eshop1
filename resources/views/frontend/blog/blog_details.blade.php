@@ -1,5 +1,6 @@
 @extends('frontend.master_dashboard')
 @section('home')
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <div class="page-content">
     <!--start breadcrumb-->
     <section class="py-3 border-bottom d-none d-md-flex">
@@ -14,10 +15,10 @@
                             <li class="breadcrumb-item"><a href="javascript:;">Blog</a>
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">
-                                @foreach ($breadCat as $cat)
-                                {{ $cat->blog_category_name }}
-                                @endforeach
-                            </a>
+                                    @foreach ($breadCat as $cat)
+                                    {{ $cat->blog_category_name }}
+                                    @endforeach
+                                </a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ $post->post_title }}</li>
                         </ol>
@@ -90,7 +91,7 @@
                         <div class="product-grid">
                             <h5 class="text-uppercase mb-4">Latest Post</h5>
                             <div class="latest-news owl-carousel owl-theme">
-                                @foreach ($recentPosts as $post)           
+                                @foreach ($recentPosts as $post)
                                 <div class="item">
                                     <div class="card rounded-0 product-card border">
                                         <div class="news-date">
@@ -133,10 +134,10 @@
                                 <h5 class="mb-4">Blog Categories</h5>
                                 <div class="list-group list-group-flush">
                                     @foreach ($categories as $category)
-                                        @php
-                                        $blogPosts = App\Models\BlogPost::where('category_id', $category->id)->get();
-                                        $blogCount = count($blogPosts);
-                                        @endphp
+                                    @php
+                                    $blogPosts = App\Models\BlogPost::where('category_id', $category->id)->get();
+                                    $blogCount = count($blogPosts);
+                                    @endphp
                                     <a href="{{ url('/post/category/'.$category->id.'/'.$category->blog_category_slug) }}" class="list-group-item bg-transparent"><i class='bx bx-chevron-right me-1'></i>{{ $category->blog_category_name }}<span class="badge rounded-pill bg-success">{{ $blogCount }}</span></a>
                                     @endforeach
                                 </div>
@@ -150,36 +151,61 @@
                                         <p class="mb-0">{{ $post->created_at->format('M d, Y') }}</p>
                                     </div>
                                 </div>
-                                @if ($key+1 < count($recentPosts))
-                                <div class="my-3 border-bottom"></div>
-                                @endif
-                                @endforeach
+                                @if ($key+1 < count($recentPosts)) <div class="my-3 border-bottom">
                             </div>
-                            <div class="blog-categories mb-3">
-                                <h5 class="mb-4">Popular Tags</h5>
-                                <div class="tags-box"> <a href="javascript:;" class="tag-link">Cloths</a>
-                                    <a href="javascript:;" class="tag-link">Electronis</a>
-                                    <a href="javascript:;" class="tag-link">Furniture</a>
-                                    <a href="javascript:;" class="tag-link">Sports</a>
-                                    <a href="javascript:;" class="tag-link">Men Wear</a>
-                                    <a href="javascript:;" class="tag-link">Women Wear</a>
-                                    <a href="javascript:;" class="tag-link">Laptops</a>
-                                    <a href="javascript:;" class="tag-link">Formal Shirts</a>
-                                    <a href="javascript:;" class="tag-link">Topwear</a>
-                                    <a href="javascript:;" class="tag-link">Headphones</a>
-                                    <a href="javascript:;" class="tag-link">Bottom Wear</a>
-                                    <a href="javascript:;" class="tag-link">Bags</a>
-                                    <a href="javascript:;" class="tag-link">Sofa</a>
-                                    <a href="javascript:;" class="tag-link">Shoes</a>
-                                </div>
-                            </div>
-                        </form>
+                            @endif
+                            @endforeach
                     </div>
+                    <div class="blog-categories mb-3">
+                        <h5 class="mb-4">Popular Tags</h5>
+                        <div class="tags-box"> <a href="javascript:;" class="tag-link">Cloths</a>
+                            <a href="javascript:;" class="tag-link">Electronis</a>
+                            <a href="javascript:;" class="tag-link">Furniture</a>
+                            <a href="javascript:;" class="tag-link">Sports</a>
+                            <a href="javascript:;" class="tag-link">Men Wear</a>
+                            <a href="javascript:;" class="tag-link">Women Wear</a>
+                            <a href="javascript:;" class="tag-link">Laptops</a>
+                            <a href="javascript:;" class="tag-link">Formal Shirts</a>
+                            <a href="javascript:;" class="tag-link">Topwear</a>
+                            <a href="javascript:;" class="tag-link">Headphones</a>
+                            <a href="javascript:;" class="tag-link">Bottom Wear</a>
+                            <a href="javascript:;" class="tag-link">Bags</a>
+                            <a href="javascript:;" class="tag-link">Sofa</a>
+                            <a href="javascript:;" class="tag-link">Shoes</a>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
-            <!--end row-->
         </div>
-    </section>
-    <!--end start page content-->
+        <!--end row-->
 </div>
+</section>
+<!--end start page content-->
+</div>
+<script>
+    $(document).ready(function() {
+        $('.latest-news').owlCarousel({
+            loop: false,
+            margin: 10,
+            responsiveClass: true,
+            nav: false,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1024: {
+                    items: 3
+                },
+                1366: {
+                    items: 3
+                }
+            }
+        })
+    });
+</script>
 @endsection

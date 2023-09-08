@@ -334,3 +334,7 @@ Route::get('/coupon-calculation', [CartController::class, 'CouponCalculation']);
 Route::get('/coupon-remove', [CartController::class, 'CouponRemove']);
 
 Route::get('/checkout', [CartController::class,'CheckoutCreate'])->name('checkout');
+
+Route::controller(BlogController::class)->group(function(){
+    Route::get('/blog', 'AllBlog')->name('home.blog');
+});

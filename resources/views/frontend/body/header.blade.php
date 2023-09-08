@@ -11,7 +11,7 @@
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Stores</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="blog.html">Blog</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('home.blog') }}">Blog</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact</a>
                     </li>
@@ -222,7 +222,7 @@
                     </li>
                     @endforeach
 
-                    <li class="nav-item"> <a class="nav-link" href="blog.html">Blog </a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('home.blog') }}">Blog </a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="about-us.html">About Us </a>
                     </li>

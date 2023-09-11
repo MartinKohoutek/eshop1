@@ -260,7 +260,7 @@
                             <li><img src="" alt=""><strong>Contact Seller: </strong><span>Owner</span></li>
                         </ul>
                         <p>Owner Information</p>
-                        @else 
+                        @else
                         <ul class="contact-infor mb-50">
                             <li><img src="#" alt=""><strong>Address: </strong><span>{{ $product['vendor']['address'] }}</span></li>
                             <li><img src="" alt=""><strong>Contact Seller: </strong><span>{{ $product['vendor']['phone'] }}</span></li>
@@ -282,7 +282,7 @@
                                 <div class="product-review">
                                     <h5 class="mb-4">3 Reviews For The Product</h5>
                                     <div class="review-list">
-                                        
+
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
                                                 <img src="{{ asset('frontend/assets/images/avatars/avatar-1.png') }}" width="65" height="65" class="rounded-circle" alt="" />
@@ -310,57 +310,68 @@
                                     @guest
                                     <p><b>For Add Product Review You Need to Login First <a href="{{ route('login') }}">Login Here</a></b></p>
                                     @else
-                                    <div class="form-body p-3">
-                                        <h4 class="mb-4">Write a Review</h4>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="cell-level">&nbsp;</th>
-                                                    <th>1 Star</th>
-                                                    <th>2 Star</th>
-                                                    <th>3 Star</th>
-                                                    <th>4 Star</th>
-                                                    <th>5 Star</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="cell-level">Quality</td>
-                                                    <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
-                                                    <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
-                                                    <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
-                                                    <td><input type="radio" name="quality" class="radio-sm" value="4"></td>
-                                                    <td><input type="radio" name="quality" class="radio-sm" value="5"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="mb-3">
-                                            <label class="form-label">Your Name</label>
-                                            <input type="text" class="form-control rounded-0">
+                                    <form action="{{ route('store.review') }}" method="post">
+                                        @csrf
+                                        <div class="form-body p-3">
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                                            @if ($product->vendor_id == NULL)
+                                            <input type="hidden" name="hvendor_id" value="">
+                                            @else
+                                            <input type="hidden" name="hvendor_id" value="{{ $product->vendor_id }}">
+                                            @endif
+                                            
+                                            <h4 class="mb-4">Write a Review</h4>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="cell-level">&nbsp;</th>
+                                                        <th>1 Star</th>
+                                                        <th>2 Star</th>
+                                                        <th>3 Star</th>
+                                                        <th>4 Star</th>
+                                                        <th>5 Star</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="cell-level">Quality</td>
+                                                        <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
+                                                        <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
+                                                        <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
+                                                        <td><input type="radio" name="quality" class="radio-sm" value="4"></td>
+                                                        <td><input type="radio" name="quality" class="radio-sm" value="5"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Name</label>
+                                                <input type="text" class="form-control rounded-0">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Email</label>
+                                                <input type="text" class="form-control rounded-0">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Rating</label>
+                                                <select class="form-select rounded-0">
+                                                    <option selected>Choose Rating</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="3">4</option>
+                                                    <option value="3">5</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Example textarea</label>
+                                                <textarea name="comment" class="form-control rounded-0" rows="3"></textarea>
+                                            </div>
+                                            <div class="d-grid">
+                                                <input type="submit" class="btn btn-light btn-ecomm" value="Submit a Review">
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Your Email</label>
-                                            <input type="text" class="form-control rounded-0">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Rating</label>
-                                            <select class="form-select rounded-0">
-                                                <option selected>Choose Rating</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="3">4</option>
-                                                <option value="3">5</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label">Example textarea</label>
-                                            <textarea class="form-control rounded-0" rows="3"></textarea>
-                                        </div>
-                                        <div class="d-grid">
-                                            <button type="button" class="btn btn-light btn-ecomm">Submit a Review</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                     @endguest
                                 </div>
                             </div>

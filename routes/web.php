@@ -21,6 +21,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\ReviewController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\UserOrderController;
 use App\Http\Controllers\User\WishlistController;
@@ -317,7 +318,10 @@ Route::middleware(['auth', 'role:user'])->group(function(){
        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
    });
 
-   
+});
+
+Route::controller(ReviewController::class)->group(function(){
+    Route::post('/store/review', 'StoreReview')->name('store.review');
 });
 
 Route::controller(CartController::class)->group(function(){

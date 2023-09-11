@@ -280,28 +280,67 @@
                         <div class="row">
                             <div class="col col-lg-8">
                                 <div class="product-review">
+                                    @php
+                                    $reviews = App\Models\Review::where('product_id', $product->id)->latest()->limit(5)->get();
+                                    @endphp
+
                                     <h5 class="mb-4">3 Reviews For The Product</h5>
                                     <div class="review-list">
 
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-1.png') }}" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
+                                        @foreach ($reviews as $review)
+                                            @if ($review->status == 0)
+                                                
+                                            @else
+                                            <div class="d-flex align-items-start">
+                                                <div class="review-user">
+                                                    <img src="{{ (!empty($review->user->photo)) ? url('/upload/user_images/'.$review->user->photo) : url('/upload/no_image.jpg') }}" width="65" height="65" class="rounded-circle" alt="" />
                                                 </div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">James Caviness</h6>
-                                                    <p class="mb-0 ms-auto">February 16, 2021</p>
+                                                <div class="review-content ms-3">
+                                                    <div class="rates cursor-pointer fs-6"> 
+                                                        @if ($review->rating == NULL)
+                                                        @elseif ($review->rating == 1)
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($review->rating == 2)
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($review->rating == 3)
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($review->rating == 4)
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($review->rating == 5)
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        <i class="bx bxs-star text-white"></i>
+                                                        @endif
+                                                    </div>
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <h6 class="mb-0">{{ $review->user->name }}</h6>
+                                                        <p class="mb-0 ms-auto">{{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</p>
+                                                    </div>
+                                                    <p>{{ $review->comment }}</p>
                                                 </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
                                             </div>
-                                        </div>
-                                        <hr />
+                                            <hr />    
+                                            @endif
+                                        
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -320,7 +359,7 @@
                                             @else
                                             <input type="hidden" name="hvendor_id" value="{{ $product->vendor_id }}">
                                             @endif
-                                            
+
                                             <h4 class="mb-4">Write a Review</h4>
                                             <table class="table">
                                                 <thead>

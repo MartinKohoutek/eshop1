@@ -55,15 +55,48 @@
                                 <span class="btn btn-danger">Stock Out (neni skladem)</span>
                                 @endif
                                 <h3 class="mt-3 mt-lg-0 mb-0" id="dpname">{{ $product->product_name }}</h3>
+                                @php
+                                    $average = App\Models\Review::where('product_id', $product->id)->where('status', 1)->avg('rating');
+                                    $review_count = App\Models\Review::where('product_id', $product->id)->where('status', 1)->latest()->get(); 
+                                    @endphp
                                 <div class="product-rating d-flex align-items-center mt-2">
-                                    <div class="rates cursor-pointer font-13"> <i class="bx bxs-star text-warning"></i>
+                                    <div class="rates cursor-pointer font-13"> 
+                                        @if ($average == 0)
+                                        No Rating Yet
+                                        @elseif ($average == 1 || $average < 2)
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        @elseif ($average == 2 || $average < 3)
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        @elseif ($average == 3 || $average < 4)
                                         <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-warning"></i>
                                         <i class="bx bxs-star text-light-4"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        @elseif ($average == 4 || $average < 5)
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-light-4"></i>
+                                        @elseif ($average == 5 || $average < 5)
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        <i class="bx bxs-star text-warning"></i>
+                                        @endif
                                     </div>
                                     <div class="ms-1">
-                                        <p class="mb-0">(24 Ratings)</p>
+                                        <p class="mb-0">({{ count($review_count) }} Ratings)</p>
                                     </div>
                                 </div>
                                 @php
@@ -225,7 +258,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" data-bs-toggle="tab" href="#reviews" role="tab" aria-selected="false">
                             <div class="d-flex align-items-center">
-                                <div class="tab-title text-uppercase fw-500">(3) Reviews</div>
+                                <div class="tab-title text-uppercase fw-500">({{ count($review_count) }}) Reviews</div>
                             </div>
                         </a>
                     </li>
@@ -284,7 +317,7 @@
                                     $reviews = App\Models\Review::where('product_id', $product->id)->latest()->limit(5)->get();
                                     @endphp
 
-                                    <h5 class="mb-4">3 Reviews For The Product</h5>
+                                    <h5 class="mb-4">{{ count($review_count) }} Reviews For The Product</h5>
                                     <div class="review-list">
 
                                         @foreach ($reviews as $review)

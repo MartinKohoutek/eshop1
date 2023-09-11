@@ -282,6 +282,7 @@
                                 <div class="product-review">
                                     <h5 class="mb-4">3 Reviews For The Product</h5>
                                     <div class="review-list">
+                                        
                                         <div class="d-flex align-items-start">
                                             <div class="review-user">
                                                 <img src="{{ asset('frontend/assets/images/avatars/avatar-1.png') }}" width="65" height="65" class="rounded-circle" alt="" />
@@ -301,50 +302,38 @@
                                             </div>
                                         </div>
                                         <hr />
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-2.png') }}" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                </div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">David Buckley</h6>
-                                                    <p class="mb-0 ms-auto">February 22, 2021</p>
-                                                </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div class="d-flex align-items-start">
-                                            <div class="review-user">
-                                                <img src="{{ asset('frontend/assets/images/avatars/avatar-3.png') }}" width="65" height="65" class="rounded-circle" alt="" />
-                                            </div>
-                                            <div class="review-content ms-3">
-                                                <div class="rates cursor-pointer fs-6"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                </div>
-                                                <div class="d-flex align-items-center mb-2">
-                                                    <h6 class="mb-0">Peter Costanzo</h6>
-                                                    <p class="mb-0 ms-auto">February 26, 2021</p>
-                                                </div>
-                                                <p>Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan</p>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col col-lg-4">
                                 <div class="add-review bg-dark-1">
+                                    @guest
+                                    <p><b>For Add Product Review You Need to Login First <a href="{{ route('login') }}">Login Here</a></b></p>
+                                    @else
                                     <div class="form-body p-3">
                                         <h4 class="mb-4">Write a Review</h4>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="cell-level">&nbsp;</th>
+                                                    <th>1 Star</th>
+                                                    <th>2 Star</th>
+                                                    <th>3 Star</th>
+                                                    <th>4 Star</th>
+                                                    <th>5 Star</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cell-level">Quality</td>
+                                                    <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
+                                                    <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
+                                                    <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
+                                                    <td><input type="radio" name="quality" class="radio-sm" value="4"></td>
+                                                    <td><input type="radio" name="quality" class="radio-sm" value="5"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                         <div class="mb-3">
                                             <label class="form-label">Your Name</label>
                                             <input type="text" class="form-control rounded-0">
@@ -372,6 +361,7 @@
                                             <button type="button" class="btn btn-light btn-ecomm">Submit a Review</button>
                                         </div>
                                     </div>
+                                    @endguest
                                 </div>
                             </div>
                         </div>

@@ -75,11 +75,42 @@
                                             <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
                                                 <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
                                             </a>
-                                            <div class="rating font-12"> <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
+                                            @php
+                                                $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
+                                                @endphp
+                                            <div class="rating font-12">
+                                            @if ($average == 0)
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    @elseif ($average == 2 || $average < 3) <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($average == 3 || $average < 4) <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            @elseif ($average == 4 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-light-4"></i>
+                                                                @elseif ($average == 5 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    @endif
                                             </div>
                                             @php
                                             $amount = $item->selling_price - $item->discount_price;
@@ -189,11 +220,43 @@
                                                     <span class="text-white fs-5">${{ $product->selling_price }}</span>
                                                     @endif
                                                 </div>
-                                                <div class="cursor-pointer ms-auto"> <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
-                                                    <i class="bx bxs-star text-white"></i>
+
+                                                @php
+                                                $average = App\Models\Review::where('product_id', $product->id)->where('status', 1)->avg('rating');
+                                                @endphp
+                                                <div class="cursor-pointer ms-auto">
+                                                @if ($average == 0)
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    @elseif ($average == 2 || $average < 3) <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($average == 3 || $average < 4) <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            @elseif ($average == 4 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-light-4"></i>
+                                                                @elseif ($average == 5 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="product-action mt-2">

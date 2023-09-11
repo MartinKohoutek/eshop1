@@ -89,17 +89,48 @@
                                                 <span class="text-white fs-5">${{ $product->selling_price }}</span>
                                                 @endif
                                             </div>
-                                            <div class="cursor-pointer ms-auto"> <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
-                                                <i class="bx bxs-star text-white"></i>
+                                            @php
+                                            $average = App\Models\Review::where('product_id', $product->id)->where('status', 1)->avg('rating');
+                                            @endphp
+                                            <div class="cursor-pointer ms-auto">
+                                                @if ($average == 0)
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    <i class="bx bxs-star text-light-4"></i>
+                                                    @elseif ($average == 2 || $average < 3) <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($average == 3 || $average < 4) <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            @elseif ($average == 4 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-light-4"></i>
+                                                                @elseif ($average == 5 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    <i class="bx bxs-star text-warning"></i>
+                                                                    @endif
                                             </div>
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
                                                 <input type="hidden" id="product_id" value="{{ $product->id }}">
-                                                <a class="btn btn-light btn-ecomm" onclick="addToCart()"> <i class='bx bxs-cart-add'></i>Add to Cart</a> 
+                                                <a class="btn btn-light btn-ecomm" onclick="addToCart()"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
                                                 <a class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class='bx bx-zoom-in'></i>Quick View</a>
                                             </div>
                                         </div>
@@ -133,14 +164,14 @@
                                 <div class="card-header bg-transparent border-bottom-0">
                                     <div class="d-flex align-items-center justify-content-end gap-3">
 
-                                    <a id="{{ $product->id }}" onclick="addToCompare(this.id)">
-                                    <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
-                                    </div>
-                                </a>
-                                <a id="{{ $product->id }}" onclick="addToWishlist(this.id)">
-                                    <div class="product-wishlist"> <i class='bx bx-heart'></i>
-                                    </div>
-                                </a>
+                                        <a id="{{ $product->id }}" onclick="addToCompare(this.id)">
+                                            <div class="product-compare"><span><i class='bx bx-git-compare'></i> Compare</span>
+                                            </div>
+                                        </a>
+                                        <a id="{{ $product->id }}" onclick="addToWishlist(this.id)">
+                                            <div class="product-wishlist"> <i class='bx bx-heart'></i>
+                                            </div>
+                                        </a>
                                     </div>
                                 </div>
                                 <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" style="position: relative;">
@@ -184,7 +215,7 @@
                                         </div>
                                         <div class="product-action mt-2">
                                             <div class="d-grid gap-2">
-                                                <a id="{{ $product->id }}" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a> 
+                                                <a id="{{ $product->id }}" class="btn btn-light btn-ecomm"> <i class='bx bxs-cart-add'></i>Add to Cart</a>
                                                 <a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class='bx bx-zoom-in'></i>Quick View</a>
                                             </div>
                                         </div>

@@ -55,7 +55,10 @@ $featured = App\Models\Product::where('featured', 1)->orderBy('id', 'DESC')->lim
                                         <span class="text-white fs-5">${{ $item->selling_price }}</span>
                                         @endif
                                     </div>
-                                    <div class="cursor-pointer ms-auto"> <span>5.0</span> <i class="bx bxs-star text-white"></i>
+                                    @php
+                                    $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
+                                    @endphp
+                                    <div class="cursor-pointer ms-auto"> <span>{{ $average == NULL ? '0.0' : number_format($average, 1) }}</span> <i class="bx bxs-star text-white"></i>
                                     </div>
                                 </div>
                                 <div class="product-action mt-2">

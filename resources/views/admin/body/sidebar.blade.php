@@ -144,6 +144,19 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
+                <div class="menu-title">Review Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('pending.review') }}"><i class='bx bx-radio-circle'></i>Pending Reviews</a>
+                </li>
+                <li> <a href="{{ route('admin.blog.post') }}"><i class='bx bx-radio-circle'></i>Published Reviews</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>

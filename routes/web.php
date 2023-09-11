@@ -261,6 +261,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/admin/update/blog/post', 'UpdateBlogPost')->name('update.blog.post');
         Route::get('/admin/delete/blog/post/{id}', 'DeleteBlogPost')->name('delete.blog.post');
     });
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/admin/pending/review', 'PendingReview')->name('pending.review');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {

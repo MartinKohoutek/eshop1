@@ -34,4 +34,9 @@ class ReviewController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function PendingReview() {
+        $reviews = Review::where('status', 0)->orderBy('id', 'DESC')->get();
+        return view('backend.review.pending_review', compact('reviews'));
+    }
 }

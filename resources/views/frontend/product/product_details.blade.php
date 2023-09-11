@@ -320,7 +320,7 @@
                                     <h5 class="mb-4">{{ count($review_count) }} Reviews For The Product</h5>
                                     <div class="review-list">
 
-                                        @foreach ($reviews as $review)
+                                        @foreach ($reviews as $key => $review)
                                             @if ($review->status == 0)
                                                 
                                             @else
@@ -370,7 +370,10 @@
                                                     <p>{{ $review->comment }}</p>
                                                 </div>
                                             </div>
-                                            <hr />    
+                                                @if ($key+1 < count($reviews))
+                                                <hr />    
+                                                @endif
+
                                             @endif
                                         
                                         @endforeach
@@ -394,6 +397,27 @@
                                             @endif
 
                                             <h4 class="mb-4">Write a Review</h4>
+                                            
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Name</label>
+                                                <input type="text" class="form-control rounded-0" value="{{ Auth::user()->name }}" disabled>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Your Email</label>
+                                                <input type="text" class="form-control rounded-0" value="{{ Auth::user()->email }}" disabled>
+                                            </div>
+                                            <!-- <div class="mb-3">
+                                                <label class="form-label">Rating</label>
+                                                <select class="form-select rounded-0">
+                                                    <option selected>Choose Rating</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="3">4</option>
+                                                    <option value="3">5</option>
+                                                </select>
+                                            </div> -->
+                                            <hr>
                                             <table class="table">
                                                 <thead>
                                                     <tr>
@@ -407,7 +431,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td class="cell-level">Quality</td>
+                                                        <td class="cell-level">Rating</td>
                                                         <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
                                                         <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
                                                         <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
@@ -417,26 +441,7 @@
                                                 </tbody>
                                             </table>
                                             <div class="mb-3">
-                                                <label class="form-label">Your Name</label>
-                                                <input type="text" class="form-control rounded-0">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Your Email</label>
-                                                <input type="text" class="form-control rounded-0">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Rating</label>
-                                                <select class="form-select rounded-0">
-                                                    <option selected>Choose Rating</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="3">4</option>
-                                                    <option value="3">5</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Example textarea</label>
+                                                <label class="form-label">Your Comment</label>
                                                 <textarea name="comment" class="form-control rounded-0" rows="3"></textarea>
                                             </div>
                                             <div class="d-grid">

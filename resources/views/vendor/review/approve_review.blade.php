@@ -23,77 +23,79 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Serial Number</th>
-                            <th>Comment</th>
-                            <th>User</th>
+                            <th>#</th>
+                            <th>Image</th>
                             <th>Product</th>
+                            <th>User</th>
+                            <th>Comment</th>
                             <th>Rating</th>
-                            <th>Status</th>                            
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($reviews as $key => $item)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ Str::limit($item->comment, 60) }}</td>
-                            <td>{{ $item->user->name }}</td>
+                            <td><img src="{{ asset($item->product->product_thumbnail) }}" alt="" style="width: 40px; height: 40px"></td>
                             <td>{{ $item->product->product_name }}</td>
+                            <td>{{ $item->user->name }}</td>
+                            <td>{{ Str::limit($item->comment, 60) }}</td>
                             <td>
-                            @if ($item->rating == NULL)
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            @elseif ($item->rating == 1)
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            @elseif ($item->rating == 2)
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            @elseif ($item->rating == 3)
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            @elseif ($item->rating == 4)
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-secondary"></i>
-                            @elseif ($item->rating == 5)
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            <i class="bx bxs-star text-warning"></i>
-                            @endif
-
+                                @if ($item->rating == NULL)
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                @elseif ($item->rating == 1)
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                @elseif ($item->rating == 2)
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                @elseif ($item->rating == 3)
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                @elseif ($item->rating == 4)
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-secondary"></i>
+                                @elseif ($item->rating == 5)
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                <i class="bx bxs-star text-warning"></i>
+                                @endif
                             </td>
                             <td>
-                            @if ($item->status == 0)
-                            <span class="badge rounded-pill bg-warning">Pending</span>
-                            @elseif ($item->status == 1)
-                            <span class="badge rounded-pill bg-success">Published</span>
-                            @endif
+                                @if ($item->status == 0)
+                                <span class="badge rounded-pill bg-warning">Pending</span>
+                                @elseif ($item->status == 1)
+                                <span class="badge rounded-pill bg-success">Published</span>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>Serial Number</th>
-                            <th>Comment</th>
-                            <th>User</th>
+                            <th>#</th>
+                            <th>Image</th>
                             <th>Product</th>
+                            <th>User</th>
+                            <th>Comment</th>
                             <th>Rating</th>
                             <th>Status</th>
                         </tr>

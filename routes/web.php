@@ -265,6 +265,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(ReviewController::class)->group(function(){
         Route::get('/admin/pending/review', 'PendingReview')->name('pending.review');
         Route::get('/admin/review/approve/{id}', 'ReviewApprove')->name('review.approve');
+        Route::get('/admin/publish/review', 'PublishReview')->name('publish.review');
+        Route::get('/admin/delete/review/{id}', 'DeleteReview')->name('review.delete');
     });
 });
 

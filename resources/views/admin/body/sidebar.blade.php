@@ -149,7 +149,7 @@
             <ul>
                 <li> <a href="{{ route('pending.review') }}"><i class='bx bx-radio-circle'></i>Pending Reviews</a>
                 </li>
-                <li> <a href="{{ route('admin.blog.post') }}"><i class='bx bx-radio-circle'></i>Published Reviews</a>
+                <li> <a href="{{ route('publish.review') }}"><i class='bx bx-radio-circle'></i>Published Reviews</a>
                 </li>
             </ul>
         </li>

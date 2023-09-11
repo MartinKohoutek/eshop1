@@ -109,6 +109,10 @@ Route::middleware(['auth', 'role:vendor'])->group(function () {
         Route::get('/vendor/complete/return/order', 'VendorCompleteReturnOrder')->name('complete.return.order');
         Route::get('/vendor/order/details/{order_id}', 'VendorOrderDetails')->name('vendor.order.details');
     });
+
+    Route::controller(ReviewController::class)->group(function(){
+        Route::get('/vendor/all/review', 'VendorAllReview')->name('vendor.all.review');
+    });
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

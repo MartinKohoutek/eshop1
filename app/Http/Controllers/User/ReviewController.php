@@ -68,4 +68,10 @@ class ReviewController extends Controller
 
         return redirect()->back()->with($notification);
     }
+
+    public function VendorAllReview() {
+        $vendor_id = Auth::user()->id;
+        $reviews = Review::where('vendor_id', $vendor_id)->where('status', 1)->orderBy('id', 'DESC')->get();
+        return view('vendor.review.approve_review', compact('reviews'));
+    }
 }

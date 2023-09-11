@@ -53,6 +53,19 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Review Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('vendor.all.review') }}"><i class='bx bx-radio-circle'></i>All reviews</a>
+                </li>
+                <li> <a href="{{ route('vendor.add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
+                </li>
+            </ul>
+        </li>
        
         <li class="menu-label">Charts & Maps</li>
         <li>

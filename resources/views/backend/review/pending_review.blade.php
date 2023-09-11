@@ -36,7 +36,7 @@
                         @foreach ($reviews as $key => $item)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $item->comment }}</td>
+                            <td>{{ Str::limit($item->comment, 60) }}</td>
                             <td>{{ $item->user->name }}</td>
                             <td>{{ $item->product->product_name }}</td>
                             <td>
@@ -87,7 +87,7 @@
                             @endif
                             </td>
                             <td>
-                                <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info btn-sm">Approve</a>
+                                <a href="{{ route('review.approve', $item->id) }}" class="btn btn-info btn-sm">Approve</a>
                             </td>
                         </tr>
                         @endforeach

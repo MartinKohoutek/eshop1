@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Seo;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -43,6 +44,29 @@ class SiteSettingController extends Controller
 
         $notification = [
             'message' => 'Site Settings Updated Successfully!',
+            'alert-message' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function SeoSetting() {
+        $seo = Seo::find(1);
+        return view('backend.settings.seo_update', compact('seo'));
+    }
+
+    public function SeoSettingUpdate(Request $request) {
+        $seo = Seo::findOrFail($request->id);
+        
+        $seo->update([
+            'meta_title' => $request->meta_title,
+            'meta_author' => $request->meta_author,
+            'meta_keyword' => $request->meta_keyword,
+            'meta_description' => $request->meta_description,
+        ]);
+
+        $notification = [
+            'message' => 'SEO Settings Updated Successfully!',
             'alert-message' => 'success',
         ];
 

@@ -229,7 +229,7 @@
             <ul>
                 <li> <a href="{{ route('site.setting') }}"><i class='bx bx-radio-circle'></i>Site Setting</a>
                 </li>
-                <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
+                <li> <a href="{{ route('seo.setting') }}"><i class='bx bx-radio-circle'></i>SEO Settings</a>
                 </li>
                 <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
                 </li>

@@ -222,6 +222,21 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Site Setting</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('site.setting') }}"><i class='bx bx-radio-circle'></i>Site Setting</a>
+                </li>
+                <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
+                </li>
+                <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bx bx-category"></i>
                 </div>
                 <div class="menu-title">Application</div>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnController;
 use App\Http\Controllers\Backend\ShippingAreaController;
+use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\VendorOrderController;
@@ -271,6 +272,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/review/approve/{id}', 'ReviewApprove')->name('review.approve');
         Route::get('/admin/publish/review', 'PublishReview')->name('publish.review');
         Route::get('/admin/delete/review/{id}', 'DeleteReview')->name('review.delete');
+    });
+
+    Route::controller(SiteSettingController::class)->group(function(){
+        Route::get('/site/setting', 'SiteSetting')->name('site.setting');
     });
 });
 

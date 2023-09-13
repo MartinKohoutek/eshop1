@@ -6,6 +6,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
+	@php
+		$seo = App\Models\Seo::find(1);
+	@endphp
+	<meta name="title" content="{{ $seo->meta_title }}">
+	<meta name="author" content="{{ $seo->meta_author }}">
+	<meta name="keywords" content="{{ $seo->meta_keyword }}">
+	<meta name="description" content="{{ $seo->meta_description }}">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('frontend/assets/images/favicon-32x32.png') }}" type="image/png" />
 	<!--plugins-->

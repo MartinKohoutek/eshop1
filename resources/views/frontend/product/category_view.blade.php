@@ -1,5 +1,9 @@
 @extends('frontend.master_dashboard')
 @section('home')
+
+@section('title')
+    MKShop - {{ $bread_cat->category_name }} Category
+@endsection
 <!--start breadcrumb-->
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">

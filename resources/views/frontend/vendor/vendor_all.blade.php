@@ -1,5 +1,8 @@
 @extends('frontend.master_dashboard')
 @section('home')
+@section('title')
+    MKShop - All Vendors
+@endsection
 <section class="py-4">
     <div class="container">
         <div class="d-flex align-items-center">

@@ -1,5 +1,8 @@
 @extends('frontend.master_dashboard')
 @section('home')
+@section('title')
+    MKShop - Wishlist
+@endsection
 <div class="page-content">
     <!--start breadcrumb-->
     <section class="py-3 border-bottom d-none d-md-flex">

@@ -1,5 +1,9 @@
 @extends('frontend.master_dashboard')
 @section('home')
+
+@section('title')
+    MKShop - Multi Vendor Shop
+@endsection
 <div class="page-content">
     @include('frontend.home.home_slider')
     @include('frontend.home.home_information')

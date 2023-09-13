@@ -1,10 +1,14 @@
 @extends('frontend.master_dashboard')
 @section('home')
+
+@section('title')
+    MKShop - {{ $bread_subcat->category->category_name }} - {{ $bread_subcat->subcategory_name }} SubCategory
+@endsection
 <!--start breadcrumb-->
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
-            <h3 class="breadcrumb-title pe-3">{{ $bread_subcat->category_name }}</h3>
+            <h3 class="breadcrumb-title pe-3">{{ $bread_subcat->category->category_name }}</h3>
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">

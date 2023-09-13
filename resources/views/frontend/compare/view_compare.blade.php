@@ -1,5 +1,9 @@
 @extends('frontend.master_dashboard')
 @section('home')
+
+@section('title')
+    MKShop - Compare Products
+@endsection
 <div class="page-content">
     <!--start breadcrumb-->
     <section class="py-3 border-bottom d-none d-md-flex">

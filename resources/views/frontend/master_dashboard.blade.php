@@ -30,7 +30,7 @@
 		white-space: normal;
 	}
 </style>
-	<title>MKShop - Home</title>
+	<title>@yield('title')</title>
 </head>
 
 <body class="bg-theme bg-theme1"> <b class="screen-overlay"></b>

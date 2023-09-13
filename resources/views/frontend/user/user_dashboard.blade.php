@@ -1,5 +1,8 @@
 @extends('dashboard')
 @section('user')
+@section('title')
+    MKShop - User Dashboard
+@endsection
 <div class="page-content">
     <!--start breadcrumb-->
     <section class="py-3 border-bottom d-none d-md-flex">

@@ -276,6 +276,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::controller(SiteSettingController::class)->group(function(){
         Route::get('/site/setting', 'SiteSetting')->name('site.setting');
+        Route::post('/site/setting/update', 'SiteSettingUpdate')->name('site.setting.update');
     });
 });
 

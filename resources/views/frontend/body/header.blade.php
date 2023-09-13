@@ -57,6 +57,9 @@
             </nav>
         </div>
     </div>
+    @php
+        $settings = App\Models\SiteSetting::find(1);
+    @endphp
     <div class="header-content pb-3 pb-md-0">
         <div class="container">
             <div class="row align-items-center">
@@ -66,7 +69,7 @@
                         </div>
                         <div class="logo d-none d-lg-flex">
                             <a href="{{ url('/') }}">
-                                <img src="{{ asset('frontend/assets/images/logo-icon.png') }}" class="logo-icon" alt="" />
+                                <img src="{{ asset($settings->logo) }}" class="logo-icon" alt="" />
                             </a>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                     </div>
                     <div class="ms-2">
                         <p class="mb-0 font-13">CALL US NOW</p>
-                        <h5 class="mb-0">+011 5827918</h5>
+                        <h5 class="mb-0">{{ $settings->support_phone }}</h5>
                     </div>
                 </div>
                 <div class="col col-md-auto order-2 order-md-4">

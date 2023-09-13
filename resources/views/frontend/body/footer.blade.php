@@ -1,5 +1,8 @@
 <!--start footer section-->
 <footer>
+    @php
+        $settings = App\Models\SiteSetting::find(1);
+    @endphp
     <section class="py-4 bg-dark-1">
         <div class="container">
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-4">
@@ -8,20 +11,20 @@
                         <h6 class="mb-3 text-uppercase">Contact Info</h6>
                         <div class="address mb-3">
                             <p class="mb-0 text-uppercase text-white">Address</p>
-                            <p class="mb-0 font-12">123 Street Name, City, Australia</p>
+                            <p class="mb-0 font-12">{{ $settings->company_address }}</p>
                         </div>
                         <div class="phone mb-3">
                             <p class="mb-0 text-uppercase text-white">Phone</p>
-                            <p class="mb-0 font-13">Toll Free (123) 472-796</p>
-                            <p class="mb-0 font-13">Mobile : +91-9910XXXX</p>
+                            <p class="mb-0 font-13">Toll Free : {{ $settings->support_phone }}</p>
+                            <p class="mb-0 font-13">Mobile : {{ $settings->phone_one }}</p>
                         </div>
                         <div class="email mb-3">
                             <p class="mb-0 text-uppercase text-white">Email</p>
-                            <p class="mb-0 font-13">mail@example.com</p>
+                            <p class="mb-0 font-13">{{ $settings->email }}</p>
                         </div>
                         <div class="working-days mb-3">
                             <p class="mb-0 text-uppercase text-white">WORKING DAYS</p>
-                            <p class="mb-0 font-13">Mon - FRI / 9:30 AM - 6:30 PM</p>
+                            <p class="mb-0 font-13">{{ $settings->working_days }}</p>
                         </div>
                         <div class="working-days mb-3">
                             <p class="mb-0 text-uppercase text-white"><a href="">Vendor</a></p>
@@ -103,7 +106,7 @@
             <hr />
             <div class="row row-cols-1 row-cols-md-2 align-items-center">
                 <div class="col">
-                    <p class="mb-0">Copyright © 2021. All right reserved.</p>
+                    <p class="mb-0">{{ $settings->copyright }}</p>
                 </div>
                 <div class="col text-end">
                     <div class="payment-icon">

@@ -166,6 +166,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/product/inactive/{id}', 'ProductInactive')->name('product.inactive');
         Route::get('/product/active/{id}', 'ProductActive')->name('product.active');
         Route::get('/delete/product/{id}', 'DeleteProduct')->name('delete.product');
+
+        Route::get('/product/stock', 'ProductStock')->name('product.stock');
     });
 
     Route::controller(SliderController::class)->group(function(){

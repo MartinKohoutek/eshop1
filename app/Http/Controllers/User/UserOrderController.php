@@ -54,4 +54,8 @@ class UserOrderController extends Controller
         $orders = Order::where('user_id', Auth::id())->where('return_reason', '!=', NULL)->orderBy('id', 'DESC')->get();
         return view('frontend.user.return_order_view', compact('orders'));
     }
+
+    public function UserTrackOrder() {
+        return view('frontend.user.user_track_order');
+    }
 }

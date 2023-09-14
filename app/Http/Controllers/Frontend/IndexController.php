@@ -75,4 +75,16 @@ class IndexController extends Controller
             'images' => $images,
         ]);
     }
+
+    public function ProductSearch(Request $request) {
+        $request->validate([
+            'search' => 'required',
+        ]);
+
+        $item = $request->search;
+        $products = Product::where('product_name', 'LIKE', "%$item%")->get();
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $new_products = Product::orderBy('id', 'DESC')->limit(3)->get();
+        return view('frontend.product.search', compact('products', 'item', 'categories', 'new_products'));
+    }
 }

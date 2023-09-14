@@ -58,7 +58,7 @@
         </div>
     </div>
     @php
-        $settings = App\Models\SiteSetting::find(1);
+    $settings = App\Models\SiteSetting::find(1);
     @endphp
     <div class="header-content pb-3 pb-md-0">
         <div class="container">
@@ -75,15 +75,18 @@
                     </div>
                 </div>
                 <div class="col-12 col-md order-4 order-md-2">
-                    <div class="input-group flex-nowrap px-xl-4">
-                        <input type="text" class="form-control w-100" placeholder="Search for Products">
-                        <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
-                            <option selected>All Categories</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select> <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
-                    </div>
+                    <form action="{{ route('product.search') }}" method="post">
+                        @csrf
+                        <div class="input-group flex-nowrap px-xl-4">
+                            <input type="text" name="search" class="form-control w-100" placeholder="Search for Products">
+                            <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
+                                <option selected>All Categories</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select> <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+                        </div>
+                    </form>
                 </div>
                 <div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">
                     <div class="fs-1 text-white"><i class='bx bx-headphone'></i>
@@ -211,7 +214,7 @@
                     @endphp
 
                     @foreach ($categories as $cat)
-                    <li class="nav-item dropdown"> 
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}" data-bs-toggle="dropdown" data-bs-target="#cat{{$cat->id}}" role="button" aria-expanded="false">{{ $cat->category_name}} <i class='bx bx-chevron-down'></i></a>
                         <ul class="dropdown-menu" aria-labelledby="cat{{$cat->id}}">
                             @php

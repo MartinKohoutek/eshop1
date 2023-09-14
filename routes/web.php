@@ -367,3 +367,7 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/post/details/{id}/{slug}', 'BlogDetails');
     Route::get('/post/category/{id}/{slug}', 'BlogCategory');
 });
+
+Route::controller(IndexController::class)->group(function(){
+    Route::post('/search', 'ProductSearch')->name('product.search');
+});

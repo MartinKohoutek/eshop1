@@ -39,11 +39,11 @@
                         <div class="col-lg-8">
                             <div class="card shadow-none mb-0">
                                 <div class="card-body">
-                                    <form class="row g-3" method="post" action="{{ route('user.password.store') }}">
+                                    <form class="row g-3" method="post" action="{{ route('order.tracking') }}">
                                         @csrf
                                         <div class="col-12">
                                             <label class="form-label">Invoce Number</label>
-                                            <input type="password" name="old_password" class="form-control" placeholder="Your Order Invoice Number" required>
+                                            <input type="text" name="code" class="form-control" placeholder="Your Order Invoice Number" required>
                                         </div>
                 
                                         <div class="col-12">

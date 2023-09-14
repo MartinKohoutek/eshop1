@@ -58,4 +58,17 @@ class UserOrderController extends Controller
     public function UserTrackOrder() {
         return view('frontend.user.user_track_order');
     }
+
+    public function OrderTracking(Request $request) {
+        $track = Order::where('invoice_no', $request->code)->first();
+        if ($track) {
+            return view('frontend.tracking.track_order', compact('track'));
+        } else {
+            $notification = [
+                'message' => 'Invoice Number is Invalid',
+                'alert-type' => 'error',
+            ];
+            return redirect()->back()->with($notification);
+        }
+    }
 }

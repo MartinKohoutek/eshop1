@@ -78,7 +78,7 @@
                     <form action="{{ route('product.search') }}" method="post">
                         @csrf
                         <div class="input-group flex-nowrap px-xl-4">
-                            <input type="text" name="search" class="form-control w-100" placeholder="Search for Products">
+                            <input type="text" name="search" id="search" class="form-control w-100" placeholder="Search for Products">
                             <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
                                 <option selected>All Categories</option>
                                 <option value="1">One</option>
@@ -86,6 +86,7 @@
                                 <option value="3">Three</option>
                             </select> <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
                         </div>
+                        <div id="searchProducts"></div>
                     </form>
                 </div>
                 <div class="col col-md-auto order-3 d-none d-xl-flex align-items-center">

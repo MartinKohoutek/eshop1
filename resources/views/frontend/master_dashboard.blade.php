@@ -32,6 +32,7 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="https://js.stripe.com/v3/"></script>
+	
 	<style>
 	.table-responsive {
 		white-space: normal;
@@ -71,6 +72,7 @@
 	<script src="{{ asset('frontend/assets/js/app.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/index.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/product-details.js') }}"></script>
+	<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
 
 	<script>
 		$.ajaxSetup({

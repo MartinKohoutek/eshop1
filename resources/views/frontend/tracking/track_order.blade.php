@@ -54,7 +54,29 @@
 							<div class="card bg-transparent rounded-0 shadow-none">
 								<div class="card-body">
 									<div class="steps steps-light">
-										<a class="step-item active" href="javascript:;">
+                                        @if ($track->status == 'pending') 
+                                        <a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-check'></i></span>
+											</div>
+											<div class="step-label">Order Pending</div>
+										</a>
+										<a class="step-item" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-user-circle' ></i></span>
+											</div>
+											<div class="step-label">Order Confirmed</div>
+										</a>
+										<a class="step-item" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-car'></i></span>
+											</div>
+											<div class="step-label">Order Processed</div>
+										</a>
+										<a class="step-item" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-planet'></i></span>
+											</div>
+											<div class="step-label">Order Delivered</div>
+										</a>
+                                        @elseif ($track->status == 'confirmed')
+                                        <a class="step-item active" href="javascript:;">
 											<div class="step-progress"><span class="step-count"><i class='bx bx-check'></i></span>
 											</div>
 											<div class="step-label">Order Pending</div>
@@ -74,6 +96,50 @@
 											</div>
 											<div class="step-label">Order Delivered</div>
 										</a>
+                                        @elseif ($track->status == 'processing')   
+                                        <a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-check'></i></span>
+											</div>
+											<div class="step-label">Order Pending</div>
+										</a>
+										<a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-user-circle' ></i></span>
+											</div>
+											<div class="step-label">Order Confirmed</div>
+										</a>
+										<a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-car'></i></span>
+											</div>
+											<div class="step-label">Order Processed</div>
+										</a>
+										<a class="step-item" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-planet'></i></span>
+											</div>
+											<div class="step-label">Order Delivered</div>
+										</a>
+                                        @elseif ($track->status == 'delivered')
+                                        <a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-check'></i></span>
+											</div>
+											<div class="step-label">Order Pending</div>
+										</a>
+										<a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-user-circle' ></i></span>
+											</div>
+											<div class="step-label">Order Confirmed</div>
+										</a>
+										<a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-car'></i></span>
+											</div>
+											<div class="step-label">Order Processed</div>
+										</a>
+										<a class="step-item active" href="javascript:;">
+											<div class="step-progress"><span class="step-count"><i class='bx bx-planet'></i></span>
+											</div>
+											<div class="step-label">Order Delivered</div>
+										</a>
+                                        @endif
+										
 									</div>
 								</div>
 							</div>

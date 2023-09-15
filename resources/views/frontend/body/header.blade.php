@@ -74,11 +74,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md order-4 order-md-2">
+                <div class="col-12 col-md order-4 order-md-2 searchbox" style="position: relative;">
                     <form action="{{ route('product.search') }}" method="post">
                         @csrf
                         <div class="input-group flex-nowrap px-xl-4">
-                            <input type="text" name="search" id="search" class="form-control w-100" placeholder="Search for Products">
+                            <input onfocus="search_result_show()" onblur="search_result_hide()" type="text" name="search" id="search" class="form-control w-100" placeholder="Search for Products">
                             <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
                                 <option selected>All Categories</option>
                                 <option value="1">One</option>
@@ -257,3 +257,24 @@
     </div>
 </div>
 <!--end top header wrapper-->
+<style>
+    #searchProducts {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        z-index: 999;
+        border-radius: 8px;
+        margin-top: 5px;
+    }
+</style>
+<script>
+    function search_result_show() {
+        $('#searchProducts').slideDown();
+    }
+
+    function search_result_hide() {
+        $('#searchProducts').slideUp();
+    }
+</script>

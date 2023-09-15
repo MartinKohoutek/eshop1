@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReturnController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
@@ -281,6 +282,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/site/setting/update', 'SiteSettingUpdate')->name('site.setting.update');
         Route::get('/seo/setting', 'SeoSetting')->name('seo.setting');
         Route::post('/seo/setting/update', 'SeoSettingUpdate')->name('seo.setting.update');
+    });
+
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
     });
 });
 

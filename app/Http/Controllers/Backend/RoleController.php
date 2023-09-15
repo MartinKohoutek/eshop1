@@ -12,4 +12,22 @@ class RoleController extends Controller
         $permissions = Permission::all();
         return view('backend.pages.permission.all_permission', compact('permissions'));
     }
+
+    public function AddPermission() {
+        return view('backend.pages.permission.add_permission');
+    }
+
+    public function StorePermission(Request $request) {
+        $role = Permission::create([
+            'name' => $request->name,
+            'group_name' => $request->group_name,
+        ]);
+
+        $notification = [
+            'message' => 'Permission Inserted Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('all.permission')->with($notification);
+    }
 }

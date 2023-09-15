@@ -332,7 +332,7 @@
             <ul>
                 <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
                 </li>
-                <li> <a href="charts-chartjs.html"><i class='bx bx-radio-circle'></i>Add Permision</a>
+                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
                 </li>
             </ul>
         </li>

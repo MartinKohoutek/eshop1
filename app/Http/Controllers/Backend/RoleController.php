@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class RoleController extends Controller
 {
@@ -55,6 +56,57 @@ class RoleController extends Controller
 
         $notification = [
             'message' => 'Permission Deleted Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function AllRoles() {
+        $roles = Role::all();
+        return view('backend.pages.roles.all_roles', compact('roles'));
+    }
+
+    public function AddRole() {
+        return view('backend.pages.roles.add_role');
+    }
+
+    public function StoreRole(Request $request) {
+        $role = Role::create([
+            'name' => $request->name,
+        ]);
+
+        $notification = [
+            'message' => 'Role Inserted Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
+    }
+
+    public function EditRole($id) {
+        $role = Role::findOrFail($id);
+        return view('backend.pages.roles.edit_role', compact('role'));
+    }
+
+    public function UpdateRole(Request $request) {
+        Role::findOrFail($request->id)->update([
+            'name' => $request->name,
+        ]);
+
+        $notification = [
+            'message' => 'Role Updated Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('all.roles')->with($notification);
+    }
+
+    public function DeleteRole($id) {
+        Role::findOrFail($id)->delete();
+
+        $notification = [
+            'message' => 'Role Deleted Successfully!',
             'alert-type' => 'success',
         ];
 

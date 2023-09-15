@@ -292,6 +292,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
     });
+
+    Route::controller(RoleController::class)->group(function(){
+        Route::get('/all/roles', 'AllRoles')->name('all.roles');
+        Route::get('/add/role', 'AddRole')->name('add.role');
+        Route::post('/store/role', 'StoreRole')->name('store.role');
+        Route::get('/edit/role/{id}', 'EditRole')->name('edit.role');
+        Route::post('/update/role', 'UpdateRole')->name('update.role');
+        Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {

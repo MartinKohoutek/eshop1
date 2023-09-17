@@ -40,9 +40,14 @@
                                     </div>
                                 </div>
 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultAll">
+                                    <label class="form-check-label" for="flexCheckDefaultAll">Permission All</label>
+                                </div>
+
                                 <hr>
 
-                                @foreach ($permission_groups as $group)                                    
+                                @foreach ($permission_groups as $group)
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <div class="form-check">
@@ -50,11 +55,16 @@
                                             <label class="form-check-label" for="flexCheckDefault">{{ $group->group_name }}</label>
                                         </div>
                                     </div>
+                                    @php
+                                    $permissions = App\Models\User::getPermissionsByGroupName($group->group_name);
+                                    @endphp
                                     <div class="form-group col-sm-9 text-secondary">
+                                        @foreach ($permissions as $permission)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+                                            <label class="form-check-label" for="flexCheckDefault">{{ $permission->name }}</label>
                                         </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 @endforeach
@@ -73,4 +83,13 @@
         </div>
     </div>
 </div>
+<script>
+    $('#flexCheckDefaultAll').on('click', function(){
+        if ($(this).is(':checked')) {
+            $('input[type=checkbox]').prop('checked', true);
+        } else {
+            $('input[type=checkbox]').prop('checked', false);
+        }
+    });
+</script>
 @endsection

@@ -22,7 +22,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('role.permission.store') }}" method="post" id="myForm">
+                            <form action="{{ route('admin.roles.update', $role->id) }}" method="post" id="myForm">
                                 @csrf
 
                                 <div class="row mb-3">
@@ -66,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-sm-3"></div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="submit" class="btn btn-primary px-4" value="Add Role" />
+                                        <input type="submit" class="btn btn-primary px-4" value="Save Changes" />
                                     </div>
                                 </div>
                             </form>

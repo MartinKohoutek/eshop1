@@ -334,6 +334,8 @@
                 </li>
                 <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
                 </li>
+                <li> <a href="{{ route('add.roles.permission') }}"><i class='bx bx-radio-circle'></i>Roles in Permission</a>
+                </li>
             </ul>
         </li>
         <li>

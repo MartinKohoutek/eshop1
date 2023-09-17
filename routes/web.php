@@ -300,6 +300,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/role/{id}', 'EditRole')->name('edit.role');
         Route::post('/update/role', 'UpdateRole')->name('update.role');
         Route::get('/delete/role/{id}', 'DeleteRole')->name('delete.role');
+
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
     });
 });
 

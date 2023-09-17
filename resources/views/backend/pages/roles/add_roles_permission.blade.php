@@ -22,7 +22,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('store.role') }}" method="post" id="myForm">
+                            <form action="{{ route('role.permission.store') }}" method="post" id="myForm">
                                 @csrf
 
                                 <div class="row mb-3">
@@ -30,7 +30,7 @@
                                         <h6 class="mb-0">Roles Name</h6>
                                     </div>
                                     <div class="form-group col-sm-9 text-secondary">
-                                        <select name="group_name" class="form-select mb-3">
+                                        <select name="role_id" class="form-select mb-3">
                                             <option selected="">Select Group</option>
 
                                             @foreach ($roles as $role)
@@ -51,7 +51,7 @@
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <input value="" id="flexCheckDefault" class="form-check-input" type="checkbox" >
                                             <label class="form-check-label" for="flexCheckDefault">{{ $group->group_name }}</label>
                                         </div>
                                     </div>
@@ -61,8 +61,8 @@
                                     <div class="form-group col-sm-9 text-secondary">
                                         @foreach ($permissions as $permission)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">{{ $permission->name }}</label>
+                                            <input name="permission[]" value="{{ $permission->id }}" id="" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault{{$permission->id}}">{{ $permission->name }}</label>
                                         </div>
                                         @endforeach
                                     </div>

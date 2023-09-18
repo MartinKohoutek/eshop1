@@ -15,7 +15,7 @@
         </div>
         <div class="ms-auto">
             <div class="btn-group">
-                <a href="{{ route('add.roles.permission') }}" class="btn btn-primary">Add Role</a>
+                <a href="{{ route('add.roles.permission') }}" class="btn btn-primary">Add Roles In Permission</a>
             </div>
         </div>
     </div>
@@ -30,6 +30,7 @@
                         <tr>
                             <th>Serial Number</th>
                             <th>Role Name</th>
+                            <th>Permissions</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,8 +40,13 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>
+                                @foreach ($item->permissions as $perm)
+                                <span class="badge rouned-pill bg-danger">{{ $perm->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 <a href="{{ route('admin.edit.role', $item->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('delete.role', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('admin.delete.role', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                         @endforeach
@@ -49,6 +55,7 @@
                         <tr>
                             <th>Serial Number</th>
                             <th>Role Name</th>
+                            <th>Permissions</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>

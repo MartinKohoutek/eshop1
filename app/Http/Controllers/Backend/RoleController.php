@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
+use function PHPUnit\Framework\isNull;
+
 class RoleController extends Controller
 {
     public function AllPermission() {
@@ -165,5 +167,19 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles.permission')->with($notification);
+    }
+
+    public function AdminRolesDelete($id) {
+        $role = Role::findOrFail($id);
+        if (!is_null($role)) {
+            $role->delete();
+        }
+
+        $notification = [
+            'message' => 'Role Permission Deleted Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

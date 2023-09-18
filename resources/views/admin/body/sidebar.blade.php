@@ -19,6 +19,7 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        @if (Auth::user()->can('brand.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -26,12 +27,18 @@
                 <div class="menu-title">Brand</div>
             </a>
             <ul>
+                @if (Auth::user()->can('brand.list'))
                 <li> <a href="{{ route('all.brands') }}"><i class='bx bx-radio-circle'></i>All Brands</a>
                 </li>
+                @endif
+                @if (Auth::user()->can('brand.add'))
                 <li> <a href="{{ route('add.brand') }}"><i class='bx bx-radio-circle'></i>Add Brand</a>
                 </li>
+                @endif
             </ul>
         </li>
+        @endif
+        @if (Auth::user()->can('category.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -39,12 +46,17 @@
                 <div class="menu-title">Category</div>
             </a>
             <ul>
+                @if (Auth::user()->can('category.list'))
                 <li> <a href="{{ route('all.categories') }}"><i class='bx bx-radio-circle'></i>All Categories</a>
                 </li>
+                @endif
+                @if (Auth::user()->can('category.add'))
                 <li> <a href="{{ route('add.category') }}"><i class='bx bx-radio-circle'></i>Add Category</a>
                 </li>
+                @endif
             </ul>
         </li>
+        @endif
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -153,6 +165,7 @@
                 </li>
             </ul>
         </li>
+        @if (Auth::user()->can('product.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -160,12 +173,17 @@
                 <div class="menu-title">Product Manage</div>
             </a>
             <ul>
+                @if (Auth::user()->can('product.list'))
                 <li> <a href="{{ route('all.products') }}"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
+                @endif
+                @if (Auth::user()->can('product.add'))
                 <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
                 </li>
+                @endif
             </ul>
         </li>
+        @endif
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>

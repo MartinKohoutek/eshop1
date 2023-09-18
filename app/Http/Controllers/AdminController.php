@@ -161,4 +161,34 @@ class AdminController extends Controller
 
         return redirect()->route('all.admin')->with($notification);
     }
+
+    public function EditAdminRole($id) {
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('backend.admins.edit_admin', compact('user', 'roles'));
+    }
+
+    public function AdminUserUpdate(Request $request, $id) {
+        $user = User::findOrFail($id);
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role = 'admin';
+        $user->status = 'active';
+        $user->save();
+
+        $user->roles()->detach();
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        $notification = [
+            'message' => 'Admin Account Updated Successfully!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+    }
 }

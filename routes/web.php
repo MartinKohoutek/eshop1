@@ -308,6 +308,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/admin/roles/update/{id}', 'AdminRolesUpdate')->name('admin.roles.update');
         Route::get('/admin/delete/roles/{id}', 'AdminRolesDelete')->name('admin.delete.role');
     });
+
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {

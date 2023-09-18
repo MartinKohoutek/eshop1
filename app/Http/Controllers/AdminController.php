@@ -126,4 +126,9 @@ class AdminController extends Controller
 
         return redirect()->route('inactive.vendor')->with($notification);
     }
+
+    public function AllAdmin() {
+        $admins = User::where('role', 'admin')->latest()->get();
+        return view('backend.admins.all_admin', compact('admins'));
+    }
 }

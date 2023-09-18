@@ -340,6 +340,20 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-label">Admin Manage</li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-line-chart"></i>
+                </div>
+                <div class="menu-title">Admin Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.admin') }}"><i class='bx bx-radio-circle'></i>All Admin</a>
+                </li>
+                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>Add Admin</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="https://themeforest.net/user/codervent" target="_blank">
                 <div class="parent-icon"><i class="bx bx-support"></i>

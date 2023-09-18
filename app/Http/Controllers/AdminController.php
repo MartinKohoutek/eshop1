@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 use function Ramsey\Uuid\v1;
 use function Symfony\Component\String\b;
@@ -130,5 +131,10 @@ class AdminController extends Controller
     public function AllAdmin() {
         $admins = User::where('role', 'admin')->latest()->get();
         return view('backend.admins.all_admin', compact('admins'));
+    }
+
+    public function AddAmin() {
+        $roles = Role::all();
+        return view('backend.admins.add_admin', compact('roles'));
     }
 }

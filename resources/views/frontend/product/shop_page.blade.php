@@ -2,13 +2,13 @@
 @section('home')
 
 @section('title')
-    MKShop - {{ $bread_cat->category_name }} Category
+MKShop - Shop Page
 @endsection
 <!--start breadcrumb-->
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
-            <h3 class="breadcrumb-title pe-3">{{ $bread_cat->category_name }}</h3>
+            <h3 class="breadcrumb-title pe-3">Shop Page</h3>
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -16,7 +16,7 @@
                         </li>
                         <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $bread_cat->category_name }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">Shop Page</li>
                     </ol>
                 </nav>
             </div>
@@ -40,24 +40,136 @@
                                     <div class="btn-mobile-filter-close btn-close ms-auto cursor-pointer"></div>
                                 </div>
                                 <hr class="d-flex d-xl-none" />
-                                <div class="product-categories">
-                                    <h6 class="text-uppercase mb-3">Categories</h6>
+                                <div class="price-range">
+                                    <h6 class="text-uppercase mb-3">Price</h6>
+                                    <div class="my-4" id="slider"></div>
+                                    <div class="d-flex align-items-center">
+                                        <button type="button" class="btn btn-white btn-sm text-uppercase rounded-0 font-13 fw-500">Filter</button>
+                                        <div class="ms-auto">
+                                            <p class="mb-0">Price: $200.00 - $900.00</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="size-range">
+                                    <h6 class="text-uppercase mb-3">Size</h6>
                                     <ul class="list-unstyled mb-0 categories-list">
-                                        @foreach ($categories as $category)
-                                        @php
-                                        $catProducts = App\Models\Product::where('category_id', $category->id)->where('status', 1)->get();
-                                        @endphp
                                         <li>
-                                            <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}">
-                                                <img src="{{ asset($category->category_image) }}" alt="" style="width: 30px; height: 30px; margin-right: 10px">
-                                                {{ $category->category_name}}
-                                                <span class="float-end badge rounded-pill bg-light">{{ count($catProducts) }}</span>
-                                            </a>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Small">
+                                                <label class="form-check-label" for="Small">Small</label>
+                                            </div>
                                         </li>
-                                        @endforeach
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Medium">
+                                                <label class="form-check-label" for="Medium">Medium</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Large">
+                                                <label class="form-check-label" for="Large">Large</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="ExtraLarge">
+                                                <label class="form-check-label" for="ExtraLarge">Extra Large</label>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
-                                
+                                <hr>
+                                <div class="product-brands">
+                                    <h6 class="text-uppercase mb-3">Brands</h6>
+                                    <ul class="list-unstyled mb-0 categories-list">
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Adidas">
+                                                <label class="form-check-label" for="Adidas">Adidas (15)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Armani">
+                                                <label class="form-check-label" for="Armani">Armani (26)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="CalvinKlein">
+                                                <label class="form-check-label" for="CalvinKlein">Calvin Klein (24)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Columbia">
+                                                <label class="form-check-label" for="Columbia">Columbia (38)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="JhonPlayers">
+                                                <label class="form-check-label" for="JhonPlayers">Jhon Players (48)</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="Diesel">
+                                                <label class="form-check-label" for="Diesel">Diesel (64)</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr>
+                                <div class="product-colors">
+                                    <h6 class="text-uppercase mb-3">Colors</h6>
+                                    <ul class="list-unstyled mb-0 categories-list">
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-black"></div>
+                                                <p class="mb-0 ms-3">Black</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-warning"></div>
+                                                <p class="mb-0 ms-3">Yellow</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-danger"></div>
+                                                <p class="mb-0 ms-3">Red</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-primary"></div>
+                                                <p class="mb-0 ms-3">Blue</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-white"></div>
+                                                <p class="mb-0 ms-3">White</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-success"></div>
+                                                <p class="mb-0 ms-3">Green</p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="d-flex align-items-center cursor-pointer">
+                                                <div class="color-indigator bg-info"></div>
+                                                <p class="mb-0 ms-3">Sky Blue</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -229,38 +341,38 @@
                                                 $average = App\Models\Review::where('product_id', $product->id)->where('status', 1)->avg('rating');
                                                 @endphp
                                                 <div class="cursor-pointer ms-auto">
-                                                @if ($average == 0)
-                                                <i class="bx bxs-star text-light-4"></i>
+                                                    @if ($average == 0)
                                                     <i class="bx bxs-star text-light-4"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
-                                                @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    @elseif ($average == 2 || $average < 3) <i class="bx bxs-star text-warning"></i>
-                                                        <i class="bx bxs-star text-warning"></i>
+                                                    @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
                                                         <i class="bx bxs-star text-light-4"></i>
                                                         <i class="bx bxs-star text-light-4"></i>
                                                         <i class="bx bxs-star text-light-4"></i>
-                                                        @elseif ($average == 3 || $average < 4) <i class="bx bxs-star text-warning"></i>
-                                                            <i class="bx bxs-star text-warning"></i>
+                                                        <i class="bx bxs-star text-light-4"></i>
+                                                        @elseif ($average == 2 || $average < 3) <i class="bx bxs-star text-warning"></i>
                                                             <i class="bx bxs-star text-warning"></i>
                                                             <i class="bx bxs-star text-light-4"></i>
                                                             <i class="bx bxs-star text-light-4"></i>
-                                                            @elseif ($average == 4 || $average < 5) <i class="bx bxs-star text-warning"></i>
-                                                                <i class="bx bxs-star text-warning"></i>
+                                                            <i class="bx bxs-star text-light-4"></i>
+                                                            @elseif ($average == 3 || $average < 4) <i class="bx bxs-star text-warning"></i>
                                                                 <i class="bx bxs-star text-warning"></i>
                                                                 <i class="bx bxs-star text-warning"></i>
                                                                 <i class="bx bxs-star text-light-4"></i>
-                                                                @elseif ($average == 5 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                <i class="bx bxs-star text-light-4"></i>
+                                                                @elseif ($average == 4 || $average < 5) <i class="bx bxs-star text-warning"></i>
                                                                     <i class="bx bxs-star text-warning"></i>
                                                                     <i class="bx bxs-star text-warning"></i>
                                                                     <i class="bx bxs-star text-warning"></i>
-                                                                    <i class="bx bxs-star text-warning"></i>
-                                                                    @endif
+                                                                    <i class="bx bxs-star text-light-4"></i>
+                                                                    @elseif ($average == 5 || $average < 5) <i class="bx bxs-star text-warning"></i>
+                                                                        <i class="bx bxs-star text-warning"></i>
+                                                                        <i class="bx bxs-star text-warning"></i>
+                                                                        <i class="bx bxs-star text-warning"></i>
+                                                                        <i class="bx bxs-star text-warning"></i>
+                                                                        @endif
                                                 </div>
                                             </div>
                                             <div class="product-action mt-2">

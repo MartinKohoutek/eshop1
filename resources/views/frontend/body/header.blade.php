@@ -224,7 +224,7 @@
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="contact-us.html">Contact Us </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Store</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('shop.page') }}">Our Store</a>
                     </li>
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">My Account <i class='bx bx-chevron-down'></i></a>
                         <ul class="dropdown-menu">

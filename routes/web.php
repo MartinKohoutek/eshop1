@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
@@ -406,4 +407,8 @@ Route::controller(BlogController::class)->group(function(){
 Route::controller(IndexController::class)->group(function(){
     Route::post('/search', 'ProductSearch')->name('product.search');
     Route::post('/search-product', 'SearchProduct');
+});
+
+Route::controller(ShopController::class)->group(function(){
+    Route::get('/shop', 'ShopPage')->name('shop.page');
 });

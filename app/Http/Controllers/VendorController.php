@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Notifications\VendorRegNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rules\Password;
 
 class VendorController extends Controller
@@ -110,6 +112,9 @@ class VendorController extends Controller
             'message' => 'Vendor Registered Successfully!',
             'alert-type' => 'success'
         ];
+
+        $notification_user = User::where('role', 'admin')->get();
+        Notification::send($notification_user, new VendorRegNotification($request));
 
         return redirect()->route('vendor.login')->with($notification);
     }

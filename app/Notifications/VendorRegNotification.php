@@ -7,16 +7,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class OrderComplete extends Notification
+class VendorRegNotification extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($name)
+    public function __construct($request)
     {
-        $this->name = $name;
+        $this->request = $request;
     }
 
     /**
@@ -48,8 +48,8 @@ class OrderComplete extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'New Order Added in Shop',
-            'title' => 'New Order',
+            'message' => 'New Vendor Registered',
+            'title' => 'New Vendor',
         ];
     }
 }

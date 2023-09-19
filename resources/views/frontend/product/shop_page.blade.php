@@ -58,7 +58,7 @@ MKShop - Shop Page
                                             <li>
                                                 <div class="form-check">
                                                     <input onchange="this.form.submit()" @if (!empty($filterCat) && in_array($category->category_slug, $filterCat)) checked @endif class="form-check-input" name="category[]" type="checkbox" value="{{ $category->category_slug }}" id="checkbox{{ $category->id }}">
-                                                    <label class="form-check-label" for="Small">{{ $category->category_name }} ({{ count($catProducts) }})</label>
+                                                    <label class="form-check-label" for="checkbox{{ $category->id }}">{{ $category->category_name }} ({{ count($catProducts) }})</label>
                                                 </div>
                                             </li>
                                             @endforeach
@@ -107,44 +107,25 @@ MKShop - Shop Page
                                     </div>
                                     <hr>
                                     <div class="product-brands">
+                                        @if (!empty($_GET['brand']))
+                                        @php
+                                            $filterBrand = explode(',', $_GET['brand']);
+                                        @endphp
+                                            
+                                        @endif
                                         <h6 class="text-uppercase mb-3">Brands</h6>
                                         <ul class="list-unstyled mb-0 categories-list">
+                                            @foreach ($brands as $brand)
+                                            @php
+                                            $brandProducts = App\Models\Product::where('brand_id', $brand->id)->where('status', 1)->get();
+                                            @endphp
                                             <li>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="Adidas">
-                                                    <label class="form-check-label" for="Adidas">Adidas (15)</label>
+                                                    <input onchange="this.form.submit()" @if (!empty($filterBrand) && in_array($brand->brand_slug, $filterBrand)) checked @endif class="form-check-input" name="brand[]" type="checkbox" value="{{ $brand->brand_slug }}" id="checkboxBrand{{ $brand->id }}">
+                                                    <label class="form-check-label" for="checkboxBrand{{ $brand->id }}">{{ $brand->brand_name }} ({{ count($brandProducts) }})</label>
                                                 </div>
                                             </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="Armani">
-                                                    <label class="form-check-label" for="Armani">Armani (26)</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="CalvinKlein">
-                                                    <label class="form-check-label" for="CalvinKlein">Calvin Klein (24)</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="Columbia">
-                                                    <label class="form-check-label" for="Columbia">Columbia (38)</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="JhonPlayers">
-                                                    <label class="form-check-label" for="JhonPlayers">Jhon Players (48)</label>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="Diesel">
-                                                    <label class="form-check-label" for="Diesel">Diesel (64)</label>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <hr>

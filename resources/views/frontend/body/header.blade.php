@@ -163,49 +163,38 @@
                     <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">Categories <i class='bx bx-chevron-down'></i></a>
                         <div class="dropdown-menu dropdown-large-menu">
                             <div class="row">
-                                @foreach ($categories as $cat)
                                 <div class="col-md-4">
-
-                                    <h6 class="large-menu-title">{{ $cat->category_name }} <img src="{{ asset($cat->category_image) }}" alt="" style="width: 30px; height: 30px"></h6>
-
+                                    <!-- <h6 class="large-menu-title"> </h6> -->
                                     <ul class="">
-                                        <!-- <li><a href="#">Casual T-Shirts</a>
+                                        @foreach ($categories as $cat)
+                                        @if ($loop->index < 5)
+                                        <li><a href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}"><img src="{{ asset($cat->category_image) }}" alt="" style="width: 30px; height: 30px"> {{ $cat->category_name }}</a>
                                         </li>
-                                        <li><a href="#">Formal Shirts</a> -->
+                                        @endif
+                                        @endforeach
                                     </ul>
                                 </div>
-                                @endforeach
-                                <!-- end col-3 -->
-                                <!-- <div class="col-md-4">
-                                    <h6 class="large-menu-title">Electronics</h6>
+
+                                <div class="col-md-4">
+                                    <!-- <h6 class="large-menu-title">Electronics</h6> -->
                                     <ul class="">
-                                        <li><a href="#">Mobiles</a>
+                                        @foreach ($categories as $cat)
+                                        @if ($loop->index >= 5)
+                                        <li><a href="{{ url('product/category/'.$cat->id.'/'.$cat->category_slug) }}"><img src="{{ asset($cat->category_image) }}" alt="" style="width: 30px; height: 30px"> {{ $cat->category_name }}</a>
                                         </li>
-                                        <li><a href="#">Laptops</a>
-                                        </li>
-                                        <li><a href="#">Macbook</a>
-                                        </li>
-                                        <li><a href="#">Televisions</a>
-                                        </li>
-                                        <li><a href="#">Lighting</a>
-                                        </li>
-                                        <li><a href="#">Smart Watch</a>
-                                        </li>
-                                        <li><a href="#">Galaxy Phones</a>
-                                        </li>
-                                        <li><a href="#">PC Monitors</a>
-                                        </li>
+                                        @endif
+                                        @endforeach
                                     </ul>
-                                </div> -->
-                                <!-- end col-3 -->
-                                <!-- <div class="col-md-4">
+                                </div>
+
+                                <div class="col-md-4">
                                     <div class="pramotion-banner1">
                                         <img src="{{ asset('frontend/assets/images/gallery/menu-img.jpg') }}" class="img-fluid" alt="" />
                                     </div>
-                                </div> -->
-                                <!-- end col-3 -->
+                                </div>
+
                             </div>
-                            <!-- end row -->
+
                         </div>
                         <!-- dropdown-large.// -->
                     </li>

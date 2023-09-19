@@ -5,6 +5,7 @@
 MKShop - Shop Page
 @endsection
 <!--start breadcrumb-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
@@ -45,9 +46,9 @@ MKShop - Shop Page
                                     <div class="size-range">
                                         @if (!empty($_GET['category']))
                                         @php
-                                            $filterCat = explode(',', $_GET['category']);
+                                        $filterCat = explode(',', $_GET['category']);
                                         @endphp
-                                            
+
                                         @endif
                                         <h6 class="text-uppercase mb-3">Categories</h6>
                                         <ul class="list-unstyled mb-0 categories-list">
@@ -67,9 +68,11 @@ MKShop - Shop Page
                                     <hr>
                                     <div class="price-range">
                                         <h6 class="text-uppercase mb-3">Price</h6>
-                                        <div class="my-4" id="slider"></div>
+                                        <div class="my-4 price-filter-range" id="slider-range" data-min="0" data-max="2000"></div>
                                         <div class="d-flex align-items-center">
-                                            <button type="button" class="btn btn-white btn-sm text-uppercase rounded-0 font-13 fw-500">Filter</button>
+                                            <input type="hidden" name="price_range" id="price_range" value="">
+                                            <input type="text" id="amount" value="$0 - $2000" readonly="">
+                                            <button type="submit" class="btn btn-white btn-sm text-uppercase rounded-0 font-13 fw-500">Filter</button>
                                             <div class="ms-auto">
                                                 <p class="mb-0">Price: $200.00 - $900.00</p>
                                             </div>
@@ -109,9 +112,9 @@ MKShop - Shop Page
                                     <div class="product-brands">
                                         @if (!empty($_GET['brand']))
                                         @php
-                                            $filterBrand = explode(',', $_GET['brand']);
+                                        $filterBrand = explode(',', $_GET['brand']);
                                         @endphp
-                                            
+
                                         @endif
                                         <h6 class="text-uppercase mb-3">Brands</h6>
                                         <ul class="list-unstyled mb-0 categories-list">
@@ -426,4 +429,28 @@ MKShop - Shop Page
     </div>
 </section>
 <!--end shop area-->
+<script>
+    $(document).ready(function() {
+        if ($('#slider-range').length > 0) {
+            const max_price = parseInt($('#slider-range').data('max'));
+            const min_price = parseInt($('#slider-range').data('min'));
+            let price_range = min_price + "-" + max_price;
+
+            let price = price_range.split('-');
+
+            $("#slider-range").slider({
+                range: true,
+                // orientation: "horizontal",
+                min: min_price,
+                max: max_price,
+                values: price,
+                // step: 100,
+                slide: function(event, ui) {
+                    $("#amount").val('$'+ui.values[0] + "-" + '$' + ui.values[1]);
+                    $("#price_range").val(ui.values[0] + "-" + ui.values[1]);
+                }
+            });
+        }
+    });
+</script>
 @endsection

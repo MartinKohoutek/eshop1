@@ -28,6 +28,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('frontend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('frontend/assets/css/icons.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" type="text/css" media="all" />
+	<link href="{{ asset('frontend/assets/css/price_range_style.css') }}" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -73,6 +75,7 @@
 	<script src="{{ asset('frontend/assets/js/index.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/product-details.js') }}"></script>
 	<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
 	<script>
 		$.ajaxSetup({

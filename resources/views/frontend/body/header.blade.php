@@ -19,15 +19,15 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">USD</a>
+                    <!-- <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">USD</a>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
                             <li><a class="dropdown-item" href="#">USD</a>
                             </li>
                             <li><a class="dropdown-item" href="#">EUR</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item dropdown">
+                    </li> -->
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                             <div class="lang d-flex gap-1">
                                 <div><i class="flag-icon flag-icon-um"></i>
@@ -44,15 +44,24 @@
                             <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-cn me-2"></i><span>Chinese</span></a>
                             <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-ae me-2"></i><span>Arabic</span></a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
+                @php
+                    $siteSettings = App\Models\SiteSetting::find(1);
+                @endphp
                 <ul class="navbar-nav social-link ms-lg-2 ms-auto">
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-facebook'></i></a>
+                    @if ($siteSettings->facebook != null)
+                    <li class="nav-item"> <a class="nav-link" href="{{ url($siteSettings->facebook) }}"><i class='bx bxl-facebook'></i></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-twitter'></i></a>
+                    @endif
+                    @if ($siteSettings->twitter != null)
+                    <li class="nav-item"> <a class="nav-link" href="{{ url($siteSettings->twitter) }}"><i class='bx bxl-twitter'></i></a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;"><i class='bx bxl-linkedin'></i></a>
+                    @endif
+                    @if ($siteSettings->instagram != null)
+                    <li class="nav-item"> <a class="nav-link" href="{{ url($siteSettings->instagram) }}"><i class='bx bxl-instagram'></i></a>
                     </li>
+                    @endif
                 </ul>
             </nav>
         </div>

@@ -17,8 +17,10 @@
                             </li>
                             <li class="breadcrumb-item"><a href="javascript:;">{{ $product['category']['category_name'] }}</a>
                             </li>
+                            @if ($product->subcategory_id != null)
                             <li class="breadcrumb-item"><a href="javascript:;">{{ $product['subcategory']['subcategory_name'] }}</a>
                             </li>
+                            @endif
                             <li class="breadcrumb-item active" aria-current="page">Product Details</li>
                         </ol>
                     </nav>
@@ -141,8 +143,10 @@
                                     <dd class="col-sm-9">{{ $product['brand']['brand_name']}}</dd>
                                     <dt class="col-sm-3">Category</dt>
                                     <dd class="col-sm-9">{{ $product['category']['category_name'] }}</dd>
+                                    @if ($product->subcategory_id != null)
                                     <dt class="col-sm-3">SubCategory</dt>
                                     <dd class="col-sm-9">{{ $product['subcategory']['subcategory_name'] }}</dd>
+                                    @endif
                                     <dt class="col-sm-3">Stock</dt>
                                     <dd class="col-sm-9">{{ $product->product_qty }} Products in Stock</dd>
                                 </dl>

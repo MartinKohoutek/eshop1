@@ -87,6 +87,17 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
+                <div class="menu-title">Top Message</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('update.top.message') }}"><i class='bx bx-radio-circle'></i>Setup Top Message</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
                 <div class="menu-title">Order Manage</div>
             </a>
             <ul>

@@ -36,7 +36,7 @@ class ProductController extends Controller
         $product_id = Product::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
+            // 'subcategory_id' => $request->subcategory_id,
             'product_name' => $request->product_name,
             'product_slug' => strtolower(str_replace(' ', '-', $request->product_name)),
 
@@ -61,6 +61,10 @@ class ProductController extends Controller
             'status' => 1,
             'created_at' => Carbon::now(),
         ]);
+
+        if ($request->subcategory_id != null) {
+            Product::findOrFail($product_id)->update(['subcategory_id' => $request->subcategory_id,]);
+        }
 
         $images = $request->file('multi_img');
         foreach ($images as $img) {
@@ -99,7 +103,7 @@ class ProductController extends Controller
         Product::FindOrFail($product_id)->update([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
+            // 'subcategory_id' => $request->subcategory_id,
             'product_name' => $request->product_name,
             'product_slug' => strtolower(str_replace(' ', '-', $request->product_name)),
 
@@ -124,6 +128,10 @@ class ProductController extends Controller
             'status' => 1,
             'created_at' => Carbon::now(),
         ]);
+
+        if ($request->subcategory_id != null) {
+            Product::findOrFail($product_id)->update(['subcategory_id' => $request->subcategory_id,]);
+        }
 
         $notification = [
             'message' => 'Product Updated Without Image Successfully!',

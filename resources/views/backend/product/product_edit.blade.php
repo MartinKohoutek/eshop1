@@ -309,9 +309,9 @@
                 category_id: {
                     required: true,
                 },
-                subcategory_id: {
-                    required: true,
-                },
+                // subcategory_id: {
+                //     required: true,
+                // },
             },
             messages: {
                 product_name: {

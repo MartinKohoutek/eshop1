@@ -235,7 +235,7 @@
                 product_qty: { required: true, },
                 brand_id: { required: true, },
                 category_id: { required: true, },
-                subcategory_id: { required: true, },
+                // subcategory_id: { required: true, },
             },
             messages: {
                 product_name: { required: 'Please Enter Category Name', },

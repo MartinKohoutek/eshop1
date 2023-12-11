@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('brand_id');
             $table->integer('category_id');
-            $table->integer('subcategory_id');
+            $table->integer('subcategory_id')->nullable();
 
             $table->string('product_name');
             $table->string('product_slug');

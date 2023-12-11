@@ -125,10 +125,15 @@
 	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
-	<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<script src="https://cdn.tiny.cloud/1/i1sr52wto9c0w6rx51se5ohgpmvtyf14twa9tru9i2mur9lv/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 	<script>
 		tinymce.init({
-			selector: '#editor'
+			selector: '#editor',
+			height: 500,
+		});
+		tinymce.init({
+			selector: '#editor2',
+			height: 300,
 		});
 	</script>
 	<script src="{{ asset('backend/assets/js/code.js') }}"></script>

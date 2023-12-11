@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\TopMessageController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
 use App\Http\Controllers\Frontend\CartController;
@@ -317,6 +318,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/admin/role/{id}', 'EditAdminRole')->name('edit.admin.role');
         Route::post('/admin/user/update/{id}', 'AdminUserUpdate')->name('admin.user.update');
         Route::get('/delete/admin/role/{id}', 'DeleteAdminRole')->name('delete.admin.role');
+    });
+
+    Route::controller(TopMessageController::class)->group(function(){
+        Route::get('/update/top/message', 'UpdateTopMessage')->name('update.top.message');
+        Route::post('/store/top/message', 'StoreTopMessage')->name('store.top.message');
     });
 });
 

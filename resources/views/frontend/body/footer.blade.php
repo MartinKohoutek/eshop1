@@ -33,29 +33,18 @@
                     </div>
                 </div>
                 <div class="col">
+                    @php
+                        $categories = App\Models\Category::withCount('products')->orderBy('products_count', 'DESC')->get();
+                    @endphp
                     <div class="footer-section2 mb-3">
                         <h6 class="mb-3 text-uppercase">Shop Categories</h6>
                         <ul class="list-unstyled">
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Jeans</a>
+                            @foreach ($categories as $category)    
+                            @if ($category->products_count > 0)
+                            <li class="mb-1"><a href="{{ url('/product/category/'.$category->id.'/'.$category->category_slug) }}"><i class='bx bx-chevron-right'></i> {{ $category->category_name }} {{ $category->products_count }}</a>
                             </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> T-Shirts</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sports</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Shirts & Tops</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Clogs & Mules</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sunglasses</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Bags & Wallets</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Sneakers & Athletic</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Electronis</a>
-                            </li>
-                            <li class="mb-1"><a href="javascript:;"><i class='bx bx-chevron-right'></i> Furniture</a>
-                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>

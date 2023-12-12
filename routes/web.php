@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ProductController;
@@ -324,6 +325,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/update/top/message', 'UpdateTopMessage')->name('update.top.message');
         Route::post('/store/top/message', 'StoreTopMessage')->name('store.top.message');
     });
+
+    Route::controller(ContactController::class)->group(function(){
+        Route::get('/all/contact/messages', 'AllContactMessages')->name('all.contact.messages');
+        Route::get('/show/contact/messages/{id}', 'ShowContactMessages')->name('show.contact.messages');
+        Route::get('/delete/contact/messages/{id}', 'DeleteContactMessages')->name('delete.contact.messages');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -418,4 +425,9 @@ Route::controller(IndexController::class)->group(function(){
 Route::controller(ShopController::class)->group(function(){
     Route::get('/shop', 'ShopPage')->name('shop.page');
     Route::post('/shop/filter', 'ShopFilter')->name('shop.filter');
+});
+
+Route::controller(ContactController::class)->group(function(){
+    Route::get('/view/contact', 'ViewContact')->name('view.contact');
+    Route::post('/store/contact', 'StoreContact')->name('store.contact');
 });

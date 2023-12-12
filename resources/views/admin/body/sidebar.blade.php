@@ -98,6 +98,17 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
+                <div class="menu-title">Contact Form</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.contact.messages') }}"><i class='bx bx-radio-circle'></i>All Messages</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
                 <div class="menu-title">Order Manage</div>
             </a>
             <ul>

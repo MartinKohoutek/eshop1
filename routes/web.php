@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\BlogController;
@@ -20,10 +21,10 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\TopMessageController;
 use App\Http\Controllers\Backend\VendorOrderController;
 use App\Http\Controllers\Backend\VendorProductController;
+use App\Http\Controllers\Backend\WhyChooseUsController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ShopController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\CompareController;
 use App\Http\Controllers\User\ReviewController;
@@ -33,37 +34,9 @@ use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendorController;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Models\SubCategory;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Stmt\Return_;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('frontend.index');
-// });
 
 Route::get('/', [IndexController::class, 'Index']);
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('dashboard');
@@ -331,6 +304,20 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/show/contact/messages/{id}', 'ShowContactMessages')->name('show.contact.messages');
         Route::get('/delete/contact/messages/{id}', 'DeleteContactMessages')->name('delete.contact.messages');
     });
+
+    Route::controller(AboutUsController::class)->group(function(){
+        Route::get('/update/about/us', 'UpdateAboutUs')->name('update.about.us');
+        Route::post('/store/about/us', 'StoreAboutUs')->name('store.about.us');
+    });
+
+    Route::controller(WhyChooseUsController::class)->group(function(){
+        Route::get('/all/why/choose', 'AllWhyChoose')->name('all.why.choose');
+        Route::get('/add/why/choose', 'AddWhyChoose')->name('add.why.choose');
+        Route::post('/store/why/choose', 'StoreWhyChoose')->name('store.why.choose');
+        Route::get('/edit/why/choose/{id}', 'EditWhyChoose')->name('edit.why.choose');
+        Route::post('/update/why/choose', 'UpdateWhyChoose')->name('update.why.choose');
+        Route::get('/delete/why/choose/{id}', 'DeleteWhyChoose')->name('delete.why.choose');
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -430,4 +417,8 @@ Route::controller(ShopController::class)->group(function(){
 Route::controller(ContactController::class)->group(function(){
     Route::get('/view/contact', 'ViewContact')->name('view.contact');
     Route::post('/store/contact', 'StoreContact')->name('store.contact');
+});
+
+Route::controller(AboutUsController::class)->group(function(){
+    Route::get('/view/about/us', 'ViewAboutUs')->name('view.about.us');
 });

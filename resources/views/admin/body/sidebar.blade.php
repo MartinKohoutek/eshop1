@@ -98,6 +98,19 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
+                <div class="menu-title">Site Settings</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('update.about.us') }}"><i class='bx bx-radio-circle'></i>About Us Update</a>
+                </li>
+                <li> <a href="{{ route('all.why.choose') }}"><i class='bx bx-radio-circle'></i>Why Choose Us</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
                 <div class="menu-title">Contact Form</div>
             </a>
             <ul>

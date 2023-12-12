@@ -48,7 +48,7 @@
                                         <h6 class="mb-0"></h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <img src="{{ asset($brand->brand_image) }}" alt="Admin" class="p-1 bg-primary" style="width: 150px; height: 150px" id="showImage">
+                                        <img src="{{ asset($brand->brand_image) }}" alt="Admin" class="p-1 bg-primary" style="width: 330px; height: 88px" id="showImage">
                                     </div>
                                 </div>
                                 <div class="row">

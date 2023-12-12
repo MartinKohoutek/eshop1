@@ -7,7 +7,7 @@
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
                     <li class="nav-item"> <a class="nav-link" href="order-tracking.html">Track Order</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('view.about.us') }}">About</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Stores</a>
                     </li>
@@ -229,7 +229,7 @@
 
                     <li class="nav-item"> <a class="nav-link" href="{{ route('home.blog') }}">Blog </a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="about-us.html">About Us </a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('view.about.us') }}">About Us </a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('view.contact') }}">Contact Us </a>
                     </li>

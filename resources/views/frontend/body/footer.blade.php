@@ -41,7 +41,7 @@
                         <ul class="list-unstyled">
                             @foreach ($categories as $category)    
                             @if ($category->products_count > 0)
-                            <li class="mb-1"><a href="{{ url('/product/category/'.$category->id.'/'.$category->category_slug) }}"><i class='bx bx-chevron-right'></i> {{ $category->category_name }} {{ $category->products_count }}</a>
+                            <li class="mb-1"><a href="{{ url('/product/category/'.$category->id.'/'.$category->category_slug) }}"><i class='bx bx-chevron-right'></i> {{ $category->category_name }}</a>
                             </li>
                             @endif
                             @endforeach

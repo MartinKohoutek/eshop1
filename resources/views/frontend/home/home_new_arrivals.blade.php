@@ -6,7 +6,7 @@ $featured = App\Models\Product::where('featured', 1)->orderBy('id', 'DESC')->lim
     <div class="container">
         <div class="d-flex align-items-center">
             <h5 class="text-uppercase mb-0">New Arrivals</h5>
-            <a href="javascript:;" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+            <a href="{{ url('/product/new/arrivals') }}" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
         </div>
         <hr />
         <div class="product-grid">

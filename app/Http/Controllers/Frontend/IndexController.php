@@ -98,4 +98,11 @@ class IndexController extends Controller
             limit(6)->get();
         return view('frontend.product.search_product', compact('products'));
     }
+
+    public function NewArrivals() {
+        $categories = Category::orderBy('category_name', 'ASC')->get();
+        $products = Product::where('featured', 1)->orderBy('id', 'DESC')->get();;
+        $new_products = Product::orderBy('id', 'DESC')->limit(3)->get();
+        return view('frontend.product.new_arrivals', compact('products', 'categories', 'new_products'));
+    }
 }

@@ -2,21 +2,21 @@
 @section('home')
 
 @section('title')
-    MKShop - {{ $bread_subcat->category->category_name }} - {{ $bread_subcat->subcategory_name }} SubCategory
+    MKShop - New Arrivals
 @endsection
 <!--start breadcrumb-->
 <section class="py-3 border-bottom d-none d-md-flex">
     <div class="container">
         <div class="page-breadcrumb d-flex align-items-center">
-            <h3 class="breadcrumb-title pe-3">{{ $bread_subcat->category->category_name }}</h3>
+            <h3 class="breadcrumb-title pe-3">New Arrivals</h3>
             <div class="ms-auto">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="bx bx-home-alt"></i> Home</a>
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i> Home</a>
                         </li>
-                        <li class="breadcrumb-item"><a href="{{ url('product/category/'.$bread_subcat['category']['id'].'/'.$bread_subcat['category']['category_slug']) }}">{{ $bread_subcat['category']['category_name'] }}</a>
+                        <li class="breadcrumb-item"><a href="javascript:;">Shop</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $bread_subcat->subcategory_name }}</li>
+                        <li class="breadcrumb-item active" aria-current="page">New Arrivals</li>
                     </ol>
                 </nav>
             </div>
@@ -57,6 +57,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -80,15 +81,15 @@
                                                 <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
                                             </a>
                                             @php
-                                                $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
-                                                @endphp
+                                            $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
+                                            @endphp
                                             <div class="rating font-12">
-                                            @if ($average == 0)
+                                                @if ($average == 0)
                                                 <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
-                                                    <i class="bx bxs-star text-light-4"></i>
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                <i class="bx bxs-star text-light-4"></i>
+                                                <i class="bx bxs-star text-light-4"></i>
                                                 @elseif ($average == 1 || $average < 2) <i class="bx bxs-star text-warning"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
                                                     <i class="bx bxs-star text-light-4"></i>
@@ -209,8 +210,8 @@
                                     </a>
                                     <div class="card-body">
                                         <div class="product-info">
-                                            <a href="javascript:;">
-                                                <p class="product-catergory font-13 mb-1">{{ $product['subcategory']['subcategory_name'] }}</p>
+                                            <a href="{{ url('/product/category/'.$product->category_id.'/'.$product->category->category_slug ) }}">
+                                                <p class="product-catergory font-13 mb-1">{{ $product['category']['category_name'] }}</p>
                                             </a>
                                             <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                                                 <h6 class="product-name mb-2">{{ $product->product_name }}</h6>
@@ -224,7 +225,6 @@
                                                     <span class="text-white fs-5">${{ $product->selling_price }}</span>
                                                     @endif
                                                 </div>
-
                                                 @php
                                                 $average = App\Models\Review::where('product_id', $product->id)->where('status', 1)->avg('rating');
                                                 @endphp
@@ -265,8 +265,8 @@
                                             </div>
                                             <div class="product-action mt-2">
                                                 <div class="d-grid gap-2">
-                                                    <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class="bx bxs-cart-add"></i>Add to Cart</a> 
-                                                    <a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class="bx bx-zoom-in" ></i>Quick View</a>
+                                                    <a href="javascript:;" class="btn btn-light btn-ecomm"> <i class="bx bxs-cart-add"></i>Add to Cart</a>
+                                                    <a href="javascript:;" class="btn btn-link btn-ecomm" data-bs-toggle="modal" data-bs-target="#QuickViewProduct" id="{{ $product->id }}" onclick="productView(this.id)"><i class="bx bx-zoom-in"></i>Quick View</a>
                                                 </div>
                                             </div>
                                         </div>

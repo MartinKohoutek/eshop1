@@ -15,7 +15,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">{{ $skip_category_0->category_name}}</h5>
-                <a href="javascript:;" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+                <a href="{{ url('/product/category/'.$skip_category_0->id.'/'.$skip_category_0->category_slug) }}" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">
@@ -90,7 +90,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">{{ $skip_category_1->category_name}}</h5>
-                <a href="javascript:;" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+                <a href="{{ url('/product/category/'.$skip_category_1->id.'/'.$skip_category_1->category_slug) }}" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">
@@ -165,7 +165,7 @@
         <div class="container">
             <div class="d-flex align-items-center">
                 <h5 class="text-uppercase mb-0">{{ $skip_category_2->category_name}}</h5>
-                <a href="javascript:;" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
+                <a href="{{ url('/product/category/'.$skip_category_2->id.'/'.$skip_category_2->category_slug) }}" class="btn btn-light ms-auto rounded-0">View All<i class='bx bx-chevron-right'></i></a>
             </div>
             <hr />
             <div class="product-grid">

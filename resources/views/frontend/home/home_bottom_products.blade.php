@@ -18,8 +18,8 @@ $special_deals = App\Models\Product::where('special_deals', '1')->orderBy('id', 
                                 <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
                             </a>
                         </div>
-                        <div class="ms-0">
-                            <h6 class="mb-0 fw-light mb-1">{{ $item->product_name}}</h6>
+                        <div class="ms-2" >
+                            <h6 class="mb-0 fw-light mb-1"><a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">{{ $item->product_name}}</a></h6>
                             @php
                             $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
                             @endphp
@@ -85,12 +85,12 @@ $special_deals = App\Models\Product::where('special_deals', '1')->orderBy('id', 
 
                     <div class="d-flex align-items-center">
                         <div class="bottom-product-img">
-                            <a href="product-details.html">
+                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
                                 <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
                             </a>
                         </div>
-                        <div class="ms-0">
-                            <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
+                        <div class="ms-2">
+                            <h6 class="mb-0 fw-light mb-1"><a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">{{ $item->product_name }}</a></h6>
                             @php
                             $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
                             @endphp
@@ -155,12 +155,12 @@ $special_deals = App\Models\Product::where('special_deals', '1')->orderBy('id', 
                     @foreach ($recently_added as $key => $item)
                     <div class="d-flex align-items-center">
                         <div class="bottom-product-img">
-                            <a href="product-details.html">
+                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
                                 <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
                             </a>
                         </div>
-                        <div class="ms-0">
-                            <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
+                        <div class="ms-2">
+                            <h6 class="mb-0 fw-light mb-1"><a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">{{ $item->product_name }}</a></h6>
                             @php
                             $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
                             @endphp
@@ -224,12 +224,12 @@ $special_deals = App\Models\Product::where('special_deals', '1')->orderBy('id', 
                     @foreach ($special_deals as $key => $item)
                     <div class="d-flex align-items-center">
                         <div class="bottom-product-img">
-                            <a href="product-details.html">
+                            <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
                                 <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
                             </a>
                         </div>
-                        <div class="ms-0">
-                            <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
+                        <div class="ms-2">
+                            <h6 class="mb-0 fw-light mb-1"><a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">{{ $item->product_name }}</a></h6>
                             @php
                             $average = App\Models\Review::where('product_id', $item->id)->where('status', 1)->avg('rating');
                             @endphp

@@ -76,7 +76,7 @@
                                                 <img src="{{ asset($item->product_thumbnail) }}" width="100" alt="">
                                             </a>
                                         </div>
-                                        <div class="ms-0">
+                                        <div class="ms-2">
                                             <a href="{{ url('product/details/'.$item->id.'/'.$item->product_slug) }}">
                                                 <h6 class="mb-0 fw-light mb-1">{{ $item->product_name }}</h6>
                                             </a>

@@ -19,7 +19,7 @@
             </div>
             <hr />
             <div class="product-grid">
-                <div class="new-arrivals owl-carousel owl-theme">
+                <div class="new-arrivals1 owl-carousel owl-theme" id="new-arrivals1">
                     @foreach ($skip_product_0 as $item)
                     <div class="item">
                         <div class="card rounded-0 product-card">
@@ -94,7 +94,7 @@
             </div>
             <hr />
             <div class="product-grid">
-                <div class="new-arrivals owl-carousel owl-theme">
+                <div class="new-arrivals2 owl-carousel owl-theme" id="new-arrivals2">
                     @foreach ($skip_product_1 as $item)
                     <div class="item">
                         <div class="card rounded-0 product-card">
@@ -169,7 +169,7 @@
             </div>
             <hr />
             <div class="product-grid">
-                <div class="new-arrivals owl-carousel owl-theme">
+                <div class="new-arrivals3 owl-carousel owl-theme" id="new-arrivals3">
                     @foreach ($skip_product_2 as $item)
                     <div class="item">
                         <div class="card rounded-0 product-card">

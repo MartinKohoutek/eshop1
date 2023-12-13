@@ -12,7 +12,6 @@
                                 <!-- <div class="item">
                                     <img src="" id="pimage" class="img-fluid" alt="">
                                 </div> -->
-
                             </div>
                             <div class="owl-thumbs d-flex justify-content-center" data-slider-id="1" id="imgArea">
                                 <!-- <button class="owl-thumb-item">

@@ -2,7 +2,7 @@ $(function() {
     "use strict";
 
 	
-	$('.new-arrivals').owlCarousel({
+	$('#new-arrivals').owlCarousel({
 		loop:false,
 		margin:10,
 		responsiveClass:true,
@@ -27,6 +27,80 @@ $(function() {
 	     },
     	})
 
+		$('#new-arrivals1').owlCarousel({
+			loop:false,
+			margin:10,
+			responsiveClass:true,
+			nav:false,
+			dots: false,
+			responsive:{
+				0:{
+					items:1
+				},
+				576:{
+					items:2
+				},
+				768:{
+					items:3
+				},
+				1366:{
+					items:4
+				},
+				1400:{
+					items:5
+				}
+			 },
+			})
+
+			$('#new-arrivals2').owlCarousel({
+				loop:false,
+				margin:10,
+				responsiveClass:true,
+				nav:false,
+				dots: false,
+				responsive:{
+					0:{
+						items:1
+					},
+					576:{
+						items:2
+					},
+					768:{
+						items:3
+					},
+					1366:{
+						items:4
+					},
+					1400:{
+						items:5
+					}
+				 },
+				})
+
+				$('#new-arrivals3').owlCarousel({
+					loop:false,
+					margin:10,
+					responsiveClass:true,
+					nav:false,
+					dots: false,
+					responsive:{
+						0:{
+							items:1
+						},
+						576:{
+							items:2
+						},
+						768:{
+							items:3
+						},
+						1366:{
+							items:4
+						},
+						1400:{
+							items:5
+						}
+					 },
+					})
 
 
 

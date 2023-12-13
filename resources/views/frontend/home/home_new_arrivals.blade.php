@@ -10,7 +10,7 @@ $featured = App\Models\Product::where('featured', 1)->orderBy('id', 'DESC')->lim
         </div>
         <hr />
         <div class="product-grid">
-            <div class="new-arrivals owl-carousel owl-theme">
+            <div class="new-arrivals owl-carousel owl-theme" id="new-arrivals">
                 @foreach ($featured as $item)
                 <div class="item">
                     <div class="card rounded-0 product-card">

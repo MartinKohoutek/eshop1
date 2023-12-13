@@ -78,16 +78,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
 
 	<script>
-			function stopOwlPropagation(element) {
-			jQuery(element).on('to.owl.carousel', function(e) { e.stopPropagation(); console.log('to.owl.carousel')});
-			jQuery(element).on('next.owl.carousel', function(e) { e.stopPropagation(); console.log('next') });
-			jQuery(element).on('prev.owl.carousel', function(e) { e.stopPropagation(); console.log('prev') });
-			jQuery(element).on('destroy.owl.carousel', function(e) { e.stopPropagation(); console.log('destroy') });
-			}
-			stopOwlPropagation('#bigImg');
-	</script>
-
-	<script>
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
@@ -154,10 +144,7 @@
 					$('#product_id').val(id);
 					$('#qty').val(1);
 
-					// $('#bigImg').data('owlCarousel').destroy();
-					stopOwlPropagation('#bigImg');
 					$("#bigImg").trigger("destroy.owl.carousel");
-					// $('#bigImg').owlCarousel('destroy');
     				$("#bigImg").empty();
 
 					$('#imgArea').empty();
@@ -202,7 +189,11 @@
 					});
 					$('#bigImg').owlCarousel('refresh');
 					$('#bigImg').removeClass('owl-hidden');
-	
+
+					$('#new-arrivals').trigger('refresh.owl.carousel');
+					$('#new-arrivals1').trigger('refresh.owl.carousel');
+					$('#new-arrivals2').trigger('refresh.owl.carousel');
+					$('#new-arrivals3').trigger('refresh.owl.carousel');
 				}
 			})
 		}

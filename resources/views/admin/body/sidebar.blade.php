@@ -19,6 +19,7 @@
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
+        <li class="menu-label">Product Settings</li>
         @if (Auth::user()->can('brand.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
@@ -70,16 +71,35 @@
                 </li>
             </ul>
         </li>
+        @if (Auth::user()->can('product.menu'))
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Vendor Manage</div>
+                <div class="menu-title">Product Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>Inactive Vendors</a>
+                @if (Auth::user()->can('product.list'))
+                <li> <a href="{{ route('all.products') }}"><i class='bx bx-radio-circle'></i>All Products</a>
                 </li>
-                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
+                @endif
+                @if (Auth::user()->can('product.add'))
+                <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
+                </li>
+                @endif
+            </ul>
+        </li>
+        @endif
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Coupon System</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupons</a>
+                </li>
+                <li> <a href="{{ route('add.coupon') }}"><i class='bx bx-radio-circle'></i>Add Coupon</a>
                 </li>
             </ul>
         </li>
@@ -87,37 +107,29 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Top Message</div>
+                <div class="menu-title">Shipping Area</div>
             </a>
             <ul>
-                <li> <a href="{{ route('update.top.message') }}"><i class='bx bx-radio-circle'></i>Setup Top Message</a>
+                <li> <a href="{{ route('all.division') }}"><i class='bx bx-radio-circle'></i>All Division</a>
+                </li>
+                <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
+                </li>
+                <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
                 </li>
             </ul>
-        </li>
+        </li>  
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Site Settings</div>
+                <div class="menu-title">Stock Manage</div>
             </a>
             <ul>
-                <li> <a href="{{ route('update.about.us') }}"><i class='bx bx-radio-circle'></i>About Us Update</a>
-                </li>
-                <li> <a href="{{ route('all.why.choose') }}"><i class='bx bx-radio-circle'></i>Why Choose Us</a>
+                <li> <a href="{{ route('product.stock') }}"><i class='bx bx-radio-circle'></i>Stock Manage</a>
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
-                </div>
-                <div class="menu-title">Contact Form</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all.contact.messages') }}"><i class='bx bx-radio-circle'></i>All Messages</a>
-                </li>
-            </ul>
-        </li>
+        <li class="menu-label">Order Manage</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -148,6 +160,19 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-label">Contact Form</li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Contact Form</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.contact.messages') }}"><i class='bx bx-radio-circle'></i>All Messages</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-label">Reports</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -161,19 +186,7 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
-                </div>
-                <div class="menu-title">User Manage</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all-user') }}"><i class='bx bx-radio-circle'></i>All Customers</a>
-                </li>
-                <li> <a href="{{ route('all-vendor') }}"><i class='bx bx-radio-circle'></i>All Vendors</a>
-                </li>
-            </ul>
-        </li>
+        <li class="menu-label">Blog Manage</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -200,25 +213,86 @@
                 </li>
             </ul>
         </li>
-        @if (Auth::user()->can('product.menu'))
+        <li class="menu-label">User Manage</li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Product Manage</div>
+                <div class="menu-title">Customer Manage</div>
             </a>
             <ul>
-                @if (Auth::user()->can('product.list'))
-                <li> <a href="{{ route('all.products') }}"><i class='bx bx-radio-circle'></i>All Products</a>
+                <li> <a href="{{ route('all-user') }}"><i class='bx bx-radio-circle'></i>All Customers</a>
                 </li>
-                @endif
-                @if (Auth::user()->can('product.add'))
-                <li> <a href="{{ route('add.product') }}"><i class='bx bx-radio-circle'></i>Add Product</a>
-                </li>
-                @endif
             </ul>
         </li>
-        @endif
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Vendor Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all-vendor') }}"><i class='bx bx-radio-circle'></i>All Vendors</a>
+                </li>
+                <li> <a href="{{ route('inactive.vendor') }}"><i class='bx bx-radio-circle'></i>Inactive Vendors</a>
+                </li>
+                <li> <a href="{{ route('active.vendor') }}"><i class='bx bx-radio-circle'></i>Active Vendors</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-line-chart"></i>
+                </div>
+                <div class="menu-title">Employee Manage</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.admin') }}"><i class='bx bx-radio-circle'></i>All Employee</a>
+                </li>
+                <li> <a href="{{ route('add.admin') }}"><i class='bx bx-radio-circle'></i>Add Emplpoyee</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a class="has-arrow" href="javascript:;">
+                <div class="parent-icon"><i class="bx bx-line-chart"></i>
+                </div>
+                <div class="menu-title">Roles & Permissions</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
+                </li>
+                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
+                </li>
+                <li> <a href="{{ route('all.roles.permission') }}"><i class='bx bx-radio-circle'></i>All Roles in Permission</a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-label">Site Settings</li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Top Message</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('update.top.message') }}"><i class='bx bx-radio-circle'></i>Setup Top Message</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-home-alt'></i>
+                </div>
+                <div class="menu-title">Site Settings</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('update.about.us') }}"><i class='bx bx-radio-circle'></i>About Us Update</a>
+                </li>
+                <li> <a href="{{ route('all.why.choose') }}"><i class='bx bx-radio-circle'></i>Why Choose Us</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
@@ -249,34 +323,6 @@
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Coupon System</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all.coupon') }}"><i class='bx bx-radio-circle'></i>All Coupons</a>
-                </li>
-                <li> <a href="{{ route('add.coupon') }}"><i class='bx bx-radio-circle'></i>Add Coupon</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
-                </div>
-                <div class="menu-title">Shipping Area</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all.division') }}"><i class='bx bx-radio-circle'></i>All Division</a>
-                </li>
-                <li> <a href="{{ route('all.district') }}"><i class='bx bx-radio-circle'></i>All District</a>
-                </li>
-                <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
-                </div>
                 <div class="menu-title">Site Setting</div>
             </a>
             <ul>
@@ -287,132 +333,6 @@
                 <li> <a href="{{ route('all.state') }}"><i class='bx bx-radio-circle'></i>All State</a>
                 </li>
             </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-alt'></i>
-                </div>
-                <div class="menu-title">Stock Manage</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('product.stock') }}"><i class='bx bx-radio-circle'></i>Stock Manage</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class="bx bx-category"></i>
-                </div>
-                <div class="menu-title">Application</div>
-            </a>
-            <ul>
-                <li> <a href="app-emailbox.html"><i class='bx bx-radio-circle'></i>Email</a>
-                </li>
-                <li> <a href="app-chat-box.html"><i class='bx bx-radio-circle'></i>Chat Box</a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-label">UI Elements</li>
-
-        <li>
-            <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
-                </div>
-                <div class="menu-title">eCommerce</div>
-            </a>
-            <ul>
-                <li> <a href="ecommerce-products.html"><i class='bx bx-radio-circle'></i>Products</a>
-                </li>
-                <li> <a href="ecommerce-products-details.html"><i class='bx bx-radio-circle'></i>Product Details</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
-                </div>
-                <div class="menu-title">Components</div>
-            </a>
-            <ul>
-                <li> <a href="component-alerts.html"><i class='bx bx-radio-circle'></i>Alerts</a>
-                </li>
-                <li> <a href="component-accordions.html"><i class='bx bx-radio-circle'></i>Accordions</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
-                </div>
-                <div class="menu-title">Content</div>
-            </a>
-            <ul>
-                <li> <a href="content-grid-system.html"><i class='bx bx-radio-circle'></i>Grid System</a>
-                </li>
-                <li> <a href="content-typography.html"><i class='bx bx-radio-circle'></i>Typography</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
-                </div>
-                <div class="menu-title">Icons</div>
-            </a>
-            <ul>
-                <li> <a href="icons-line-icons.html"><i class='bx bx-radio-circle'></i>Line Icons</a>
-                </li>
-                <li> <a href="icons-boxicons.html"><i class='bx bx-radio-circle'></i>Boxicons</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="form-froala-editor.html">
-                <div class="parent-icon"><i class='bx bx-code-alt'></i>
-                </div>
-                <div class="menu-title">Froala Editor</div>
-            </a>
-        </li>
-
-
-        <li class="menu-label">Roles & Permissions</li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-line-chart"></i>
-                </div>
-                <div class="menu-title">Roles & Permissions</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all.permission') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
-                </li>
-                <li> <a href="{{ route('all.roles') }}"><i class='bx bx-radio-circle'></i>All Roles</a>
-                </li>
-                <li> <a href="{{ route('all.roles.permission') }}"><i class='bx bx-radio-circle'></i>All Roles in Permission</a>
-                </li>
-                <li> <a href="{{ route('add.roles.permission') }}"><i class='bx bx-radio-circle'></i>Roles in Permission</a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-label">Admin Manage</li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-line-chart"></i>
-                </div>
-                <div class="menu-title">Admin Manage</div>
-            </a>
-            <ul>
-                <li> <a href="{{ route('all.admin') }}"><i class='bx bx-radio-circle'></i>All Admin</a>
-                </li>
-                <li> <a href="{{ route('add.admin') }}"><i class='bx bx-radio-circle'></i>Add Admin</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="https://themeforest.net/user/codervent" target="_blank">
-                <div class="parent-icon"><i class="bx bx-support"></i>
-                </div>
-                <div class="menu-title">Support</div>
-            </a>
         </li>
     </ul>
     <!--end navigation-->

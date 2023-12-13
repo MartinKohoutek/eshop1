@@ -149,7 +149,7 @@
 
 					$('#imgArea').empty();
 					$.each(data.images, function(key, value) {
-						$('#imgArea').append('<button class="owl-thumb-item"><img src="' + value.photo_name + '" class="" alt=""></button>');
+						$('#imgArea').append('<button class="owl-thumb-item"><img src="' + window.location.origin + '/' + value.photo_name + '" class="" alt=""></button>');
 						if (data.images == "") {
 							$('#imgArea').hide(); 
 						} else {
@@ -159,7 +159,7 @@
 
 					
 					$.each(data.images, function(key, value) {
-						$('#bigImg').append('<div class="item"><img src="' + value.photo_name + '" class="img-fluid" alt=""></div>');
+						$('#bigImg').append('<div class="item"><img src="'+ window.location.origin + '/' + value.photo_name + '" class="img-fluid" alt=""></div>');
 						if (data.images == "") {
 							$('#bigImg').hide();
 						} else {

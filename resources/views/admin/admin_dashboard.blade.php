@@ -115,12 +115,12 @@
 	<script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
-	<script src="{{ asset('backend/assets/js/index.js') }}"></script>
+	<!-- <script src="{{ asset('backend/assets/js/index.js') }}"></script> -->
 	<!--app JS-->
 	<script src="{{ asset('backend/assets/js/app.js') }}"></script>
 	<script src="{{ asset('backend/assets/js/validate.min.js') }}"></script>
 	<script>
-		new PerfectScrollbar(".app-container")
+		// new PerfectScrollbar(".app-container")
 	</script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>

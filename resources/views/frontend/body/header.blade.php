@@ -5,46 +5,16 @@
             <nav class="navbar navbar-expand">
                 <div class="shiping-title text-uppercase font-13 text-white d-none d-sm-flex">Welcome to our eTrans store!</div>
                 <ul class="navbar-nav ms-auto d-none d-lg-flex">
-                    <li class="nav-item"> <a class="nav-link" href="order-tracking.html">Track Order</a>
-                    </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('view.about.us') }}">About</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="shop-categories.html">Our Stores</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('shop.page') }}">Our Store</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('home.blog') }}">Blog</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('view.contact') }}">Contact</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="javascript:;">Help & FAQs</a>
-                    </li>
                 </ul>
                 <ul class="navbar-nav">
-                    <!-- <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">USD</a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end">
-                            <li><a class="dropdown-item" href="#">USD</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">EUR</a>
-                            </li>
-                        </ul>
-                    </li> -->
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
-                            <div class="lang d-flex gap-1">
-                                <div><i class="flag-icon flag-icon-um"></i>
-                                </div>
-                                <div><span>ENG</span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg-end">
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"> <i class="flag-icon flag-icon-de me-2"></i><span>German</span>
-                            </a> <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-fr me-2"></i><span>French</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-um me-2"></i><span>English</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-in me-2"></i><span>Hindi</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-cn me-2"></i><span>Chinese</span></a>
-                            <a class="dropdown-item d-flex allign-items-center" href="javascript:;"><i class="flag-icon flag-icon-ae me-2"></i><span>Arabic</span></a>
-                        </div>
-                    </li> -->
                 </ul>
                 @php
                     $siteSettings = App\Models\SiteSetting::find(1);
@@ -88,12 +58,7 @@
                         @csrf
                         <div class="input-group flex-nowrap px-xl-4">
                             <input onfocus="search_result_show()" onblur="search_result_hide()" type="text" name="search" id="search" class="form-control w-100" placeholder="Search for Products">
-                            <select class="form-select flex-shrink-0" aria-label="Default select example" style="width: 10.5rem;">
-                                <option selected>All Categories</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select> <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
+                            <span class="input-group-text cursor-pointer"><i class='bx bx-search'></i></span>
                         </div>
                         <div id="searchProducts"></div>
                     </form>
@@ -110,16 +75,6 @@
                     <div class="top-cart-icons">
                         <nav class="navbar navbar-expand">
                             <ul class="navbar-nav ms-auto">
-                                @auth
-                                <li class="nav-item"><a href="{{ route('dashboard') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Account</a>
-                                </li>
-                                @else
-                                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Login</a>
-                                </li>
-                                <span style="margin: 2px, 0; font-size: 35px"> | </span>
-                                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link cart-link"><i class='bx bx-user'></i> Register</a>
-                                </li>
-                                @endauth
                                 <li class="nav-item"><a href="{{ route('compare') }}" class="nav-link cart-link position-relative"><span class="alert-count" id="compareCount">0</span><i class='bx bx-git-compare'></i><span></span></a>
                                 </li>
                                 <li class="nav-item"><a href="{{ route('wishlist') }}" class="nav-link cart-link position-relative"><span class="alert-count" id="wishlistCount">0</span><i class='bx bx-heart'></i></a>
@@ -235,20 +190,34 @@
                     </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('shop.page') }}">Our Store</a>
                     </li>
-                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">My Account <i class='bx bx-chevron-down'></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="account-dashboard.html">Dashboard</a>
-                            </li>
-                            <li><a class="dropdown-item" href="account-downloads.html">Downloads</a>
-                            </li>
-                            <li><a class="dropdown-item" href="account-orders.html">Orders</a>
-                            </li>
-                            <li><a class="dropdown-item" href="account-payment-methods.html">Payment Methods</a>
-                            </li>
-                            <li><a class="dropdown-item" href="account-user-details.html">User Details</a>
-                            </li>
-                        </ul>
-                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                @auth
+                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">My Account <i class='bx bx-chevron-down'></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('user.details') }}">User Details</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('user.change.password') }}">Change Password</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('user.orders') }}">Orders</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('user.track.order') }}">Track Your Order</a>
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('return.order.page') }}">Returned Orders</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li><a class="dropdown-item" href="{{ route('user.logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+                @else
+                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Login</a>
+                </li>
+                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a>
+                </li>
+                @endauth
                 </ul>
             </nav>
         </div>

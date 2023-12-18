@@ -51,20 +51,21 @@
                 <div class="col">
                     <div class="footer-section3 mb-3">
                         <h6 class="mb-3 text-uppercase">Popular Tags</h6>
-                        <div class="tags-box"> <a href="javascript:;" class="tag-link">Cloths</a>
-                            <a href="javascript:;" class="tag-link">Electronis</a>
-                            <a href="javascript:;" class="tag-link">Furniture</a>
-                            <a href="javascript:;" class="tag-link">Sports</a>
-                            <a href="javascript:;" class="tag-link">Men Wear</a>
-                            <a href="javascript:;" class="tag-link">Women Wear</a>
-                            <a href="javascript:;" class="tag-link">Laptops</a>
-                            <a href="javascript:;" class="tag-link">Formal Shirts</a>
-                            <a href="javascript:;" class="tag-link">Topwear</a>
-                            <a href="javascript:;" class="tag-link">Headphones</a>
-                            <a href="javascript:;" class="tag-link">Bottom Wear</a>
-                            <a href="javascript:;" class="tag-link">Bags</a>
-                            <a href="javascript:;" class="tag-link">Sofa</a>
-                            <a href="javascript:;" class="tag-link">Shoes</a>
+                        @php
+                            $products = App\Models\Product::select('product_tags')->get();
+                            $tags = [];
+                            $products->each(function ($product) use (&$tags) { 
+                                    $arr = array_map('trim', explode(',', $product->product_tags));
+                                    $tags = array_merge($tags, $arr);
+                                });
+                            $tags = array_count_values($tags);
+                            arsort($tags);
+                            $tags = array_slice($tags, 0, 12, true);
+                        @endphp
+                        <div class="tags-box"> 
+                            @foreach ($tags as $key => $tag)
+                            <a href="javascript:;" class="tag-link">{{ $key }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

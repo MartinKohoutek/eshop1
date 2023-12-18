@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
 use App\Models\BlogPost;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -177,5 +178,13 @@ class BlogController extends Controller
         $breadCat = BlogCategory::where('id', $id)->get();
         $recentPosts = BlogPost::latest()->limit(4)->get();
         return view('frontend.blog.category_post', compact('categories', 'posts', 'breadCat', 'recentPosts'));
+    }
+
+    public function BlogByAuthor($id) {
+        $author = User::find($id);
+        $categories = BlogCategory::latest()->get();
+        $posts = BlogPost::where('user_id', $id)->get();
+        $recentPosts = BlogPost::latest()->limit(4)->get();
+        return view('frontend.blog.blog_by_author', compact('categories', 'posts', 'author', 'recentPosts'));
     }
 }

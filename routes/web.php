@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\ActiveUserController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\BlogCommentController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -318,6 +319,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/why/choose', 'UpdateWhyChoose')->name('update.why.choose');
         Route::get('/delete/why/choose/{id}', 'DeleteWhyChoose')->name('delete.why.choose');
     });
+
+    Route::controller(BlogCommentController::class)->group(function(){
+
+    });
 });
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -377,8 +382,13 @@ Route::middleware(['auth', 'role:user'])->group(function(){
        Route::get('/return/order/page', 'ReturnOrderPage')->name('return.order.page');
        Route::get('/user/track/order', 'UserTrackOrder')->name('user.track.order');
        Route::post('/order/tracking', 'OrderTracking')->name('order.tracking');
-   });
+   }); 
+});
 
+Route::middleware('auth')->group(function(){
+    Route::controller(BlogCommentController::class)->group(function(){
+        Route::post('/user/blog/comment/store', 'UserBlogCommentStore')->name('user.blog.comment.store'); 
+   });
 });
 
 Route::controller(ReviewController::class)->group(function(){
@@ -404,6 +414,7 @@ Route::controller(BlogController::class)->group(function(){
     Route::get('/blog', 'AllBlog')->name('home.blog');
     Route::get('/post/details/{id}/{slug}', 'BlogDetails');
     Route::get('/post/category/{id}/{slug}', 'BlogCategory');
+    Route::get('/blog/by/author/{id}', 'BlogByAuthor')->name('blog.by.author');
 });
 
 Route::controller(IndexController::class)->group(function(){

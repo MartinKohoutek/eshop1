@@ -105,4 +105,11 @@ class IndexController extends Controller
         $new_products = Product::orderBy('id', 'DESC')->limit(3)->get();
         return view('frontend.product.new_arrivals', compact('products', 'categories', 'new_products'));
     }
+
+    public function TagWiseProduct($title) {
+        $title = base64_decode($title);
+        $products = Product::where('product_tags', 'LIKE', '%'.$title.'%')->latest()->get();
+        $new_products = Product::orderBy('id', 'DESC')->limit(3)->get();
+        return view('frontend.product.product_by_tag', compact('title', 'products', 'new_products'));
+    }
 }

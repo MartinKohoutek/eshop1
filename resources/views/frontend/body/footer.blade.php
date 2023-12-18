@@ -64,7 +64,7 @@
                         @endphp
                         <div class="tags-box"> 
                             @foreach ($tags as $key => $tag)
-                            <a href="javascript:;" class="tag-link">{{ $key }}</a>
+                            <a href="{{ route('product.tag', ['title' => base64_encode($key)]) }}" class="tag-link">{{ $key }}</a>
                             @endforeach
                         </div>
                     </div>
